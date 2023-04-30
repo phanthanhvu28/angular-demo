@@ -1,0 +1,50 @@
+npm install -g @angular/cli
+
+ng new ProjectName --Tao project
+ng server --open
+
+https://www.youtube.com/watch?v=FNcnvEaQSnA&list=PLSYzQIS54HSjgETRuF5s1M182mZDp6Kwe&index=3
+
+ng generate module news --route news --module app.module ====> tạo module với các thông số routing dẫn đến các compoment trong module
+
+ng g component news/detailNews
+ng g service(s) Services/common 
+ng g directive(d) directives/bold
+
+
+------------------------------fake json server-------
+cmd : npm install -g json-server
+created db.json
+run : json-server --watch db.json
+
+-------------------------------
+*ngIf: Được sử dụng để điều khiển việc hiển thị các phần tử trên trang web dựa trên một điều kiện.
+
+*ngFor: Được sử dụng để lặp lại các phần tử trong một mảng và hiển thị chúng trên trang web.
+
+ngModel: Được sử dụng để liên kết dữ liệu giữa các phần tử đầu vào của người dùng và các biến trong ứng dụng.
+
+ngClass: Được sử dụng để thêm hoặc xóa các lớp CSS khác nhau từ các phần tử trên trang web dựa trên các điều kiện.
+
+ngStyle: Được sử dụng để thêm hoặc xóa các thuộc tính CSS khác nhau từ các phần tử trên trang web dựa trên các điều kiện.
+
+ngSwitch: Được sử dụng để hiển thị một phần tử trên trang web dựa trên nhiều điều kiện khác nhau.
+
+ngIfElse: Được sử dụng để xác định một phần tử sẽ được hiển thị nếu điều kiện của *ngIf là false.
+
+ngTemplateOutlet: Được sử dụng để tái sử dụng một mẫu (template) có sẵn trong ứng dụng.
+
+ngIfThen: Được sử dụng để xác định một phần tử sẽ được hiển thị nếu điều kiện của *ngIf là true.
+
+ngIfThenElse: Kết hợp giữa ngIfThen và ngIfElse để xác định phần tử sẽ được hiển thị nếu điều kiện của *ngIf là true hoặc false.
+
+ngForOf: Tương tự như *ngFor, nhưng sử dụng cú pháp khác để lặp qua các phần tử.
+
+ngNonBindable: Cho phép bạn bỏ qua việc đánh giá các biểu thức Angular trong nội dung của một phần tử trên trang web.
+
+ngPlural: Cho phép bạn xác định các biến số phức tạp để hiển thị các chuỗi văn bản khác nhau trong các trường hợp khác nhau.
+
+ngStyleExp: Cho phép bạn sử dụng một biểu thức để định nghĩa các thuộc tính CSS thay vì một đối tượng.
+
+ngTemplate: Được sử dụng để xác định một mẫu (template) trong ứng dụng.
+

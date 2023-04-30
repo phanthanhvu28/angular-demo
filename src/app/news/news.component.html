@@ -1,0 +1,48 @@
+<div> Months :
+    <select>
+        <option *ngFor="let a of months">{{a}}</option>
+    </select>
+</div>
+
+<br />
+
+<div *ngFor="let mont of months">
+    <li>{{mont}}</li>
+</div>
+<br />
+
+<input *[(ngModel)]="name" />
+<br />
+
+<label appBold>Chao ban {{name}}</label>
+<br />
+
+<label appBold *ngIf="age<18">Ban duoi {{age}} tuoi</label>
+<label *ngIf="age>=18">Ban tren {{age}} tuoi</label>
+<br />
+
+
+
+<div *ngIf="age<18; then condition1 else condition2"></div>
+<ng-template #condition1>Ban duoi {{age}} tuoi</ng-template>
+<ng-template #condition2>Ban tren {{age}} tuoi</ng-template>
+
+<br />
+
+<div>
+    Pipe Months: <label>{{months | json}}</label>
+    Pipe Age : <label>{{age | number:"0.2"}}</label>
+    <br />
+    Pipe Name : <label>{{name}}</label>
+</div>
+
+<button (click)="GiamTuoi()">
+    GiamTuoi
+</button>
+<button (click)="TangTuoi()">
+    TangTuoi
+</button>
+
+<button (click)="handleShowImportModal()">
+    ShowModal
+</button>

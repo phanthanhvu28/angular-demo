@@ -1,0 +1,35 @@
+<div>Method Get
+    <div>
+        {{array | json}}
+        <div appBold>
+            Ten : <label>{{name}}</label>
+        </div>
+
+        <div appBold>
+            Age : <label>{{age | number}}</label>
+        </div>
+    </div>
+</div>
+
+<div>Method Post: <span class="noticss">Ban co {{posts.length}} tin nhan</span>
+    <div>
+        {{posts | json}}
+       <li *ngFor="let post of posts">{{post | json}}</li>
+    </div>
+
+
+    <div>
+        <table>
+            <tr>
+                <td>Id</td>
+                <td>Title</td>
+            </tr>
+            <tr *ngFor="let post of posts">
+                <!-- <td>{{ post?.id }}</td>
+                <td>{{ post?.title }}</td> -->
+            </tr>
+        </table>
+    </div>
+
+    <button (click)="addPost()">Add Post</button>
+</div>
