@@ -3,21 +3,26 @@ npm install -g @angular/cli
 ng new ProjectName --Tao project
 ng server --open
 
-https://www.youtube.com/watch?v=FNcnvEaQSnA&list=PLSYzQIS54HSjgETRuF5s1M182mZDp6Kwe&index=3
+https://www.youtube.com/watch?v=ViF3shvVSEM&list=PLiNjao7yG414jM-CS3qVGMvlyKU0kDOkz&index=23
 
 ng generate module news --route news --module app.module ====> tạo module với các thông số routing dẫn đến các compoment trong module
 
 ng g component news/detailNews
+ng generate component PopupModal --skip-import
+
 ng g service(s) Services/common 
 ng g directive(d) directives/bold
 
 
 ------------------------------fake json server-------
 cmd : npm install -g json-server
-created db.json
-run : json-server --watch db.json
+cmd: created db.json
+run cmd: json-server --watch db.json
 
--------------------------------
+-------------------------------ng zorro-------------
+ng g ng-zorro-antd:layout-side <name>
+----------------------------------------------------
+
 *ngIf: Được sử dụng để điều khiển việc hiển thị các phần tử trên trang web dựa trên một điều kiện.
 
 *ngFor: Được sử dụng để lặp lại các phần tử trong một mảng và hiển thị chúng trên trang web.

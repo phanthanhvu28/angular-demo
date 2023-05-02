@@ -1,4 +1,57 @@
-<div class="container">   
+<nz-layout>
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-submenu nzTitle="Menu" nzIcon="user">
+        <ul>
+          <li nz-menu-item><a class="nav-link" routerLink="news" href="#">Tin tức</a></li>
+          <li nz-menu-item><a class="nav-link" routerLink="products" href="#">Sản phẩm</a></li>
+
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="Component" nzIcon="team">
+        <ul>
+          <li nz-menu-item><a class="nav-link" routerLink="form" href="#">Form</a></li>
+          <li nz-menu-item><a class="nav-link" routerLink="reactvie-form" href="#">Reactive Form</a></li>
+          <li nz-menu-item><a class="nav-link" routerLink="popup-modal" href="#">Modal</a></li>
+          <li nz-menu-item><a class="nav-link" routerLink="zorro-table" href="#">Zorro Table</a></li>
+          <li nz-menu-item><a class="nav-link" routerLink="zorro-form" href="#">Zorro Form</a></li>
+          <li nz-menu-item><a class="nav-link" routerLink="zorro-tab" href="#">Zorro Tab</a></li>
+          <li nz-menu-item><a class="nav-link" routerLink="zorro-drawer" href="#">Zorro Drawer</a></li>
+
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="Connect API" nzIcon="team">
+        <ul>
+          <li nz-menu-item><a class="nav-link" routerLink="server-api" href="#">Server API</a> </li>
+        </ul>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="file"></span>
+        <span>File</span>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <span class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+        (click)="isCollapsed = !isCollapsed"></span>
+    </nz-header>
+    <nz-content>
+      <nz-breadcrumb>
+        <nz-breadcrumb-item>User</nz-breadcrumb-item>
+        <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+      </nz-breadcrumb>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
+  </nz-layout>
+</nz-layout>
+
+
+<!-- <div class="container">   
   <nav>
       <nav class="navbar navbar-expand navbar-dark bg-dark">
       <ul class="navbar-nav">
@@ -20,4 +73,4 @@
       <aside class="col-md-3 bg-secondary"> </aside>
     </main>
   
-  </div>
+  </div> -->
