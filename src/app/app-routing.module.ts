@@ -25,6 +25,8 @@ const routes: Routes = [
   { path: 'zorro-form', loadChildren: () => import('./zorro-form/zorro-form.module').then(m => m.ZorroFormModule) },
 
   { path: 'zorro-drawer', loadChildren: () => import('./zorro-drawer/zorro-drawer.module').then(m => m.ZorroDrawerModule) },
+
+  { path: 'costing-main', loadChildren: () => import('./costing-main/costing-main.module').then(m => m.CostingMainModule) },
   {path:'**',component:NotFoundComponentComponent},
   
 ];

@@ -29,6 +29,7 @@ export class ZorroTableComponent implements OnInit {
   ): void {
     this.loading = true;
     this.randomUserService.getUsers(pageIndex, pageSize, sortField, sortOrder, filter).subscribe(data => {
+      debugger
       this.loading = false;
       this.total = 200; // mock the total data here
       this.listOfRandomUser = data.results;

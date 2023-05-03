@@ -1,0 +1,34 @@
+<nz-table
+      nzShowSizeChanger
+      [nzData]="listCosting"
+      [nzFrontPagination]="false"
+      [nzLoading]="loading"
+      [nzTotal]="total"
+      [nzPageSize]="pageSize"
+      [nzPageIndex]="pageIndex"
+      (nzQueryParams)="onQueryParamsChange($event)"
+    >
+      <thead>
+        <tr>
+          <th nzColumnKey="ProductId" [nzSortFn]="true">ProductId</th>
+          <!-- <th nzColumnKey="gender" [nzFilters]="filterGender" [nzFilterFn]="true">Gender</th> -->
+          <th nzColumnKey="SupplierId" [nzSortFn]="true">SupplierId</th>
+          <th nzColumnKey="Status" [nzSortFn]="true">Status</th>
+          <th nzColumnKey="Remark" [nzSortFn]="true">Remark</th>
+          <th nzColumnKey="ModeOfTransportCode" [nzSortFn]="true">ModeOfTransportCode</th>
+          <th nzColumnKey="ModeOfTransportNameEN" [nzSortFn]="true">ModeOfTransportNameEN</th>
+          <th nzColumnKey="ModeOfTransportNameVN" [nzSortFn]="true">ModeOfTransportNameVN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of listCosting">
+          <td>{{ data.ProductId }}</td>
+          <td>{{ data.SupplierId }}</td>
+          <td>{{ data.Status }}</td>
+          <td>{{ data.Remark }}</td>
+          <td>{{ data.ModeOfTransportCode }}</td>
+          <td>{{ data.ModeOfTransportNameEN }}</td>
+          <td>{{ data.ModeOfTransportNameVN }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
