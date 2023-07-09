@@ -27,6 +27,7 @@ export class ZorroTableComponent implements OnInit {
     sortOrder: string | null,
     filter: Array<{ key: string; value: string[] }>
   ): void {
+
     this.loading = true;
     this.randomUserService.getUsers(pageIndex, pageSize, sortField, sortOrder, filter).subscribe(data => {
       debugger
