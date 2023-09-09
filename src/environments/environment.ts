@@ -2,7 +2,7 @@ export const environment = {
     production: false,
     // baseUrl: 'https://localhost:7119',
     baseUrl: 'http://localhost:5183',
-    // baseUrlCosting: 'https://localhost:7092',
+    baseUrlTariff: 'http://localhost:5100',
     baseUrlCosting: 'http://localhost:7092',
     clientRoot: 'http://localhost:4200',
     // idpAuthority: 'http://host.docker.internal:44310',

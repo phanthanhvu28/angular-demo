@@ -10,7 +10,7 @@ ng generate module news --route news --module app.module ====> tạo module vớ
 ng g component news/detailNews
 ng generate component PopupModal --skip-import
 
-ng g service(s) Services/common 
+ng g service Services/common 
 ng g directive(d) directives/bold
 
 

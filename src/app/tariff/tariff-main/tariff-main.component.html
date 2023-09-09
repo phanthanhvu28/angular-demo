@@ -1,0 +1,78 @@
+<!-- <div>   
+
+    <div nz-col nzSpan="24" class="div-search-input-cover">
+        <div nz-col nzSpan="6">
+            <nz-input-group [nzSuffix]="suffixIconSearch" class="input-search-cover">
+                <input type="text" nz-input placeholder="Type to Search..." class="input-search"
+                    [(ngModel)]="searchText" (keydown)="onSearchKeydown($event)" />
+            </nz-input-group>
+        </div>
+        <div nz-col nzSpan="6">
+            <button nz-button [nzSize]="buttonSize" nzShape="round" class="btn-filter-style"
+                (click)="setIsDisabaleFilter(true)">
+                <span nz-icon nzType="control"></span>
+            </button>
+        </div>
+    </div>
+    <ng-template #suffixIconSearch>
+        <span nz-icon nzType="search" style="cursor: pointer" (click)="changeSearch()"></span>
+    </ng-template>
+
+    <ng-container>
+        <nz-table #table nzBordered nzShowPagination nzShowSizeChanger [nzLoading]="loading$ | async"
+            [nzData]="dataItems$ | async" [nzTotal]="totalItem$ | async" [nzFrontPagination]="clientPagination"
+            [nzPageIndex]="pageIndex$ | async" [nzPageSize]="pageSize$ | async"
+            (nzPageIndexChange)="changePageIndex($event)" (nzPageSizeChange)="changePageSize($event)"
+            [nzScroll]="{ y: 'calc(100vh - 444px)' }" [nzShowTotal]="rangeTemplate" [nzWidthConfig]="widthColumns">
+            <ng-template #rangeTemplate let-range="range" let-total>
+                {{ range[0] }} to {{ range[1] }} of {{ total }} records
+            </ng-template>
+            <thead>
+                <tr>
+                    <th [nzShowSort]="false" [nzSortFn]="false" (nzSortOrderChange)="changeSort('Id', $event ?? '')">
+                        #
+                    </th>
+                    <th [nzShowSort]="false" [nzSortFn]="false" (nzSortOrderChange)="changeSort('id', $event?? '')">
+                        Tariff ID
+                    </th>
+                    <th [nzShowSort]="true" [nzSortFn]="true" (nzSortOrderChange)="changeSort('CreateAt', $event?? '')">
+                        Create date
+                    </th>
+                    <th [nzShowSort]="false" [nzSortFn]="false" (nzSortOrderChange)="changeSort('createBy', $event?? '')">
+                        Create by
+                    </th>
+                    <th [nzShowSort]="false" [nzSortFn]="false" (nzSortOrderChange)="changeSort('declineBy', $event?? '')">
+                        Decline by
+                    </th>
+                    <th [nzShowSort]="false" [nzSortFn]="false" (nzSortOrderChange)="changeSort('approvalBy', $event?? '')">
+                        Approved by
+                    </th>
+                    <th [nzShowSort]="false" [nzSortFn]="false" (nzSortOrderChange)="changeSort('approvalAt', $event?? '')">
+                        Approved date
+                    </th>
+                    <th [nzShowSort]="false" [nzSortFn]="false" (nzSortOrderChange)="changeSort('validTo', $event?? '')">
+                        Valid date
+                    </th>
+                    <th [nzShowSort]="false" [nzSortFn]="false" (nzSortOrderChange)="changeSort('status', $event?? '')">
+                        Status
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of table.data">
+                    <td>{{ data.id }}</td>
+                    <td>{{ data.tariffId }}</td>
+                    <td (click)="goToDetails(data.id)">{{ data.createAt }}</td>
+                    <td>{{ data.createBy }}</td>
+                    <td>{{ data.declineBy }}</td>
+                    <td>{{ data.approvalBy }}</td>
+                    <td>{{ data.approvalAt }}</td>
+                    <td>{{ data.validTo }}</td>
+                    <td>{{ data.status }}</td>
+                   
+                </tr>
+            </tbody>
+        </nz-table>
+    </ng-container>
+
+</div> -->

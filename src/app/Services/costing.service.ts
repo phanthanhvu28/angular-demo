@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {  Observable, catchError, throwError } from 'rxjs';
+import {  Observable, catchError, map, tap, throwError } from 'rxjs';
 import { CostingMainModel } from '../models/costing-main-model';
 import { environment } from 'src/environments/environment';
 import { CostingMainResponse } from '../models/CostingMainResponse';
@@ -11,6 +11,11 @@ const baseUrl = environment.baseUrl;
   providedIn: 'root'
 })
 export class CostingService {
+
+  data: any;
+  error: any;
+  loading: boolean=true;
+
 
   constructor(private http: HttpClient) { }
 
@@ -72,9 +77,25 @@ export class CostingService {
           console.log(message, err);
           return throwError(() => new Error(err));
         }),
-        //tap((countryUnitVietnams) => this.subjects.next(countryUnitVietnams))
+        tap((countryUnitVietnams) => {
+          console.log(`Fetched ${countryUnitVietnams} products`);
+        })
       )
     //.subscribe();
+  }
+
+  loadData() {
+    this.loading = true;
+    this.http.get<any>('https://api.example.com/data').pipe(
+      map(response => response.data),
+      catchError(error => {
+        this.error = error;
+        return [];
+      })
+    ).subscribe(data => {
+      this.data = data;
+      this.loading = false;
+    });
   }
 
 }
