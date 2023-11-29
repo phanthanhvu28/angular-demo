@@ -16,7 +16,7 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "options": {
+          "options": {            
             "outputPath": "dist/app-angular-web",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -63,6 +63,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 4201
+        },
           "configurations": {
             "production": {
               "browserTarget": "app-angular-web:build:production"

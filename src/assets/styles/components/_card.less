@@ -1,0 +1,57 @@
+.vc-card {
+  &.ant-card {
+    .ant-card {
+      &-head {
+        padding: 0 16px;
+        min-height: 44px;
+      }
+      &-head-title {
+        padding: 8px 0;
+        span {
+          font-family: "NotoSans";
+          font-size: 14px;
+          font-weight: bold;
+          line-height: 20px;
+        }
+
+        span.vc-card-head-toggle {
+          cursor: pointer;
+          padding: 4px 12px;
+
+          border-radius: 4px;
+
+          &.active {
+            pointer-events: none;
+            background: rgba(179, 222, 255, 0.5);
+            color: var(--vc-primary-400);
+            font-weight: bold;
+          }
+        }
+      }
+      &-extra {
+        padding: 8px 0;
+      }
+
+      &-body {
+        padding: 16px;
+      }
+    }
+  }
+
+  &.vc-card-table.ant-card {
+    .ant-card {
+      &-body {
+        padding: 0;
+      }
+    }
+  }
+
+  &-note {
+    margin-bottom: 0;
+    
+    font-size: 12px;
+    font-style: italic;
+    line-height: 16px;
+    color: var(--vc-neutral-400);
+  }
+}

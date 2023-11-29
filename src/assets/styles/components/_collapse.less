@@ -1,0 +1,41 @@
+.vc-collapse {
+  &.ant-collapse-icon-position-right
+    > .ant-collapse-item
+    > .ant-collapse-header
+    .vc-collapse-arrow {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    left: auto;
+    margin: 0;
+    transform: translateY(-50%);
+
+    height: 16px;
+    width: 16px;
+
+    svg {
+      transition: all 0.4s ease;
+    }
+  }
+
+  &.ant-collapse-icon-position-right
+    > .ant-collapse-item.ant-collapse-item-active
+    > .ant-collapse-header
+    .vc-collapse-arrow {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  .ant-collapse-header {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+
+    & > span {
+      margin-left: 8px;
+    }
+  }
+}
