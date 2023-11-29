@@ -13,7 +13,7 @@ export class CostingMainComponent implements OnInit {
   ngOnInit(): void {
     this.loadDataFromServer(this.pageIndex, this.pageSize, null, null, []);
   }
-  constructor(private costingService: CostingService) {}
+  constructor(private costingService: CostingService) { }
 
   total = 1;
   listCosting: CostingMainModel[] = [];
@@ -33,12 +33,21 @@ export class CostingMainComponent implements OnInit {
     filter: Array<{ key: string; value: string[] }>
   ): void {
     this.loading = true;
-    this.costingService.getCostingMains(pageIndex, pageSize, sortField, sortOrder,"SUP0300645369").subscribe(data => {
-      debugger
-      this.loading = false;
-      this.total = 200; // mock the total data here
-      // this.listCosting = data.items;
-    });
+    // this.costingService.getCostingMains2(pageIndex, pageSize, sortField, sortOrder, "SUP0300645369", filter)
+    //   .subscribe(data => {
+    //     debugger
+    //     this.loading = false;
+    //     this.total = 200; // mock the total data here
+    //     // this.listCosting = data.items;
+    //   });
+
+      this.costingService.getCostingMains2(pageIndex, pageSize, sortField, sortOrder,"SUP0300645369", filter).subscribe(data => {
+        debugger
+        this.loading = false;
+        this.total = 200; // mock the total data here
+        //this.listOfRandomUser = data.results;
+      });
+
   }
 
   onQueryParamsChange(params: NzTableQueryParams): void {
