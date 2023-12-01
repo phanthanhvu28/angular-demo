@@ -40,6 +40,9 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 // import { BreadscrumbComponent } from './components/breadscrumb/breadscrumb.component';
  import { HeaderComponent } from './components/header/header.component';
 
+ import { ProductsComponent } from '../../products/products.component';
+import { ZorroTableModule } from '../../zorro-table/zorro-table.module';
+
 
 import { NzResizableModule } from 'ng-zorro-antd/resizable';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
@@ -108,7 +111,8 @@ import { NzI18nModule } from 'ng-zorro-antd/i18n';
     NzMenuModule,
     NzButtonModule,
     //DashboardModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,    
+    ZorroTableModule,
     // ProductModule,
     // CountryUnitVietnamModule,
     // AirlineModule,

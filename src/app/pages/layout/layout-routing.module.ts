@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductsComponent } from '../../products/products.component';
+import { ZorroTableModule } from '../../zorro-table/zorro-table.module';
+ZorroTableModule
 //import { AuthGuardService } from 'src/app/guard/guards/auth-guard.service';
 //import { UnauthorizedComponent } from 'src/app/unauthorized/unauthorized.component';
 // import { FreightManagementComponent } from '../costing/freight-management/freight-management.component';
@@ -39,14 +41,19 @@ const routes: Routes = [
     component: LayoutComponent,
     // canActivate: [AuthGuardService],
     children: [
+    //   {
+    //     path: '',
+    //     redirectTo: '/dashboard',
+    //     pathMatch: 'full'
+    //   },
       {
-        path: '',
-        redirectTo: '/dashboard',
-        pathMatch: 'full'
-      },{
-        path:'products',
+        path:'test/products',
         component:ProductsComponent
       }
+      ,{
+        path: 'test/table', 
+        loadChildren: () => import('../../zorro-table/zorro-table.module').then(m => m.ZorroTableModule) 
+        },
     //   ,
     //   {
     //     path: 'dashboard',
@@ -333,13 +340,13 @@ const routes: Routes = [
     //       }
     //     ]
     //   },
-    //   {
-    //     path: 'contract',
-    //     loadChildren: () =>
-    //       import('src/app/pages/contract/contract.module').then(
-    //         (m) => m.ContractModule
-    //       )
-    //   },
+       {
+        path: 'contract/customer',
+         loadChildren: () =>
+           import('src/app/pages/contract/customer/customer.module').then(
+             (m) => m.CustomerModule
+           )
+       },
     //   {
     //     path: 'booking',
     //     // component: DashboardComponent

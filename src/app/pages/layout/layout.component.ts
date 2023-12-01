@@ -22,7 +22,7 @@ interface MenuItem {
 })
 export class LayoutComponent implements OnInit  {
   isReload: boolean = true;
-  isCollapsed: boolean = true;
+  isCollapsed: boolean = false;
   iconMenuHover: boolean = false;
   breakPoint: any = 'nv-sidebar'; // custom break point sidebar
 
@@ -557,6 +557,31 @@ export class LayoutComponent implements OnInit  {
           level: 2,
           title: 'Department',
           link: '/authorization/department',
+          selected: false,
+          disabled: false
+        }
+      ]
+    },
+    {
+      level: 1,
+      title: 'Test Angular',
+      icon: '../../../assets/images/sidebar/authorization',
+      open: false,
+      openString: 'sub_menu_test',
+      selected: false,
+      disabled: false,
+      children: [
+        {
+          level: 2,
+          title: 'Products',
+          link: 'test/products',
+          selected: false,
+          disabled: false
+        },
+        {
+          level: 2,
+          title: 'Table',
+          link: 'test/table',
           selected: false,
           disabled: false
         }
