@@ -15,7 +15,7 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'contract/customer',
+        path: 'contract',
         component: CustomerContractListPage,
         data: {
           title: 'Contract'

@@ -52,7 +52,7 @@ const routes: Routes = [
       }
       ,{
         path: 'test/table', 
-        loadChildren: () => import('../../zorro-table/zorro-table.module').then(m => m.ZorroTableModule) 
+        loadChildren: () => import('../../zorro-tab/zorro-tab.module').then(m => m.ZorroTabModule) 
         },
     //   ,
     //   {
@@ -341,10 +341,10 @@ const routes: Routes = [
     //     ]
     //   },
        {
-        path: 'contract/customer',
+        path: 'contract',
          loadChildren: () =>
-           import('src/app/pages/contract/customer/customer.module').then(
-             (m) => m.CustomerModule
+           import('src/app/pages/contract/contract.module').then(
+             (m) => m.ContractModule
            )
        },
     //   {

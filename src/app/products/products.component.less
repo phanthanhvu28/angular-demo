@@ -1,0 +1,43 @@
+.vc-contract {
+    &-tabset {
+      height: auto;
+      background: transparent;
+  
+      ::ng-deep {
+        .ant-tabs-tabpane {
+          display: none;
+          height: 0;
+          padding: 0;
+        }
+      }
+    }
+  
+    &-wrapper {
+      padding: 0 32px;
+      padding-top: 16px;
+      background: transparent;
+    }
+  }
+  ::ng-deep .action-icon button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 163px;
+    height: 36px;
+    padding: 0;
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+    &:hover {
+      opacity: 1;
+      background-color: var(--nv-neutral-100);
+    }
+  }
+  ::ng-deep .nv-box-contract {
+    border: 1px solid var(--nv-neutral-100);
+    border-radius: 4px;
+    margin: 0 !important;
+    padding: 10px 12px;
+  }
+  

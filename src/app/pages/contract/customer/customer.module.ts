@@ -31,6 +31,11 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
 
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
+import {
+  CustomerLayoutPage
+
+} from './pages';
+
 const NZ_MODULE = [
   NzBreadCrumbModule,
   NzButtonModule,
@@ -62,10 +67,12 @@ const NZ_MODULE = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    CustomerLayoutPage
+  ],
   imports: [
     CommonModule,
-    CustomerRoutingModule,
+    CustomerRoutingModule,  
     ...NZ_MODULE
   ]
 })

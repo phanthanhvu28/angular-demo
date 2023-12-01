@@ -22,16 +22,16 @@ interface MenuItem {
 })
 export class LayoutComponent implements OnInit  {
   isReload: boolean = true;
-  isCollapsed: boolean = false;
+  isCollapsed: boolean = true;
   iconMenuHover: boolean = false;
-  breakPoint: any = 'nv-sidebar'; // custom break point sidebar
+  breakPoint: any = 'xxl'; // custom break point sidebar
 
   constructor(){    
   }
 
   ngOnInit(): void {
-    // gridResponsiveMap['nv-sidebar'] = '(min-width: 1280px)';
-    // siderResponsiveMap['nv-sidebar'] = '(min-width: 1279.98px)';
+    gridResponsiveMap['xxl'] = '(min-width: 1280px)';
+    siderResponsiveMap['xxl'] = '(min-width: 1279.98px)';
   }
 
   //public isCollapsed=false

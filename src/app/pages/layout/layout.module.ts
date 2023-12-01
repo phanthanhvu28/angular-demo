@@ -93,13 +93,16 @@ import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzI18nModule } from 'ng-zorro-antd/i18n';
+import { CustomerLayoutPage } from '../contract/customer/pages';
 
 @NgModule({
   declarations: [
     LayoutComponent,
     // NotFoundComponent,
-     HeaderComponent
+     HeaderComponent,
+     //CustomerLayoutPage
     // BreadscrumbComponent
+
   ],
   imports: [
     CommonModule,
