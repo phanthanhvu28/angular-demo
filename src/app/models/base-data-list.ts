@@ -55,3 +55,25 @@ export interface TableNavConfig {
     handleClickSearch?: (newState: string) => void;
     handleClickFilter?: (event: Event) => void;
   }
+
+  export interface DataListRequestPayload {
+    includes?: Array<string>;
+    filters?: Array<any>;
+    sorts?: Array<string>;
+    page?: number;
+    pageSize?: number;
+  }
+
+  export enum FilterComparison {
+    Equal = '==',
+    NotEqual = '!=',
+    Bigger = '>',
+    BiggerOrEqual = '>=',
+    Smaller = '<',
+    SmallerOrEqual = '<=',
+    Contains = 'Contains',
+    StartsWith = 'StartsWith',
+    EndsWith = 'EndsWith',
+    In = 'In',
+    ContainsAny = 'ContainsAny'
+  }

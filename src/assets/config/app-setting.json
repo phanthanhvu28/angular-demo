@@ -1,0 +1,58 @@
+{
+    "API_URL": {
+      "MASTER_DATA": {
+        "BASE_URL": "https://opex-dev1.vela.com.vn/master-data-api",
+        "PREFIX": "api",
+        "VERSION": null
+      },
+      "COSTING": {
+        "BASE_URL": "https://opex-dev1.vela.com.vn/costing-api",
+        "PREFIX": "api",
+        "VERSION": null
+      },
+      "TARIFF": {
+        "BASE_URL": "https://opex-dev1.vela.com.vn/tariff-api",
+        "PREFIX": "api",
+        "VERSION": null
+      },
+      "BOOKING": {
+        "BASE_URL": "https://opex-dev3.vela.com.vn/booking-api",
+        "PREFIX": "api",
+        "VERSION": null
+      },
+      "RFI": {
+        "BASE_URL": "https://opex-dev3.vela.com.vn/rfi-api",
+        "PREFIX": "api",
+        "VERSION": null
+      },
+      "PNL": {
+        "BASE_URL": "https://opex-dev3.vela.com.vn/pnl-api",
+        "PREFIX": "api",
+        "VERSION": null
+      },
+      "QUOTATION": {
+        "BASE_URL": "https://opex-dev3.vela.com.vn/quotation-api",
+        "PREFIX": "api",
+        "VERSION": null
+      },
+      "SHIPMENT": {
+        "BASE_URL": "https://opex-dev3.vela.com.vn/shipment-api",
+        "PREFIX": "api",
+        "VERSION": null
+      },
+      "BILLING": {
+        "BASE_URL": "",
+        "PREFIX": "api",
+        "VERSION": null
+      },
+      "CONTRACT": {
+        "BASE_URL": "https://opex-dev3.vela.com.vn/contractservice-api",
+        "PREFIX": "api",
+        "VERSION": null
+      }
+    },
+    "CLIENT_ROOT": "http://localhost:4201",
+    "IDP_AUTHORITY": "https://sso-dev-integrate.vela.com.vn",
+    "CLIENT_ID": "opex-angular-app"
+  }
+  

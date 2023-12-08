@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { CommonService } from '../Services/common.service';
+import { CommonService } from '../services/common.service';
 
 
 import { ActivatedRoute, Router } from '@angular/router';

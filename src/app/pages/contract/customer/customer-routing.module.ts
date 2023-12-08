@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {
-  CustomerLayoutPage, CustomerTrialContractListPage,CustomerContractListPage,CustomerAnnexListPage,CustomerAgreementListPage
+  CustomerLayoutPage, 
+  CustomerTrialContractListPage,
+  CustomerContractListPage,
+  CustomerAnnexListPage,
+  CustomerAgreementListPage
   
 } from './pages';
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzTableQueryParams } from 'ng-zorro-antd/table';
-import { RandomUserService } from '../Services/random-user.service';
+import { RandomUserService } from '../services/random-user.service';
 import { RandomUser } from '../models/RandomUser';
 
 

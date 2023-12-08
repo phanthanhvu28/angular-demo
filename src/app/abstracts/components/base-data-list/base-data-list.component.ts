@@ -17,17 +17,17 @@ import { TableDataCell, TableNavConfig } from 'src/app/models/base-data-list';
   })
 export abstract class AbsBaseDataListComponent<T> {
     public tableHeight: number = 0;
-    public observerTableHeight: MutationObserver = null;
+    public observerTableHeight: MutationObserver | null = null;
     public filterData: Array<any> = [];
     public currentTabService: any;
-    public loading$: Observable<boolean>;
-    public dataItemCells$: Observable<Array<TableDataCell>>;
-    public dataItems$: Observable<Array<T>>;
-    public totalItem$: Observable<number>;
-    public pageIndex$: Observable<number>;
-    public pageSize$: Observable<number>;
+    public loading$!: Observable<boolean>;
+    public dataItemCells$!: Observable<Array<TableDataCell>>;
+    public dataItems$!: Observable<Array<T>>;
+    public totalItem$!: Observable<number>;
+    public pageIndex$!: Observable<number>;
+    public pageSize$!: Observable<number>;
     public searchText: string = '';
-    public searchText$: Observable<string>;
+    public searchText$!: Observable<string>;
     protected destroy$: ReplaySubject<boolean> = new ReplaySubject(1);
 
     public readonly nvNavConfig: TableNavConfig = {
@@ -91,7 +91,7 @@ export abstract class AbsBaseDataListComponent<T> {
       }
 
       protected setTableHeight(currentEl: HTMLElement): void {
-        this.tableHeight = Utils.getTableHeight(currentEl);
+        //this.tableHeight = Utils.getTableHeight(currentEl);
         Utils.setTableHeight(currentEl, this.tableHeight);
       }
       
