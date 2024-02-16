@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { DataListRequestPayload } from 'src/app/models/base-data-list';
 import { ResultListModel } from '../../models';
 import ContractData from '../models/contract-data.model';
-import { environment } from 'src/app/environments/environment';
+import { environment } from 'src/environments/environment';
+
 
 
 const baseUrl = `${environment.config.API_URL.CONTRACT.BASE_URL}/api/v1`;

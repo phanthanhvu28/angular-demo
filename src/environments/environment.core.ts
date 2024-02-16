@@ -6,6 +6,8 @@ export class EnvironmentProperty {
 
   showError: boolean;
 
+  MODULE_AVAILABLE: EnvironmentModuleAvailableProperty;
+
   API_URL: EnvironmentApiProperty;
   CLIENT_ROOT: string;
   CLIENT_ID: string;
@@ -13,13 +15,61 @@ export class EnvironmentProperty {
 
   constructor() {
     this.API_URL = new EnvironmentApiProperty();
-    this.local = false;
-    this.production = false;
-    this.showError = false;
-    this.CLIENT_ID = "";
-    this.CLIENT_ROOT="";
-    this.IDP_AUTHORITY="";    
   }
+}
+
+export class EnvironmentModuleAvailableProperty {
+  MASTER_DATA: boolean;
+
+  PARTNER: boolean;
+  PARTNER_CUSTOMER: boolean;
+  PARTNER_SUPPLIER: boolean;
+
+  COSTING: boolean;
+  COSTING_REQUEST_COST: boolean;
+  COSTING_LIST: boolean;
+  COSTING_CENTER: boolean;
+
+  RFI: boolean;
+  RFI_CUSTOMER: boolean;
+  RFI_SUPPLIER: boolean;
+
+  PRICE_MANAGEMENT: boolean;
+  PRICE_MANAGEMENT_TARIFF: boolean;
+  PRICE_MANAGEMENT_PRICING: boolean;
+  PRICE_MANAGEMENT_MARKET: boolean;
+  PRICE_MANAGEMENT_PROMOTION: boolean;
+
+  QUOTATION: boolean;
+  QUOTATION_PNL: boolean;
+  QUOTATION_LIST: boolean;
+
+  CONTRACT: boolean;
+  CONTRACT_CUSTOMER: boolean;
+  CONTRACT_SUPPLIER: boolean;
+
+  BOOKING: boolean;
+
+  OPERATION_EXCELLENCE: boolean;
+  OPERATION_EXCELLENCE_SHIPMENT: boolean;
+  OPERATION_EXCELLENCE_EXCEPTION: boolean;
+  OPERATION_EXCELLENCE_INVENTORY: boolean;
+  OPERATION_EXCELLENCE_DOCUMENT: boolean;
+  OPERATION_EXCELLENCE_CONFIGURATION: boolean;
+
+  FINANCE_MANAGEMENT: boolean;
+  FINANCE_MANAGEMENT_CUSTOMER: boolean;
+  FINANCE_MANAGEMENT_SUPPLIER: boolean;
+
+  REPORT: boolean;
+
+  KPI: boolean;
+
+  SUPPORT: boolean;
+
+  AUTHORIZATION: boolean;
+
+  DOC: boolean;
 }
 
 export class EnvironmentApiProperty {
@@ -31,32 +81,17 @@ export class EnvironmentApiProperty {
   SHIPMENT: EnvironmentApiGatewayProperty;
   BILLING: EnvironmentApiGatewayProperty;
   CONTRACT: EnvironmentApiGatewayProperty;
+  CONTRACT_CUSTOMER: EnvironmentApiGatewayProperty;
+  CONTRACT_SUPPLIER: EnvironmentApiGatewayProperty;
   PNL: EnvironmentApiGatewayProperty;
   QUOTATION: EnvironmentApiGatewayProperty;
-  constructor() {
-    this.MASTER_DATA = new EnvironmentApiGatewayProperty();
-    this.COSTING = new EnvironmentApiGatewayProperty();
-    this.RFI = new EnvironmentApiGatewayProperty();
-    this.BOOKING = new EnvironmentApiGatewayProperty();
-    this.TARIFF = new EnvironmentApiGatewayProperty();
-    this.SHIPMENT = new EnvironmentApiGatewayProperty();
-    this.BILLING = new EnvironmentApiGatewayProperty();
-    this.CONTRACT = new EnvironmentApiGatewayProperty();
-    this.PNL = new EnvironmentApiGatewayProperty();
-    this.QUOTATION = new EnvironmentApiGatewayProperty();
-  }
+  PARTNER: EnvironmentApiGatewayProperty;
 }
 
 export class EnvironmentApiGatewayProperty {
   BASE_URL: string;
   PREFIX: string;
   VERSION: string | null;
-
-  constructor() {
-    this.BASE_URL = "";
-    this.PREFIX = "";
-    this.VERSION = "";
-  }
 }
 
 export class EnvironmentCore extends EnvironmentProperty {
@@ -69,7 +104,8 @@ export class EnvironmentCore extends EnvironmentProperty {
   }
 
   get baseUrl(): string {
-    return this.config.API_URL.MASTER_DATA.BASE_URL;
+    var test  = this.config.API_URL;
+    return "https://localhost:7119";
   }
 
   get clientId(): string {

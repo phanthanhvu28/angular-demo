@@ -50,6 +50,8 @@ import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { IconsComponentModule } from '../components/icons-component/icons-component.module';
+
 
 @NgModule({
   declarations: [
@@ -58,6 +60,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
   imports: [
     CommonModule,
     LayoutRoutingModule,
+    IconsComponentModule,
     NzFormModule,    
     NzDropDownModule
   ]
