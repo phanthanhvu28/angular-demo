@@ -94,6 +94,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzI18nModule } from 'ng-zorro-antd/i18n';
 import { CustomerLayoutPage } from '../contract/customer/pages';
+import { IconsComponentModule } from 'src/app/components/icons-component/icons-component.module';
 
 @NgModule({
   declarations: [
@@ -183,8 +184,8 @@ import { CustomerLayoutPage } from '../contract/customer/pages';
     NzEmptyModule,
     NzFormModule,
     NzGridModule,
-    NzI18nModule
-   // IconsComponentModule
+    NzI18nModule,
+   IconsComponentModule
   ],
   exports: [LayoutComponent],
   providers: [DatePipe, AsyncPipe, Title]

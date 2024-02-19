@@ -60,7 +60,7 @@ import { IconsComponentModule } from '../components/icons-component/icons-compon
   imports: [
     CommonModule,
     LayoutRoutingModule,
-    IconsComponentModule,
+    // IconsComponentModule,
     NzFormModule,    
     NzDropDownModule
   ]
