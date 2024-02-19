@@ -95,12 +95,15 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzI18nModule } from 'ng-zorro-antd/i18n';
 import { CustomerLayoutPage } from '../contract/customer/pages';
 import { IconsComponentModule } from 'src/app/components/icons-component/icons-component.module';
+import { BreadscrumbComponent } from './components/breadscrumb/breadscrumb.component';
+
 
 @NgModule({
   declarations: [
     LayoutComponent,
     // NotFoundComponent,
      HeaderComponent,
+     BreadscrumbComponent
      //CustomerLayoutPage
     // BreadscrumbComponent
 
