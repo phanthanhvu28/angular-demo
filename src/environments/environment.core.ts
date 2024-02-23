@@ -105,7 +105,8 @@ export class EnvironmentCore extends EnvironmentProperty {
 
   get baseUrl(): string {
     var test  = this.config.API_URL;
-    return "https://localhost:7119";
+    return "";
+    //return this.config.API_URL.MASTER_DATA.BASE_URL;
   }
 
   get clientId(): string {

@@ -16,7 +16,7 @@ import { HomesComponent } from './homes/homes.component';
 import { BoldDirective } from './directives/bold.directive';
 import { FormComponent } from './form/form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ServerapiComponent } from './serverapi/serverapi.component';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -106,6 +106,11 @@ const antDesignIcons = AllIcons as {
 const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key])
 registerLocaleData(en);
 
+export function HttpLoaderFactory(http: HttpClient) {
+  // return new TranslateHttpLoader(http);
+}
+
+
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
@@ -124,8 +129,8 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    // HttpClientModule,
+    FormsModule,    
+    HttpClientModule,
     // ReactiveFormsModule,
     // MatToolbarModule,
     // MatSidenavModule,

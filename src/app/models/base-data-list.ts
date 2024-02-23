@@ -46,6 +46,16 @@ export interface TableDataCell {
   | Array<string>
   | { start: string | number | Date; end: string | number | Date 
 };
+export interface FilterItem {
+  fieldName: string;
+  comparison: string;
+  fieldValue: string | Array<string>;
+}
+export interface ItemOptions {
+  label: string;
+  value: string;
+  parentValue?: string;
+}
 export interface TableNavConfig {
     nvShowSearch?: boolean;
     nvSearchPosition?: 'right' | 'left' | 'none';
@@ -54,6 +64,11 @@ export interface TableNavConfig {
     nvShowHideCols?: boolean;
     handleClickSearch?: (newState: string) => void;
     handleClickFilter?: (event: Event) => void;
+  }
+  export interface TableRowHighlightConfig {
+    when: { [key: string]: string };
+    by: string;
+    highlightTrigger?: (difDays: number, days: number) => boolean;
   }
 
   export interface DataListRequestPayload {

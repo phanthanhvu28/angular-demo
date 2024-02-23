@@ -95,6 +95,7 @@ import { NzI18nModule } from 'ng-zorro-antd/i18n';
 import { CustomerLayoutPage } from '../contract/customer/pages';
 import { IconsComponentModule } from 'src/app/components/icons-component/icons-component.module';
 import { BreadscrumbComponent } from './components/breadscrumb/breadscrumb.component';
+import { BaseButtonModule } from '@common-components/base-button/base-button.module';
 
 
 @NgModule({
@@ -102,7 +103,7 @@ import { BreadscrumbComponent } from './components/breadscrumb/breadscrumb.compo
     LayoutComponent,
     // NotFoundComponent,
      HeaderComponent,
-     BreadscrumbComponent
+     BreadscrumbComponent,
      //CustomerLayoutPage
     // BreadscrumbComponent
 
@@ -188,6 +189,7 @@ import { BreadscrumbComponent } from './components/breadscrumb/breadscrumb.compo
     NzGridModule,
     NzI18nModule,
    IconsComponentModule
+   
   ],
   exports: [LayoutComponent],
   providers: [DatePipe, AsyncPipe, Title]

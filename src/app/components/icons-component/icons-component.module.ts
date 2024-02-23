@@ -7,6 +7,7 @@ import { IconCheckComponent } from './icon-check/icon-check.component';
 import { IconDoubleLineComponent } from './icon-double-line/icon-double-line.component';
 import { IconBxSearchComponent } from './icon-bx-search/icon-bx-search.component';
 import { IconArrowComponent } from './icon-arrow/icon-arrow.component';
+import { IconMenuFoldComponent } from './icon-menu-fold/icon-menu-fold.component';
 
 
 const ICONS_PROVIDER = [
@@ -16,7 +17,8 @@ const ICONS_PROVIDER = [
     IconCheckComponent,
     IconDoubleLineComponent,
     IconBxSearchComponent,
-    IconArrowComponent
+    IconArrowComponent,
+    IconMenuFoldComponent
 ];
 
 @NgModule({
