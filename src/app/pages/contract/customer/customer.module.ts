@@ -34,8 +34,14 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import {
   CustomerLayoutPage,
   CustomerAnnexListPage,
-  CustomerTrialContractListPage,CustomerAgreementListPage
+  CustomerTrialContractListPage,CustomerAgreementListPage, CustomerContractListPage
 } from './pages';
+import { BaseButtonModule } from '@common-components/base-button/base-button.module';
+import { CommonService } from 'src/app/services/common.service';
+import { IconsComponentModule } from '@components/icons-component/icons-component.module';
+import { BaseTableModule } from '@common-components/base-table/base-table.module';
+import { BaseDirectiveModule } from '@components/directives/directives.module';
+import { StatusLabelModule } from '../components/status-label/status-lablel.module';
 
 
 const NZ_MODULE = [
@@ -67,18 +73,33 @@ const NZ_MODULE = [
   NzUploadModule,
   
 ];
+const BASE_MODULE=[
+  BaseButtonModule,
+  BaseTableModule,
+  BaseDirectiveModule
+]
+
+const COMMON_COMPONENTS=[
+  CustomerContractListPage
+
+]
 
 @NgModule({
   declarations: [
     CustomerLayoutPage,
     CustomerAnnexListPage,
     CustomerTrialContractListPage,
-    CustomerAgreementListPage
+    CustomerAgreementListPage,
+    ...COMMON_COMPONENTS
   ],
   imports: [
     CommonModule,
-    CustomerRoutingModule,  
-    ...NZ_MODULE
-  ]
+    CustomerRoutingModule,      
+    IconsComponentModule,
+    StatusLabelModule,
+    ...BASE_MODULE,
+    ...NZ_MODULE    
+  ] ,
+  exports: [...COMMON_COMPONENTS]
 })
 export class CustomerModule { }

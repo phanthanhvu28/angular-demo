@@ -82,26 +82,26 @@ export abstract class BaseContractTabService<
       fieldValue: this.searchText.trim()
     };
 
-    const isCanApproval =
-      !!this.authService.getCurrentUserParse()['Vela_Core_Contract_Approve'] ||
-      !!this.authService.getCurrentUserParse()[
-        'Vela_Core_ContractSupplier_Approve'
-      ];
-    const isCanCreate =
-      !!this.authService.getCurrentUserParse()['Vela_Core_Contract_Create'] ||
-      !!this.authService.getCurrentUserParse()[
-        'Vela_Core_ContractSupplier_Create'
-      ];
+    // const isCanApproval =
+    //   !!this.authService.getCurrentUserParse()['Vela_Core_Contract_Approve'] ||
+    //   !!this.authService.getCurrentUserParse()[
+    //     'Vela_Core_ContractSupplier_Approve'
+    //   ];
+    // const isCanCreate =
+    //   !!this.authService.getCurrentUserParse()['Vela_Core_Contract_Create'] ||
+    //   !!this.authService.getCurrentUserParse()[
+    //     'Vela_Core_ContractSupplier_Create'
+    //   ];
     this.filter = structuredClone(this.filter);
-    const approvalStatus = {
-      fieldName: 'status',
-      comparison: FilterComparison.NotEqual,
-      fieldValue: 'New'
-    };
+    // const approvalStatus = {
+    //   fieldName: 'status',
+    //   comparison: FilterComparison.NotEqual,
+    //   fieldValue: 'New'
+    // };
 
-    if (isCanApproval && !isCanCreate) {
-      this.filter.push(approvalStatus);
-    }
+    // if (isCanApproval && !isCanCreate) {
+    //   this.filter.push(approvalStatus);
+    // }
     return {
       includes: [],
       filters: this.searchText ? [...this.filter, search] : this.filter,

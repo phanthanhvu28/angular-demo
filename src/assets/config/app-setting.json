@@ -46,7 +46,7 @@
         "VERSION": null
       },
       "CONTRACT": {
-        "BASE_URL": "https://opex-dev3.vela.com.vn/contractservice-api",
+        "BASE_URL": "http://localhost:5300",
         "PREFIX": "api",
         "VERSION": null
       },

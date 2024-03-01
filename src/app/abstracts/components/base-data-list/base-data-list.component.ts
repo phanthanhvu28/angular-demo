@@ -10,7 +10,7 @@ import {
     timer
   } from 'rxjs';
   import { Utils } from 'src/app/utils/utils';
-import { TableDataCell, TableNavConfig } from 'src/app/models/base-data-list';
+import { FilterItem, TableDataCell, TableNavConfig } from '@models/base-data-list';
 
 @Component({
     template: ''
@@ -93,6 +93,46 @@ export abstract class AbsBaseDataListComponent<T> {
       protected setTableHeight(currentEl: HTMLElement): void {
         //this.tableHeight = Utils.getTableHeight(currentEl);
         Utils.setTableHeight(currentEl, this.tableHeight);
+      }
+
+      public setFilterData(value: Array<FilterItem>): void {
+        const trimFilterValue = value.map((filterItem) => {
+          if (typeof filterItem.fieldValue !== 'string') {
+            return filterItem;
+          }
+    
+          return {
+            ...filterItem,
+            fieldValue: filterItem.fieldValue.trim()
+          };
+        });
+    
+        this.filterData = trimFilterValue;
+        this.currentTabService.filter = trimFilterValue;
+        this.currentTabService.setPageIndex(1);
+        this.getTableData();
+      }
+
+      public changePageIndex(pageIndex: number): void {
+        this.currentTabService.goToPage(pageIndex);
+      }
+    
+      public changePageSize(pageSize: number): void {
+        this.currentTabService.changePageSize(pageSize);
+      }
+      public onSortOrderChange(event: Array<string>): void {
+        this.currentTabService.sorts = event;
+        this.getTableData();
+      }
+      public onCellFilterReset({
+        sorts,
+        filters
+      }: {
+        sorts: Array<string>;
+        filters: Array<FilterItem>;
+      }): void {
+        this.currentTabService.sorts = sorts;
+        this.setFilterData(filters);
       }
       
 }

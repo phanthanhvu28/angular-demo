@@ -1,1 +1,96 @@
-<p>111111111</p>
+<div class="page-wrapper">
+    <div class="nv-flex nv-justify-space-between nv-gap-8">      
+      <!-- <app-base-dropdown-pinned
+        [isShowPinned]="true"
+        [activateDefault]="itemActivateFilter$ | async"
+        [pinnedDefault]="pinnedFilter$ | async"
+        [listOptions]="listOptionsFilterPinned"
+        (onChangeItemActivate)="setItemActivateFilter($event)"
+        (onChangeItemPinned)="setPinnedFilter($event)"
+      >
+      </app-base-dropdown-pinned> -->
+      <app-base-button
+        
+        className="base-button--primary base-button--space base-button--text"
+        class="action-icon-create"
+        (click)="showUploadModal()"
+      >
+        <span class="nv-body-14-semibold nv-text-white-100">Create Contract</span>
+  
+        <app-icon-plus class="nv-d-inherit" />
+      </app-base-button>
+    </div>
+    <div class="nv-pt-16" id="js-dynamic-table-height">
+      <app-base-table
+        nzShowSizeChanger
+        [isFiltering]="!!filterData.length"
+        [nvNavConfig]="nvNavConfig"
+        [nvSelections]="nvSelections"
+        [nzColumns]="dataItemCells$ | async"
+        [nzLoading]="loading$ | async"
+        [nzData]="dataItems$ | async"
+        [nzTotal]="totalItem$ | async"
+        [nzPageIndex]="pageIndex$ | async"
+        [nzPageSize]="pageSize$ | async"
+        [nzFrontPagination]="false"
+        [nzBodyRender]="customDataTemplate"
+        [nzScroll]="{ y: (tableHeight || 0) + 'px' }"
+        (nzPageIndexChange)="changePageIndex($event)"
+        (nzPageSizeChange)="changePageSize($event)"
+        (nzSortOrderChange)="onSortOrderChange($event)"
+        (nvFiltersChange)="onFilter($event)"
+        (onCellFilterReset)="onCellFilterReset($event)"
+      >
+      </app-base-table>
+    </div>
+  </div>
+  
+  <ng-template
+    #customDataTemplate
+    let-dataRow
+    let-cellKey="cellKey"
+    let-cellFormater="cellFormater"
+  >
+    <ng-container *ngIf="cellFormater.templateID">
+      <span (click)="gotoDetail(dataRow[cellKey])"> {{dataRow[cellKey]}}</span>
+    </ng-container>
+    <ng-container *ngIf="cellFormater.templateContractNO">
+      <span
+        nv-ellipsis
+        [nvEllipsisContent]="dataRow[cellKey]"
+        [nvEllipsisClaim]="1"
+        (click)="gotoDetail(dataRow['code'])"
+      >
+        {{dataRow[cellKey]}}</span
+      >
+    </ng-container>
+    <ng-container *ngIf="cellFormater.templateCreditLimited">
+      {{dataRow.creditLimited|number}} {{dataRow.creditCurrency}}
+    </ng-container>
+    <ng-container *ngIf="cellFormater.templateCreditTerm">
+      {{dataRow.creditTerm|number}} {{dataRow.unitTerm}}
+    </ng-container>
+    <ng-container *ngIf="cellFormater.templateContractDuration">
+      {{ dataRow.validFrom|date:"dd/MM/yyyy" }} - {{
+      dataRow.validTo|date:"dd/MM/yyyy" }}
+    </ng-container>
+    <ng-container *ngIf="cellFormater.templateCreatedDate">
+      {{dataRow[cellKey]|date:"dd/MM/yyyy"}}
+    </ng-container>
+    <ng-container *ngIf="cellFormater.templateStatus">
+      <app-status-label [data]="dataRow[cellKey]" />
+    </ng-container>
+    <ng-container *ngIf="cellFormater.templateTextLongDotThree">
+      <span
+        nv-ellipsis
+        [nvEllipsisContent]="dataRow[cellKey]"
+        [nvEllipsisClaim]="1"
+        [nvEllipsisGap]="0"
+      >
+        {{dataRow[cellKey]}}
+      </span>
+    </ng-container>
+  </ng-template>
+  
+
+  

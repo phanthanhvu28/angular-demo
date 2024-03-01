@@ -69,7 +69,8 @@ dataDetail$: Observable<ContractResponse<ContractData>> =
   getList(): void {
     this.setLoading(true);
     const payload = this.getPayload();
-    payload.filters = [...this.getActivateFilterPayload(), ...payload.filters];
+    //payload.filters = [...this.getActivateFilterPayload(), ...payload.filters];
+    payload.filters = [ ...payload.filters];
     this.api
       .getAll(payload)
       .pipe(
