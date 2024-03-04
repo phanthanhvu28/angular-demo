@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CostingMainModel } from '../models/costing-main-model';
-import { CostingService } from '../Services/costing.service';
+import { CostingService } from '../services/costing.service';
 import { NzTableQueryParams } from 'ng-zorro-antd/table';
 
 @Component({

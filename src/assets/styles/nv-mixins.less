@@ -1,0 +1,57 @@
+.nv-width-generate(@count) when (@count > 0) {
+  .nv-width-generate((@count - 4));
+  .nv-width-@{count} {
+    width: @count * 1px;
+    min-width: @count * 1px;
+  }
+  .nv-max-width-@{count} {
+    width: auto;
+    max-width: @count * 1px;
+  }
+}
+.nv-flex-basic-generate(@count) when (@count > 0) {
+  .nv-flex-basic-generate((@count - 10));
+  .nv-flex-basic-@{count} {
+    flex-basis: @count * 1%;
+  }
+}
+.nv-order-generate(@count) when (@count > 0) {
+  .nv-order-generate((@count - 4));
+  .nv-order-@{count} {
+    order: @count;
+  }
+}
+.nv-opacity-generate(@count) when (@count > 0) {
+  .nv-opacity-generate((@count - 10));
+  .nv-opacity-@{count} {
+    opacity: @count * 1%;
+  }
+}
+.nv-grid-col-start-generate(@count) when (@count > 0) {
+  .nv-grid-col-start-generate((@count - 1));
+  .nv-grid-col-start-@{count} {
+    grid-column-start: @count;
+  }
+  .nv-grid-col-end-@{count} {
+    grid-column-end: @count;
+  }
+}
+.nv-transition-all-generate(@count) when (@count > 0) {
+  .nv-transition-all-generate((@count - 50));
+  .nv-transition-all-@{count} {
+    transition: all @count * 1ms linear;
+  }
+}
+
+// Generate
+.nv-width-generate(300);
+.nv-width-600 {
+  width: 600px;
+  min-width: 600px;
+  max-width: max-content;
+}
+.nv-flex-basic-generate(100);
+.nv-order-generate(5);
+.nv-opacity-generate(100);
+.nv-grid-col-start-generate(15);
+.nv-transition-all-generate(1000);

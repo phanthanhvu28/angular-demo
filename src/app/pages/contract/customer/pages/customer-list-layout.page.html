@@ -1,0 +1,54 @@
+<nz-tabset
+  class="vc-tabset-pagenav vc-contract-tabset"
+  nzLinkRouter
+  [nzLinkExact]="false"
+  [nzSelectedIndex]="indexTab"
+>
+  <nz-tab class="tab-items">
+    <a
+      (click)="changeTab(0)"
+      class="nv-body-14-semibold vc-tabset-tab"
+      *nzTabLink
+      nz-tab-link
+      [routerLink]="['./contract']"
+    >
+      Contract
+    </a>
+  </nz-tab>
+  <nz-tab>
+    <a
+      (click)="changeTab(1)"
+      class="nv-body-14-semibold vc-tabset-tab"
+      *nzTabLink
+      nz-tab-link
+      [routerLink]="['./annex']"
+    >
+      Annex
+    </a>
+  </nz-tab>
+  <nz-tab>
+    <a
+      (click)="changeTab(2)"
+      class="nv-body-14-semibold vc-tabset-tab"
+      *nzTabLink
+      nz-tab-link
+      [routerLink]="['./trial-contract']"
+    >
+      Trial Contract
+    </a>
+  </nz-tab>
+  <nz-tab>
+    <a
+      (click)="changeTab(3)"
+      class="nv-body-14-semibold vc-tabset-tab"
+      *nzTabLink
+      nz-tab-link
+      [routerLink]="['./agreement']"
+    >
+      Agreement
+    </a>
+  </nz-tab>
+</nz-tabset>
+<div class="vc-tabset-pagenav-wrapper vc-contract-wrapper">
+  <router-outlet></router-outlet>
+</div>

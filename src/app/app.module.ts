@@ -1,4 +1,4 @@
-import { NgModule ,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule ,CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 
@@ -16,7 +16,7 @@ import { HomesComponent } from './homes/homes.component';
 import { BoldDirective } from './directives/bold.directive';
 import { FormComponent } from './form/form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ServerapiComponent } from './serverapi/serverapi.component';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -96,6 +96,7 @@ import {
   FormOutline,
   DashboardOutline
 } from '@ant-design/icons-angular/icons';
+import { ConfigService, initConfig } from './services/config.service';
 
 //const icons = [MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline];
 
@@ -104,6 +105,11 @@ const antDesignIcons = AllIcons as {
 };
 const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key])
 registerLocaleData(en);
+
+export function HttpLoaderFactory(http: HttpClient) {
+  // return new TranslateHttpLoader(http);
+}
+
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -116,69 +122,74 @@ registerLocaleData(en);
     BoldDirective,
     FormComponent,
     ReactiveFormComponent,
-    ServerapiComponent,
-    
+    ServerapiComponent,   
     
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    FormsModule,    
     HttpClientModule,
-    ReactiveFormsModule,
-    MatToolbarModule,
-    MatSidenavModule,
+    // ReactiveFormsModule,
+    // MatToolbarModule,
+    // MatSidenavModule,
 
     
-    NzLayoutModule,
-    NzMenuModule,
-    NzResizableModule,
-    NzProgressModule,
+    // NzLayoutModule,
+    // NzMenuModule,
+    // NzResizableModule,
+    // NzProgressModule,
     
-    NzTabsModule,
-    NzStepsModule,
-    NzButtonModule,
-    NzBreadCrumbModule,
-    NzImageModule,
-    NzInputModule,
-    NzInputNumberModule,
-    NzListModule,
-    NzMentionModule,
-    NzMessageModule,
-    NzNotificationModule,
-    NzPageHeaderModule,
-    NzIconModule,
+    // NzTabsModule,
+    // NzStepsModule,
+    // NzButtonModule,
+    // NzBreadCrumbModule,
+    // NzImageModule,
+    // NzInputModule,
+    // NzInputNumberModule,
+    // NzListModule,
+    // NzMentionModule,
+    // NzMessageModule,
+    // NzNotificationModule,
+    // NzPageHeaderModule,
+    // NzIconModule,
 
-    NzAffixModule,
-    NzAlertModule,
-    NzAnchorModule,
-    NzAutocompleteModule,
-    NzAvatarModule,
-    NzBackTopModule,
-    NzBadgeModule,
-    NzCardModule,
-    NzCarouselModule,
-    NzCascaderModule,
-    NzCheckboxModule,
-    NzCollapseModule,
-    NzCommentModule,
-    NzNoAnimationModule,
-    NzTransButtonModule,
-    NzWaveModule,
-    NzDatePickerModule,
-    NzDescriptionsModule,
-    NzDividerModule,
-    NzDrawerModule,
-    NzDropDownModule,
-    NzEmptyModule,
-    NzFormModule,
-    NzGridModule,
-    NzI18nModule   
+    // NzAffixModule,
+    // NzAlertModule,
+    // NzAnchorModule,
+    // NzAutocompleteModule,
+    // NzAvatarModule,
+    // NzBackTopModule,
+    // NzBadgeModule,
+    // NzCardModule,
+    // NzCarouselModule,
+    // NzCascaderModule,
+    // NzCheckboxModule,
+    // NzCollapseModule,
+    // NzCommentModule,
+    // NzNoAnimationModule,
+    // NzTransButtonModule,
+    // NzWaveModule,
+    // NzDatePickerModule,
+    // NzDescriptionsModule,
+    // NzDividerModule,
+    // NzDrawerModule,
+    // NzDropDownModule,
+    // NzEmptyModule,
+    // NzFormModule,
+    // NzGridModule,
+    // NzI18nModule   
     
   ],
   // providers: [{ provide: NZ_I18N, useValue: en_US }, { provide: NZ_ICONS, useValue: icons }],
-  providers: [ { provide: NZ_I18N, useValue: en_US }, { provide: NZ_ICONS, useValue: icons } ],
+  providers: [ { provide: NZ_I18N, useValue: en_US }, { provide: NZ_ICONS, useValue: icons } ,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initConfig,
+      deps: [ConfigService],
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

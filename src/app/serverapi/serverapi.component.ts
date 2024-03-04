@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ServerhttpService } from '../Services/serverhttp.service';
+import { ServerhttpService } from '../services/serverhttp.service';
 import { PostModel } from '../models/profile-model';
 import { BehaviorSubject } from 'rxjs';
 

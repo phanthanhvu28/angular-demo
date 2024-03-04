@@ -4,10 +4,23 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "paths": {
+      "@core/*": ["src/app/core/*"],
+      "@modules/*": ["src/app/modules/*"],
+      "@guards/*": ["src/app/guards/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@auth/*": ["src/app/modules/auth/*"],
+      "@components/*": ["src/app/components/*"],
+      "@common-components/*": ["src/app/common-components/*"],
+      "@directives/*": ["src/app/directives/*"],
+      "@models/*": ["src/app/models/*"],
+      "@quotation/*": ["src/app/pages/quotation/*"],
+      "@assets/*": ["src/assets/*"]
+    },
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    // "strict": true,
     "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
+    "noPropertyAccessFromIndexSignature": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
@@ -19,6 +32,7 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
+    "strictPropertyInitialization": false,
     "lib": [
       "ES2022",
       "dom"
@@ -28,6 +42,7 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    "fullTemplateTypeCheck": true
   }
 }

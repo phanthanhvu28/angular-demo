@@ -1,3 +1,42 @@
+<nz-tabset (nzSelectedIndexChange)="onTabSelected(1)">
+    <nz-tab nzTitle="Tab 1">
+        <div *ngIf="tab1Data">
+            <!-- Display data for Tab 1 -->
+            <nz-table [nzData]="tab1Data">
+                <thead>
+                    <tr>
+                        <th nzColumnKey="name">Name</th>
+                        <th nzColumnKey="gender">Age</th>
+                        <th nzColumnKey="email">Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of tab1Data">
+                        <td>{{ data.Name }}</td>
+                        <td>{{ data.Age }}</td>
+                        <td>{{ data.Email }}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+
+
+            <!-- <div *ngFor="let name of tab1Data">
+                <li>{{name.Name}}</li>
+            </div> -->
+        </div>
+    </nz-tab>
+    <nz-tab nzTitle="Tab 2">
+        <div *ngIf="tab2Data">
+            <!-- Display data for Tab 2 -->
+            <div *ngFor="let age of tab2Data">
+                <li>{{age.Age}}</li>
+            </div>
+        </div>
+    </nz-tab>
+    <nz-tab nzTitle="Tab 3">Content of Tab Pane 3</nz-tab>
+</nz-tabset>
+
+
 <div appBold>
     Pipe Age : <label>{{age | number}}</label>
 </div>
@@ -5,3 +44,4 @@
 <button (click)="TangTuoi()">
     TangTuoi
 </button>
+
