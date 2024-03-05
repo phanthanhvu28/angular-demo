@@ -42,6 +42,12 @@ import { IconsComponentModule } from '@components/icons-component/icons-componen
 import { BaseTableModule } from '@common-components/base-table/base-table.module';
 import { BaseDirectiveModule } from '@components/directives/directives.module';
 import { StatusLabelModule } from '../components/status-label/status-lablel.module';
+import { ModalCreateEditContractComponent } from './components';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BaseInputModule } from '@common-components/base-input/base-input.module';
+import { PipesModule } from 'src/app/pipes/pipes.module';
+import { BaseModalMessageModule } from '@common-components/base-modal-message/base-modal-message.module';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 
 const NZ_MODULE = [
@@ -71,17 +77,22 @@ const NZ_MODULE = [
   NzDatePickerModule,
   NzRadioModule,
   NzUploadModule,
+  ReactiveFormsModule 
   
 ];
 const BASE_MODULE=[
   BaseButtonModule,
   BaseTableModule,
-  BaseDirectiveModule
+  BaseDirectiveModule,
+  BaseInputModule,
+  BaseModalMessageModule,
+  PipesModule
+
 ]
 
 const COMMON_COMPONENTS=[
-  CustomerContractListPage
-
+  CustomerContractListPage,
+  ModalCreateEditContractComponent
 ]
 
 @NgModule({
@@ -89,17 +100,21 @@ const COMMON_COMPONENTS=[
     CustomerLayoutPage,
     CustomerAnnexListPage,
     CustomerTrialContractListPage,
-    CustomerAgreementListPage,
+    CustomerAgreementListPage,    
     ...COMMON_COMPONENTS
   ],
   imports: [
     CommonModule,
     CustomerRoutingModule,      
     IconsComponentModule,
-    StatusLabelModule,
+    StatusLabelModule,  
+    
     ...BASE_MODULE,
     ...NZ_MODULE    
   ] ,
-  exports: [...COMMON_COMPONENTS]
+  exports: [...COMMON_COMPONENTS],
+  providers: [   
+    CommonService
+  ]
 })
 export class CustomerModule { }

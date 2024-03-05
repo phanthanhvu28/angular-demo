@@ -11,6 +11,9 @@ import { IconsComponentModule } from '@components/icons-component/icons-componen
 import { BaseDirectiveModule } from '@components/directives/directives.module';
 import { BaseTableBodyModule } from './components/base-table-body/base-table-body.module';
 import { BaseTableFilterModule } from '@common-components/base-table-filter/base-table-filter.module';
+import { BaseInputModule } from '@common-components/base-input/base-input.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BaseModalShowHideColsModule } from '@common-components/base-modal-show-hide-cols/base-modal-show-hide-cols.module';
 
 
 @NgModule({
@@ -21,7 +24,13 @@ import { BaseTableFilterModule } from '@common-components/base-table-filter/base
     IconsComponentModule,
     BaseDirectiveModule  ,
     BaseTableBodyModule  ,
-    BaseTableFilterModule
+    BaseTableFilterModule,
+    BaseInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BaseModalShowHideColsModule,
+    NzTableModule,
+    CommonModule
   ],
   exports: [BaseTableComponent, BaseTableNavComponent],
   providers: [NzTableStyleService]

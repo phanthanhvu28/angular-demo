@@ -27,6 +27,8 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 ## Create component
-ng generate component <component-name> --skip-import
+ng generate component [component-name] --skip-import
+## Create service
+ng generate service [service-name] --skip-import
 ## Create routing
 ng generate module [pages/contract/customer] --routing

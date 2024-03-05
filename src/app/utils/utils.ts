@@ -1,5 +1,6 @@
 import { Injector } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { FormFunctionName } from '@models/form-types';
 import { fromEvent, Observable } from 'rxjs';
 
 export class Utils {
@@ -44,6 +45,24 @@ export class Utils {
   }
   static subscribeEvent(eventName: string): Observable<Event> {
     return fromEvent(document, eventName);
+  }
+  static deepEventForm(
+    formGroup: FormGroup,
+    functionName: FormFunctionName
+  ): void {
+    if (!formGroup?.controls) {
+      return;
+    }
+    Object.values(formGroup.controls).forEach((controlItem) => {
+      if (controlItem[functionName]) {
+        controlItem[functionName]();
+      }
+      // is formGroup
+      const { controls } = controlItem as FormGroup;
+      if (controls) {
+        Utils.deepEventForm(controlItem as FormGroup, functionName);
+      }
+    });
   }
 }
 

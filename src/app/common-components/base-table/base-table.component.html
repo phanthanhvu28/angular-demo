@@ -1,21 +1,21 @@
 <div class="nv-table-wrapper">
+ 
     <app-base-table-nav
-      
-      [(nvFilters)]="nvFilters"
-      [(nvColumns)]="nzColumns"
-      [nvSelections]="nvSelections"
-      [nvNavConfig]="nvNavConfig"
-      [isFiltering]="isFiltering"
-      [nvSearchText]="nvSearchText"
-      (nvColumnsChange)="colsUpdateHandler($event)"
-      (nvFiltersChange)="filterChangeHandler($event)"
-      [nzSelectionRender]="nzSelectionRender"
-    >
-      <ng-content select="[table-icon]" table-icon></ng-content>
-      <ng-content
-        select="[custom-content-table-nav]"
-        custom-content-wrapper
-      ></ng-content>
+    *ngIf="nvShowNav"
+    [(nvFilters)]="nvFilters"
+    [(nvColumns)]="nzColumns"
+    [nvSelections]="nvSelections"
+    [nvNavConfig]="nvNavConfig"
+    [isFiltering]="isFiltering"
+    [nvSearchText]="nvSearchText"
+    (nvColumnsChange)="colsUpdateHandler($event)"
+    (nvFiltersChange)="filterChangeHandler($event)"
+    [nzSelectionRender]="nzSelectionRender"
+  >
+    <ng-content select="[table-icon]" table-icon></ng-content>
+    <ng-content
+      custom-content-wrapper
+    ></ng-content>
     </app-base-table-nav>
 
     <app-base-table-body

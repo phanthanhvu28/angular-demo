@@ -23,6 +23,7 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
 import { BaseTableFilterComponent } from './base-table-filter.component';
 import { BaseCellFilterTemplateComponent } from './components/cell-filter-template/cell-filter-template.component';
 import { BaseDirectiveModule } from '@components/directives/directives.module';
+import { BaseTableFilterTemplateComponent } from './components/table-filter-template/table-filter-template.component';
 //import { BaseTableFilterTemplateComponent } from './components/table-filter-template/table-filter-template.component';
 
 const NZ_MODULE = [
@@ -48,7 +49,7 @@ const COMMON_MODULE = [
 
 const COMPONENTS = [
   BaseTableFilterComponent,
-  //BaseTableFilterTemplateComponent,
+  BaseTableFilterTemplateComponent,
   BaseCellFilterTemplateComponent
 ];
 

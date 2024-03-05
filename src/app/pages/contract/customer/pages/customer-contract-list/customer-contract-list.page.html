@@ -91,6 +91,10 @@
       </span>
     </ng-container>
   </ng-template>
+  <app-modal-create-edit-contract
+  (handelSubmit)="refresh()"
+  [filter]="filterSelection"
+  #modalCreateContract/>
   
 
   

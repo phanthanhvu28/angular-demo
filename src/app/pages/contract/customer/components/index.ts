@@ -1,0 +1,1 @@
+export * from './modal-create-edit-contract/modal-create-edit-contract.component';

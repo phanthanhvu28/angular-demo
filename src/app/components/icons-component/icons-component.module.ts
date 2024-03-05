@@ -14,6 +14,13 @@ import { IconSortDescComponent } from './icon-sort-desc/icon-sort-desc.component
 import { IconRedoComponent } from './icon-redo/icon-redo.component';
 import { IconEnterComponent } from './icon-enter/icon-enter.component';
 import { IconArrowOutlineComponent } from './icon-arrow-outline/icon-arrow-outline.component';
+import { IconFilterComponent } from './icon-filter/icon-filter.component';
+import { IconFilteringComponent } from './icon-filtering/icon-filtering.component';
+import { IconRemoveComponent } from './icon-remove/icon-remove.component';
+import { IconCloseComponent } from './icon-close/icon-close.component';
+import { IconSaveComponent } from './icon-save/icon-save.component';
+import { IconFullscreenComponent } from './icon-fullscreen/icon-fullscreen.component';
+import { IconFullscreenExitComponent } from './icon-fullscreen-exit/icon-fullscreen-exit.component';
 
 
 const ICONS_PROVIDER = [
@@ -30,7 +37,14 @@ const ICONS_PROVIDER = [
     IconSortDescComponent,
     IconRedoComponent,
     IconEnterComponent,
-    IconArrowOutlineComponent
+    IconArrowOutlineComponent,
+    IconFilterComponent,
+    IconFilteringComponent,
+    IconRemoveComponent,
+    IconCloseComponent,
+    IconSaveComponent,
+    IconFullscreenComponent,
+    IconFullscreenExitComponent
 ];
 
 @NgModule({
