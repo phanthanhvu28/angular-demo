@@ -5,20 +5,21 @@ import {
   CustomerTrialContractListPage,
   CustomerContractListPage,
   CustomerAnnexListPage,
-  CustomerAgreementListPage
-  
+  CustomerAgreementListPage,
+  ContractDetailPage
 } from './pages';
+
 
 const routes: Routes = [
   {
     path: '',
     component: CustomerLayoutPage,
     children: [
-      {
-        path: '',
-        redirectTo: 'contract',
-        pathMatch: 'full'
-      },
+      // {
+      //   path: '',
+      //   redirectTo: 'contract',
+      //   pathMatch: 'full'
+      // },
       {
         path: 'contract',
         component: CustomerContractListPage,
@@ -46,8 +47,15 @@ const routes: Routes = [
         data: {
           title: 'Agreement'
         }
-      }
+      }    
     ]
+  },
+  {
+    path: 'contract/:id',
+    component: ContractDetailPage,
+    data: {
+      title: 'Contract'
+    }
   },
   { path: '**', redirectTo: 'contract' }
 ];

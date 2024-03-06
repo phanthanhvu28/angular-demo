@@ -66,7 +66,7 @@ export class ModalCreateEditContractComponent extends AbsBaseModalNewComponent {
     private cdr: ChangeDetectorRef,  
     private contractService: ContractService,
     // private contractUploadService: ContractUploadService,
-     //private vcNotificationService: VcNotificationService,
+     private vcNotificationService: VcNotificationService,
      private nvMessageService: NvMessageService
   ) {
     super();
@@ -234,10 +234,10 @@ export class ModalCreateEditContractComponent extends AbsBaseModalNewComponent {
       return;
     }
     if (this.getCountFile == 0) {
-      // this.vcNotificationService.error(
-      //   'Error',
-      //   MessageEnumContract.NOT_FOUND_FILE
-      // );
+      this.vcNotificationService.error(
+        'Error',
+        MessageEnumContract.NOT_FOUND_FILE
+      );
       return;
     }
     this.getFormValue();

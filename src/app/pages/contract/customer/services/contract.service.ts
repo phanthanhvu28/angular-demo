@@ -45,7 +45,7 @@ dataDetail$: Observable<ContractResponse<ContractData>> =
     private api: ApiContract,
     authService: AuthService,
   ) {
-    super(injector, authService);
+    super(injector);
     this.setDataItemCells(CONTRACT_LIST_COLS);
   }
   
@@ -82,5 +82,28 @@ dataDetail$: Observable<ContractResponse<ContractData>> =
         this.setTotalItem(res.totalItems);
       });
   }
+  getDetail(id: string): void {
+    this.api
+      .getDetail(id)
+      .pipe(
+        catchError((err: ResultDataAction) => {
+          return throwError(() => {
+            if (err.isError) {
+              //this.vcNotificationService.error('Error', err.errorMessage);
+            }
+          });
+        }),
 
+        takeUntil(this.destroy$)
+      )
+      .subscribe((res) => {
+        // if (isNil(res)) {
+        //   return;
+        // }
+        this.setDataDetail(res);
+      });
+  }
+  setDataDetail(value) {
+    this.subjectDataDetail.next(value);
+  }
 }

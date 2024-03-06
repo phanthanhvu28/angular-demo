@@ -21,6 +21,12 @@ import { IconCloseComponent } from './icon-close/icon-close.component';
 import { IconSaveComponent } from './icon-save/icon-save.component';
 import { IconFullscreenComponent } from './icon-fullscreen/icon-fullscreen.component';
 import { IconFullscreenExitComponent } from './icon-fullscreen-exit/icon-fullscreen-exit.component';
+import { IconArrowCircleLeftComponent } from './icon-arrow-circle-left/icon-arrow-circle-left.component';
+import { IconSendComponent } from './icon-send/icon-send.component';
+import { IconContractCustomerComponent } from './icon-contract-customer/icon-contract-customer.component';
+import { IconContractModuleContractComponent } from './icon-contract-module-contract/icon-contract-module-contract.component';
+import { IconRadioButtonComponent } from './icon-radio-button/icon-radio-button.component';
+import { IconCurrencyContractComponent } from './icon-currency-contract/icon-currency-contract.component';
 
 
 const ICONS_PROVIDER = [
@@ -44,7 +50,13 @@ const ICONS_PROVIDER = [
     IconCloseComponent,
     IconSaveComponent,
     IconFullscreenComponent,
-    IconFullscreenExitComponent
+    IconFullscreenExitComponent,
+    IconArrowCircleLeftComponent,
+    IconSendComponent,
+    IconContractCustomerComponent,
+    IconContractModuleContractComponent,
+    IconRadioButtonComponent,
+    IconCurrencyContractComponent
 ];
 
 @NgModule({

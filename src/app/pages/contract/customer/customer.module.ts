@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CustomerRoutingModule } from './customer-routing.module';
@@ -16,7 +16,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzListModule } from 'ng-zorro-antd/list';
-import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
@@ -37,7 +37,7 @@ import {
   CustomerTrialContractListPage,CustomerAgreementListPage, CustomerContractListPage
 } from './pages';
 import { BaseButtonModule } from '@common-components/base-button/base-button.module';
-import { CommonService } from 'src/app/services/common.service';
+
 import { IconsComponentModule } from '@components/icons-component/icons-component.module';
 import { BaseTableModule } from '@common-components/base-table/base-table.module';
 import { BaseDirectiveModule } from '@components/directives/directives.module';
@@ -48,6 +48,12 @@ import { BaseInputModule } from '@common-components/base-input/base-input.module
 import { PipesModule } from 'src/app/pipes/pipes.module';
 import { BaseModalMessageModule } from '@common-components/base-modal-message/base-modal-message.module';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { ContractDetailPage } from './pages/contract-detail/contract-detail.page';
+import { CommonService } from '../services/base-common.service';
+import { AnnexService } from './services';
+import { TYPE_CONTRACT } from '../components';
+import { BaseTooltipLengthModule } from '@common-components/base-tooltip-length/base-tooltip-length.module';
+
 
 
 const NZ_MODULE = [
@@ -76,17 +82,15 @@ const NZ_MODULE = [
   NzDrawerModule,
   NzDatePickerModule,
   NzRadioModule,
-  NzUploadModule,
-  ReactiveFormsModule 
-  
+  NzUploadModule  
 ];
 const BASE_MODULE=[
   BaseButtonModule,
   BaseTableModule,
   BaseDirectiveModule,
   BaseInputModule,
-  BaseModalMessageModule,
-  PipesModule
+  BaseModalMessageModule ,
+  BaseTooltipLengthModule
 
 ]
 
@@ -101,20 +105,27 @@ const COMMON_COMPONENTS=[
     CustomerAnnexListPage,
     CustomerTrialContractListPage,
     CustomerAgreementListPage,    
+    ContractDetailPage,
     ...COMMON_COMPONENTS
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     CustomerRoutingModule,      
     IconsComponentModule,
     StatusLabelModule,  
-    
+    PipesModule,
     ...BASE_MODULE,
     ...NZ_MODULE    
   ] ,
   exports: [...COMMON_COMPONENTS],
   providers: [   
-    CommonService
+    {
+      provide: TYPE_CONTRACT,
+      useValue: 'customer'
+    },
+    CommonService,
+    AnnexService
   ]
 })
 export class CustomerModule { }

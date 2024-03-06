@@ -25,6 +25,72 @@ export default interface ContractData {
     isCredit: boolean;
     reason: string;
   }
+  export interface AnnexData {
+    id: string;
+    code: string;
+    annexNumber: string;
+    salesManFullName: string;
+    salesManUserName: string;
+    customerFullName: string;
+    customerShortName: string;
+    customerCode: string;
+    annexType: string;
+    annexTypeName: string;
+    quotationCode: string;
+    scopesOfWork: Array<'DT' | 'CC' | 'FM' | 'WH'>;
+    validFrom: Date;
+    validTo: string;
+    status: string;
+    createBy: string;
+    createAt: Date;
+    approvalBy: string;
+    approvalAt: Date;
+    submitBy: string;
+    submitAt: Date;
+    rejectBy: Date;
+    rejectAt: Date;
+    step: number;
+    isWarning: boolean;
+    billingType: string;
+    billing: Array<any>;
+    onBehalfInformation: {
+      onBehalfCurrency: string;
+      onBehalfLimited: number | string;
+      onBehalfTerm: number | string;
+      onBehalfUnitTerm: string;
+      billingCycle: Array<string>;
+    };
+    exchangeRates: string;
+    getActivitiesHistory: Array<ActivityHistory>;
+    getFiles: Array<FilesContract>;
+    contractCode: string;
+    reason: string;
+    deposit: Deposit;
+    prepaid: Deposit;
+    bankGuarantee: Deposit;
+    depositType: string;
+    depositTypeName: string;
+    isDeposit: boolean;
+  }
+  export interface BillingData {
+    id: string;
+    customerCode: string;
+    companyTaxCode: string;
+    companyFullName: string;
+    companyEmailAddress: string;
+    companyEnglishName: string;
+    companyShortName: string;
+    companyHeadOfficeAddress: string;
+    companyBillingAddress: string;
+    companyMaillingAddress: string;
+    contactPersonWorkPhone: string;
+    portalCreateAt: Date;
+    portalCreateBy: string;
+    website: string;
+    status: string;
+    annexCode: string;
+    annexStatus: string;
+  }
   export interface ActivityHistory {
     actionBy: string;
     actionDate: Date;
@@ -51,5 +117,14 @@ export default interface ContractData {
     isDeleted: boolean;
     status: string | number;
     objectKey?: string;
+  }
+  export interface Deposit {
+    dueDate?: Date;
+    validFrom?: Date;
+    validTo?: Date;
+    amount: number;
+    currency: string;
+    files: Array<FilesContract>;
+    getFiles?: Array<FilesContract>;
   }
   

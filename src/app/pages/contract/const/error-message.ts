@@ -1,0 +1,4 @@
+export const ERROR_MESSAGE = {
+    CODE_ERROR_MATCH_PAYLOAD: 100028
+  };
+  
