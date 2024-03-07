@@ -7,7 +7,7 @@ import {
     takeUntil,
     throwError
   } from 'rxjs';
-
+  import { VcNotificationService } from '@shared/services';
 import { ApiContract } from '../apis';
 import { CONTRACT_LIST_COLS } from '../pages/customer-contract-list/table-contract.const';
 import { DataListRequestPayload, FilterComparison } from 'src/app/models/base-data-list';
@@ -16,6 +16,9 @@ import { AuthService } from 'src/app/guard/services/auth.service';
 import { ContractResponse, ResultDataAction } from '../../models';
 import ContractData from '../models/contract-data.model';
 import { DataFilterContract, FilterUpload } from '../models/filter-upload.model';
+import { ERROR_MESSAGE } from '../../const';
+import { isNil } from 'ng-zorro-antd/core/util';
+import { HttpErrorResponse } from '@angular/common/http';
 @Injectable({
     providedIn: 'root'
   })
@@ -44,6 +47,7 @@ dataDetail$: Observable<ContractResponse<ContractData>> =
     injector: Injector,
     private api: ApiContract,
     authService: AuthService,
+    private vcNotificationService: VcNotificationService
   ) {
     super(injector);
     this.setDataItemCells(CONTRACT_LIST_COLS);
@@ -97,13 +101,42 @@ dataDetail$: Observable<ContractResponse<ContractData>> =
         takeUntil(this.destroy$)
       )
       .subscribe((res) => {
-        // if (isNil(res)) {
-        //   return;
-        // }
+        if (isNil(res)) {
+          return;
+        }
         this.setDataDetail(res);
       });
   }
   setDataDetail(value) {
     this.subjectDataDetail.next(value);
+  }
+  submit(id: string) {
+    this.setLoadingSubmit(true);
+    this.api
+      .submit(id)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          var err = error.error as ResultDataAction;
+          console.log("Error",error);
+          console.log("err",err);
+          return throwError(() => {
+            if (err.isError) {
+              if (err.errorCode === ERROR_MESSAGE.CODE_ERROR_MATCH_PAYLOAD) {
+                this.getDetail(id);
+              }
+              this.vcNotificationService.error('Error', err.errorMessage);
+            }
+          });
+        }),
+        takeUntil(this.destroy$),
+        finalize(() => this.setLoadingSubmit(false))
+      )
+      .subscribe((res) => {
+        this.vcNotificationService.success(
+          'Success',
+          'Submitted contract successfully!'
+        );
+        this.setDataDetail(res);
+      });
   }
 }

@@ -47,12 +47,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BaseInputModule } from '@common-components/base-input/base-input.module';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 import { BaseModalMessageModule } from '@common-components/base-modal-message/base-modal-message.module';
-import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { ContractDetailPage } from './pages/contract-detail/contract-detail.page';
 import { CommonService } from '../services/base-common.service';
 import { AnnexService } from './services';
 import { TYPE_CONTRACT } from '../components';
 import { BaseTooltipLengthModule } from '@common-components/base-tooltip-length/base-tooltip-length.module';
+import { TableFileManagementModule } from '../components/table-file-management/table-file-management.module';
+import { TableAnnexListComponent } from './components/table-annex-list/table-annex-list.component';
+import { ModalAnnexListFullscreenComponent } from './components/modal-annex-list-fullscreen/modal-annex-list-fullscreen.component';
 
 
 
@@ -90,13 +92,16 @@ const BASE_MODULE=[
   BaseDirectiveModule,
   BaseInputModule,
   BaseModalMessageModule ,
-  BaseTooltipLengthModule
+  BaseTooltipLengthModule,
+
 
 ]
 
 const COMMON_COMPONENTS=[
   CustomerContractListPage,
-  ModalCreateEditContractComponent
+  ModalCreateEditContractComponent,  
+  TableAnnexListComponent,
+  ModalAnnexListFullscreenComponent
 ]
 
 @NgModule({
@@ -114,6 +119,7 @@ const COMMON_COMPONENTS=[
     CustomerRoutingModule,      
     IconsComponentModule,
     StatusLabelModule,  
+    TableFileManagementModule,
     PipesModule,
     ...BASE_MODULE,
     ...NZ_MODULE    

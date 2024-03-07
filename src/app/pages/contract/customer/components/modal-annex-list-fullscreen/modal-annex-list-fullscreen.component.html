@@ -1,0 +1,32 @@
+<nz-modal
+  [className]="'nv-base-modal-annex-list-fullscreen'"
+  [nzWrapClassName]="'nv-base-modal-annex-list-fullscreen'"
+  [(nzVisible)]="isActive"
+  nzCentered
+  [nzCloseIcon]="null"
+  [nzWidth]="1380"
+  (nzOnCancel)="close()"
+>
+  <div *nzModalContent>
+    <div
+      class="nv-flex nv-justify-space-between nv-items-center nv-base-modal-annex-list-fullscreen__box"
+    >
+      <div class="nv-title-5">Annex List</div>
+
+      <app-icon-fullscreen-exit
+        class="nv-d-inherit nv-border-radius-4 nv-base-modal-annex-list-fullscreen__icon nv-pointer nv-bg-neutral-100 nv-text-neutral-300"
+      >
+      </app-icon-fullscreen-exit>
+    </div>
+    <app-table-annex-list [isFullScreen]="true" />
+  </div>
+
+  <div *nzModalFooter class="nv-base-modal-annex-list-fullscreen__footer">
+    <app-base-button
+      className="base-button--primary base-button--space"
+      (click)="close()"
+    >
+      Close
+    </app-base-button>
+  </div>
+</nz-modal>

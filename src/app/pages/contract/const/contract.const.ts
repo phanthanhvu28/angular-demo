@@ -1,6 +1,5 @@
 import { ItemOptions } from '@models/base-data-list';
-import { StatusEnumContract } from '../../enums';
-
+import { StatusEnumContract } from '../enums';
 
 export const LIST_STATUS_CONTRACT: Array<ItemOptions> = [
   {

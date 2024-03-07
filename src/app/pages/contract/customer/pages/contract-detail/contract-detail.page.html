@@ -327,10 +327,10 @@
               File Management
             </h1>
             <div class="box-dashed">
-              <!-- <app-table-file-management
+              <app-table-file-management
                 #tableFileManagement
                 [data]="dataDetail.getFiles"
-              /> -->
+              />
             </div>
           </div>
           <div
@@ -340,7 +340,7 @@
             <div class="nv-flex nv-justify-space-between">
               <h1 class="nv-body-16-semibold nv-text-neutral-500">Annex List</h1>
               <div class="nv-flex nv-items-center">
-                <!-- <app-base-button
+                <app-base-button
                   class="btn-header"
                   className="base-button--text base-button--space"
                   [disabled]="dataDetail.status==='Inactive'"
@@ -351,13 +351,13 @@
                 </app-base-button>
                 <div class="nv-bg-neutral-100 nv-border-radius-4 box-fullscreen">
                   <app-icon-fullscreen
-                    (click)="modalAnnexListFullscreen.show()"
+                    (click)="modalAnnexListFullscreen.showModal()"
                     class="nv-pointer nv-d-inherit nv-text-neutral-300"
                   />
-                </div> -->
+                </div>
               </div>
             </div>
-            <!-- <app-table-annex-list #tableAnnexList /> -->
+            <app-table-annex-list #tableAnnexList />
           </div>
         </div>
       </div>
@@ -411,12 +411,12 @@
     </div>
   </div>
   
-  <!-- <app-modal-annex-list-fullscreen #modalAnnexListFullscreen />
-  <app-modal-reject-contract
+  <app-modal-annex-list-fullscreen #modalAnnexListFullscreen />
+  <!-- <app-modal-reject-contract
     [(isVisible)]="isVisibleRejectContractModal"
     (onConfirm)="onClickConfirmReject($event)"
-  />
-  <app-modal-create-edit-contract
+  /> -->
+  <!-- <app-modal-create-edit-contract
     (handelSubmit)="refresh()"
     [filter]="filterSelection"
     [dataDetail]="dataDetail"

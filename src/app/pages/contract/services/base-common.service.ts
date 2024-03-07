@@ -19,9 +19,9 @@ export class CommonService extends AbsBaseContractService {
 
   viewFile(file: string): void {
     const apiCustom =
-    //   this.typeContract === 'customer'
-    //     ? this.api.viewFileCustomer(file)
-    //     : this.api.viewFileSupplier(file);
+      this.typeContract === 'customer'
+        ? this.api.viewFileCustomer(file)
+        : this.api.viewFileSupplier(file);
     this.api
       .viewFileCustomer(file)
       .pipe(takeUntil(this.destroy$))

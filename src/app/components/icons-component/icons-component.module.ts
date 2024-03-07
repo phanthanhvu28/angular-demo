@@ -27,6 +27,9 @@ import { IconContractCustomerComponent } from './icon-contract-customer/icon-con
 import { IconContractModuleContractComponent } from './icon-contract-module-contract/icon-contract-module-contract.component';
 import { IconRadioButtonComponent } from './icon-radio-button/icon-radio-button.component';
 import { IconCurrencyContractComponent } from './icon-currency-contract/icon-currency-contract.component';
+import { IconTrashComponent } from './icon-trash/icon-trash.component';
+import { IconDownloadComponent } from './icon-download/icon-download.component';
+import { IconExclamationCircleComponent } from './icon-exclamation-circle/icon-exclamation-circle.component';
 
 
 const ICONS_PROVIDER = [
@@ -56,7 +59,10 @@ const ICONS_PROVIDER = [
     IconContractCustomerComponent,
     IconContractModuleContractComponent,
     IconRadioButtonComponent,
-    IconCurrencyContractComponent
+    IconCurrencyContractComponent,
+    IconTrashComponent,
+    IconDownloadComponent,
+    IconExclamationCircleComponent
 ];
 
 @NgModule({

@@ -5,9 +5,10 @@ import { Observable, take, timer } from 'rxjs';
 import { Utils } from 'src/app/utils/utils';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemOptions } from '@models/base-data-list';
-import { LIST_CONTRACT_OPTION } from '../../../components/const/contract.const';
+
 import { ModalCreateEditContractComponent } from '../../components/modal-create-edit-contract/modal-create-edit-contract.component';
 import { DataFilterContract } from '../../models/filter-upload.model';
+import { LIST_CONTRACT_OPTION } from '../../../const';
 
 @Component({
   selector: 'app-customer-contract-list.page',

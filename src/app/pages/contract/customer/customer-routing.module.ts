@@ -15,11 +15,11 @@ const routes: Routes = [
     path: '',
     component: CustomerLayoutPage,
     children: [
-      // {
-      //   path: '',
-      //   redirectTo: 'contract',
-      //   pathMatch: 'full'
-      // },
+      {
+        path: '',
+        redirectTo: 'contract',
+        pathMatch: 'full'
+      },
       {
         path: 'contract',
         component: CustomerContractListPage,

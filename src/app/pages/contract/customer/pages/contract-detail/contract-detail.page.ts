@@ -119,7 +119,7 @@ export class ContractDetailPage extends AbsBaseContractComponent {
       },
       {
         onClickConfirm: () => {
-          //this.contractService.submit(this.id);
+          this.contractService.submit(this.id);
         }
       }
     );
