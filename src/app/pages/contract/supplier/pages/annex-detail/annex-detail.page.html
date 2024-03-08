@@ -1,0 +1,438 @@
+<div *ngIf="dataDetail">
+    <div class="box-header-container">
+      <div class="box-title">
+        <app-icon-arrow-circle-left
+          (click)="goBack()"
+          class="nv-pointer icon-back"
+        />
+        <span class="nv-title-5 nv-text-neutral-600 text-title">
+          Annex ID: {{ id }}</span
+        >
+        <div class="nv-flex nv-items-center">
+          <app-status-label class="tag-status" [data]="dataDetail.status" />
+          <app-icon-exclamation-circle
+            nv-popover
+            [nzPopoverContent]="templateTooltipAmending"
+            nzPopoverOverlayClassName="nv-tooltip__container"
+            nzPopoverPlacement="bottomCenter"
+            *ngIf="dataDetail.status == statusEnum.Amending"
+            class="nv-d-inherit nv-text-primary-400 nv-pointer"
+          />
+          <ng-template #templateTooltipAmending>
+            <div class="content-reason">{{dataDetail.reason}}</div>
+          </ng-template>
+        </div>
+      </div>
+  
+      <div
+        *ngIf="['New', 'Amending'].includes(dataDetail.status)"
+        class="box-btn-func nv-gap-16"
+      >
+        <nz-button-group [nzSize]="'large'" class="nv-btn-group">
+          <ng-container>
+            <button
+              nz-button
+              nzType="primary"
+              *ngIf="dataDetail.status == 'New'"
+              (click)="funcDelete()"
+              class="nv-body-14-semibold nv-btn-item-group"
+              [nzLoading]="loadingDelete$ | async"
+              [disabled]="loadingDelete$ | async"
+            >
+              Delete
+            </button>
+          </ng-container>
+          <button
+            nz-button
+            nzType="primary"
+          
+            (click)="modalCreateEditAnnex(id)"
+            class="nv-body-14-semibold nv-btn-item-group"
+          >
+            Edit
+          </button>
+        </nz-button-group>
+  
+        <app-base-button
+         
+          class="btn-header"
+          className="base-button--primary nv-px-12 nv-py-8"
+          (click)="funcSubmit()"
+          [nzLoading]="loadingSubmit$ | async"
+          [disabled]="loadingSubmit$ | async"
+        >
+          <div class="nv-flex nv-items-center">
+            Submit
+            <app-icon-send class="nv-d-inherit icon-edit" />
+          </div>
+        </app-base-button>
+      </div>
+      <div *ngIf="dataDetail.status == 'Waiting'" class="box-btn-func nv-gap-16">
+        <nz-button-group [nzSize]="'large'" class="nv-btn-group">
+          <button
+            nz-button
+            nzType="primary"
+           
+            (click)="funcRecall()"
+            class="nv-body-14-semibold nv-btn-item-group"
+            [nzLoading]="loadingRecall$ | async"
+            [disabled]="loadingRecall$ | async"
+          >
+            Recall
+          </button>
+          <button
+            nz-button
+            nzType="primary"
+           
+            (click)="funcReject()"
+            class="nv-body-14-semibold nv-btn-item-group"
+            [nzLoading]="loadingReject$ | async"
+            [disabled]="loadingReject$ | async"
+          >
+            Reject
+          </button>
+        </nz-button-group>
+        <app-base-button
+        
+          class="btn-header"
+          className="base-button--primary nv-px-12 nv-py-8"
+          (click)="funcApproval()"
+          [nzLoading]="loadingApproval$ | async"
+          [disabled]="loadingApproval$ | async"
+        >
+          <div class="nv-flex nv-items-center">
+            Approve
+            <app-icon-check class="nv-d-inherit icon-edit" />
+          </div>
+        </app-base-button>
+      </div>
+    </div>
+    <div class="nv-detail-content page-wrapper" nz-row [nzGutter]="[24, 20]">
+      <div class="content-left" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="19">
+        <div class="box-scroll">
+          <div class="box-sub-item nv-box-item nv-box">
+            <h1 class="nv-body-16-semibold nv-text-neutral-500">
+              General Information
+            </h1>
+            <div class="box-dashed nv-flex nv-flex-col nv-gap-16">
+              <div nz-row [nzGutter]="[24, 20]">
+                <div nz-col [nzXs]="24" [nzMd]="16" [nzLg]="16">
+                  <div class="nv-flex nv-flex-col nv-gap-16">
+                    <div class="nv-flex nv-gap-16 header-item">
+                      <app-icon-contract-customer />
+                      <div class="nv-flex nv-flex-col nv-gap-4 name-code-item">
+                        <span class="nv-body-12-regular nv-text-neutral-400">
+                          {{ dataDetail.supplierCode }}
+                        </span>
+                        <span
+                          class="nv-body-12-semibold nv-text-neutral-600"
+                          nv-ellipsis
+                          [nvEllipsisContent]="dataDetail.supplierFullName"
+                          [nvEllipsisClaim]="1"
+                        >
+                          {{ dataDetail.supplierFullName }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div nz-col [nzXs]="24" [nzMd]="8" [nzLg]="8">
+                  <div class="nv-flex nv-gap-16 header-item">
+                    <app-icon-contract-module-contract />
+                    <div class="nv-flex nv-flex-col nv-gap-4 name-code-item">
+                      <span class="nv-body-12-regular nv-text-neutral-400">
+                        Annex no.
+                      </span>
+                      <span
+                        nv-ellipsis
+                        [nvEllipsisContent]="dataDetail.annexNumber"
+                        [nvEllipsisClaim]="1"
+                        class="nv-body-12-semibold nv-text-neutral-600"
+                      >
+                        {{ dataDetail.annexNumber }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+  
+                <div nz-col [nzXs]="16" [nzMd]="8" [nzLg]="8">
+                  <div class="nv-flex nv-flex-col nv-gap-8 content-info-annex">
+                    <span class="nv-body-12-regular nv-text-neutral-400">
+                      Annex type</span
+                    >
+  
+                    <span
+                      class="nv-body-12-semibold nv-text-neutral-500"
+                      nv-ellipsis
+                      [nvEllipsisContent]="dataDetail.annexTypeName"
+                      [nvEllipsisClaim]="1"
+                    >
+                      {{ dataDetail.annexTypeName }}
+                    </span>
+                  </div>
+                </div>
+                <div nz-col [nzXs]="16" [nzMd]="8" [nzLg]="8">
+                  <div class="nv-flex nv-flex-col nv-gap-8 content-info-annex">
+                    <span class="nv-body-12-regular nv-text-neutral-400">
+                      Annex Duration</span
+                    >
+                    <span class="nv-body-12-semibold nv-text-neutral-500">
+                      {{ dataDetail.validFrom | date: "dd/MM/yyyy" }} - {{
+                      dataDetail.validTo | date: "dd/MM/yyyy" }}
+                      <span>
+                        <app-icon-warning
+                          *ngIf="dataDetail.isWarning"
+                          class="nv-d-inherit nv-pointer nv-text-red-300"
+                          nv-popover
+                          [nzPopoverContent]="tooltipTemplate"
+                          nzPopoverOverlayClassName="nv-tooltip__container"
+                          nzPopoverPlacement="topLeft"
+                        />
+                      </span>
+                      <ng-template #tooltipTemplate>
+                        <div class="nv-tooltip-content">
+                          <p>
+                            Please complete the contract documents before the
+                            contract expired!
+                          </p>
+                        </div>
+                      </ng-template>
+                    </span>
+                  </div>
+                </div>
+                <div nz-col [nzXs]="16" [nzMd]="8" [nzLg]="8">
+                  <div class="nv-flex nv-flex-col nv-gap-8 content-info-annex">
+                    <span class="nv-body-12-regular nv-text-neutral-400">
+                      Contract ID</span
+                    >
+  
+                    <a
+                      routerLink="{{
+                        '/contract/supplier/contract/' + dataDetail.contractCode
+                      }}"
+                      routerLinkActive="router-link-active"
+                      target="_blank"
+                      class="nv-d-inline-flex nv-body-12-semibold nv-text-primary-400"
+                      nv-ellipsis
+                      [nvEllipsisContent]="dataDetail.contractCode"
+                      [nvEllipsisClaim]="1"
+                    >
+                      {{ dataDetail.contractCode }}
+                    </a>
+                  </div>
+                </div>
+  
+                <div
+                  *ngIf="
+                    dataDetail.annexType == 'ServiceCharges' ||
+                    dataDetail.annexType == 'ScopeOfWork' ||
+                    dataDetail.annexType == 'OnBehalf'
+                  "
+                  nz-col
+                  [nzXs]="16"
+                  [nzMd]="8"
+                  [nzLg]="8"
+                >
+                  <div class="nv-flex nv-flex-col nv-gap-8 content-info-annex">
+                    <span class="nv-body-12-regular nv-text-neutral-400">
+                      Scope of Work</span
+                    >
+                    <span>
+                      <span class="nv-d-inline-flex nv-gap-8 nv-items-center">
+                        <img
+                          [src]="
+                        ICON_SCOPE[dataDetail.scopesOfWork[0].toUpperCase()]
+                      "
+                          alt=""
+                          srcset=""
+                        />
+                        <span class="nv-body-12-semibold nv-text-neutral-500">
+                          {{ SCOPE_OF_WORK_NAME[
+                          dataDetail.scopesOfWork[0].toUpperCase() ] }}
+                        </span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+                <div nz-col [nzXs]="16" [nzMd]="8" [nzLg]="8">
+                  <div class="nv-flex nv-flex-col nv-gap-8 content-info-annex">
+                    <span class="nv-body-12-regular nv-text-neutral-400">
+                      OPEX in charge
+                    </span>
+  
+                    <span
+                      class="nv-body-12-semibold nv-text-neutral-500"
+                      nv-ellipsis
+                      [nvEllipsisContent]="dataDetail.opexFullName"
+                      [nvEllipsisClaim]="1"
+                    >
+                      {{ dataDetail.opexFullName }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            *ngIf="dataDetail.annexType === 'ScopeOfWork'&& dataDetail.isOnBehalf"
+            class="box-sub-item nv-box-item nv-box"
+          >
+            <h1 class="nv-body-16-semibold nv-text-neutral-500">
+              On Behalf Information
+            </h1>
+            <div class="box-dashed nv-flex nv-flex-col nv-gap-16">
+              <div nz-row [nzGutter]="[24, 20]">
+                <div nz-col [nzXs]="24" [nzMd]="16" [nzLg]="8">
+                  <div class="nv-flex nv-flex-col nv-gap-8 content-info-annex">
+                    <span class="nv-body-12-regular nv-text-neutral-400">
+                      On behalf limit
+                    </span>
+                    <span class="nv-body-12-semibold nv-text-neutral-500">
+                      {{ dataDetail.onBehalfInformation.onBehalfLimited | number
+                      }} {{ dataDetail.onBehalfInformation.onBehalfCurrency }}
+                    </span>
+                  </div>
+                </div>
+                <div nz-col [nzXs]="24" [nzMd]="16" [nzLg]="8">
+                  <div class="nv-flex nv-flex-col nv-gap-8 content-info-annex">
+                    <span class="nv-body-12-regular nv-text-neutral-400">
+                      On behalf term
+                    </span>
+                    <span class="nv-body-12-semibold nv-text-neutral-500">
+                      {{ dataDetail.onBehalfInformation.onBehalfTerm | number }}
+                      {{ dataDetail.onBehalfInformation.onBehalfUnitTerm }}
+                    </span>
+                  </div>
+                </div>
+                <div nz-col [nzXs]="24" [nzMd]="16" [nzLg]="8">
+                  <div class="nv-flex nv-flex-col nv-gap-8 content-info-annex">
+                    <span class="nv-body-12-regular nv-text-neutral-400">
+                      Billing cycle
+                    </span>
+  
+                    <span class="nv-body-14-semibold nv-text-neutral-500">
+                      {{ dataDetail.onBehalfInformation.billingCycle?.join(" ; ")
+                      }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div
+            id="js-dynamic-table-height"
+            class="box-sub-item nv-box-item nv-box"
+          >
+            <h1 class="nv-body-16-semibold nv-text-neutral-500">
+              File Management
+            </h1>
+            <div class="box-dashed">
+              <app-table-file-management
+                #tableFileManagement
+                [data]="dataDetail.getFiles"
+                [isAnnex]="true"
+              />
+            </div>
+          </div>
+          <div
+            *ngIf="dataDetail.annexType==='ServiceCharges'"
+            class="box-sub-item nv-box-item nv-box"
+          >
+            <h1 class="nv-body-16-semibold nv-text-neutral-500">Attract Cost</h1>
+            <!-- <app-attract-cost
+              *ngIf="dataDetail.scopesOfWork[0]==='dt'"
+              [indexTab]="0"
+              [isDetail]="true"
+              [scopesOfWork]="dataDetail.scopesOfWork[0]"
+              [commonCosting]="dataDetail.getDomesticTransportation"
+            />
+            <app-attract-cost
+              *ngIf="dataDetail.scopesOfWork[0]==='fm'"
+              [indexTab]="0"
+              [isDetail]="true"
+              [scopesOfWork]="dataDetail.scopesOfWork[0]"
+              [commonCosting]="dataDetail.getFreightManagement"
+            />
+            <app-attract-cost
+              *ngIf="dataDetail.scopesOfWork[0]==='cc'"
+              [indexTab]="0"
+              [isDetail]="true"
+              [scopesOfWork]="dataDetail.scopesOfWork[0]"
+              [commonCosting]="dataDetail.getCustomsClearance"
+            />
+            <app-attract-cost
+              *ngIf="dataDetail.scopesOfWork[0]==='wh'"
+              [indexTab]="0"
+              [isDetail]="true"
+              [scopesOfWork]="dataDetail.scopesOfWork[0]"
+              [commonCosting]="dataDetail.getWarehouse"
+            /> -->
+          </div>
+        </div>
+      </div>
+      <div class="content-right" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="5">
+        <div class="nv-box nv-box-item nv-h-m-full box-scroll">
+          <h1 class="nv-body-16-semibold">Activity History</h1>
+          <div class="box-dashed-right">
+            <div class="list-history">
+              <div
+                *ngFor="let history of dataDetail.getActivitiesHistory"
+                class="history-item"
+              >
+                <div
+                  class="history-dot history-dot--{{
+                    history.toStatus.toLowerCase()
+                  }}"
+                ></div>
+                <div class="nv-flex nv-flex-col nv-gap-8 history-info">
+                  <span class="nv-body-12-regular nv-text-neutral-400"
+                    >{{ history.actionDate | date: "hh:mm a dd/MM/yyyy" }}
+                  </span>
+                  <span class="nv-body-12-regular nv-text-neutral-500">
+                    {{ history.description }}
+                  </span>
+                  <span
+                    *ngIf="history.actionName === 'Reject'"
+                    class="nv-body-12-regular nv-text-neutral-500"
+                    nv-ellipsis
+                    [nvEllipsisContent]="history.reason"
+                    [nvEllipsisClaim]="2"
+                  >
+                    Reason: {{ history.reason }}
+                  </span>
+                  <span
+                    class="nv-flex nv-gap-4 nv-body-12-semibold nv-text-neutral-500"
+                  >
+                    <span class="nv-text-neutral-600"
+                      >{{ history.actionName }}</span
+                    >
+                    <span class="nv-text-neutral-300">by</span>
+                    <span class="nv-text-neutral-500"
+                      >{{ history.actionBy }}</span
+                    >
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- <app-modal-reject-contract
+      [(isVisible)]="isVisibleRejectContractModal"
+      (onConfirm)="onClickConfirmReject($event)"
+    />
+    <app-modal-create-edit-annex
+      [(dataDetail)]="dataDetail"
+      (dataDetailChange)="onDataDetailChange($event)"
+      (handelSubmit)="refresh()"
+      #modalCreateAnnex
+    /> -->
+  </div>
+  
+  <ng-template #templateTooltipScopeOfWork let-name>
+    <span>{{ name }}</span>
+  </ng-template>
+  

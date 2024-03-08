@@ -1,5 +1,5 @@
 import { ItemOptions } from '@models/base-data-list';
-import { StatusEnumContract } from '../enums';
+import { ContractOptionsFilterPinnedEnum, StatusEnumContract } from '../enums';
 
 export const LIST_STATUS_CONTRACT: Array<ItemOptions> = [
   {
@@ -89,6 +89,23 @@ export const LIST_TRIAL_CONTRACT_OPTION: { [key: string]: Array<ItemOptions> } =
 export const LIST_AGREEMENT_OPTION: { [key: string]: Array<ItemOptions> } = {
   status: LIST_STATUS_CONTRACT
 };
+export const CONTRACT_OPTIONS_FILTER_PINNED: Array<{
+  label: string;
+  value: string;
+}> = [
+  {
+    label: ContractOptionsFilterPinnedEnum.AllContract,
+    value: 'All'
+  },
+  {
+    label: ContractOptionsFilterPinnedEnum.MyContract,
+    value: 'My'
+  },
+  {
+    label: ContractOptionsFilterPinnedEnum.Recently,
+    value: 'Recently'
+  }
+];
 
 export enum ContractScopesOfWorkCode {
   DT = 'DT',
@@ -155,3 +172,21 @@ export enum ContractChargeNameByProductCode {
   BasicLocalCharges = 'basicLocalCharges',
   Surcharges = 'surcharges'
 }
+
+export const ANNEX_OPTIONS_FILTER_PINNED: Array<{
+  label: string;
+  value: string;
+}> = [
+  {
+    label: ContractOptionsFilterPinnedEnum.AllAnnex,
+    value: 'All'
+  },
+  {
+    label: ContractOptionsFilterPinnedEnum.MyAnnex,
+    value: 'My'
+  },
+  {
+    label: ContractOptionsFilterPinnedEnum.Recently,
+    value: 'Recently'
+  }
+];

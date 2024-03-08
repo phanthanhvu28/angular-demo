@@ -1,5 +1,5 @@
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
-import { AuthService } from 'src/app/guard/services/auth.service';
+import { AuthService } from '../guard/services/auth.service';
 
 @Directive({
   selector: '[hasPermission]',

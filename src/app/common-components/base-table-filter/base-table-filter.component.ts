@@ -8,11 +8,13 @@ import {
 } from '@angular/core';
 import { FilterItem, ItemOptions, TableDataCell } from '@models/base-data-list';
 import { BaseTableFilterUtil } from './services/table-filter.service';
+import { NzDestroyService } from 'ng-zorro-antd/core/services';
 
 @Component({
   selector: 'app-base-table-filter',
   templateUrl: './base-table-filter.component.html',
-  styleUrls: ['./base-table-filter.component.less']
+  styleUrls: ['./base-table-filter.component.less'],
+  providers: [NzDestroyService]
 })
 export class BaseTableFilterComponent {
   @Input() nvFilters: Array<FilterItem> = [];

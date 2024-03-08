@@ -6,6 +6,7 @@ import { NzNoAnimationDirective } from 'ng-zorro-antd/core/no-animation';
 import { NvEllipsisDirective } from './nv-ellipsis.directive';
 import { NvHasPermission } from './has-permission.directive';
 
+
 const DIRECTIVES_PROVIDER = [
   NvPopoverDirective,
   NvWaringByDateDirective,

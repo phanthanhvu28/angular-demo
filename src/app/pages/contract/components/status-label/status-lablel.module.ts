@@ -5,7 +5,7 @@ import { IconsComponentModule } from '@components/icons-component/icons-componen
 
 import { StatusLabelComponent } from './status-label.component';
 import { NzTagModule } from 'ng-zorro-antd/tag';
-import { BaseDirectiveModule } from '@components/directives/directives.module';
+import { BaseDirectiveModule } from '@directives/directives.module';
 
 @NgModule({
   declarations: [StatusLabelComponent],

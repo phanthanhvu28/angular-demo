@@ -1,0 +1,74 @@
+<!-- <div id="js-dynamic-table-height">
+ 
+</div> -->
+<app-base-table
+  nzShowSizeChanger
+  [isFiltering]="!!filterData.length"
+  [nvSelections]="nvSelections"
+  [nvNavConfig]="nvNavConfig"
+  [nzColumns]="dataItemCells$ | async"
+  [nzLoading]="loading$ | async"
+  [nzData]="dataItems$ | async"
+  [nzTotal]="totalItem$ | async"
+  [nzPageIndex]="pageIndex$ | async"
+  [nzPageSize]="pageSize$ | async"
+  [nzFrontPagination]="false"
+  [nzBodyRender]="customDataTemplate"
+  [nzScroll]="{ y: (tableHeight || 0) + 'px' }"
+  (nzPageIndexChange)="changePageIndex($event)"
+  (nzPageSizeChange)="changePageSize($event)"
+  (nzSortOrderChange)="onSortOrderChange($event)"
+  (nvFiltersChange)="onFilter($event)"
+  (onCellFilterReset)="onCellFilterReset($event)"
+  class="nv-table-annex-contract"
+>
+</app-base-table>
+<ng-template
+  #customDataTemplate
+  let-dataRow
+  let-cellKey="cellKey"
+  let-cellFormater="cellFormater"
+>
+  <ng-container *ngIf="cellFormater.date as dateFormat">
+    <span>
+      {{ dataRow[cellKey] | date: dateFormat || "-" }}
+    </span>
+  </ng-container>
+
+  <ng-container *ngIf="cellFormater.templateAnnexDuration">
+    {{ dataRow["validFrom"] | date: "dd/MM/yyyy" }} -
+    {{ dataRow["validTo"] | date: "dd/MM/yyyy" }}
+  </ng-container>
+  <ng-container *ngIf="cellFormater.templateHyperlinkFile">
+    <a
+      routerLink="{{ '/contract/supplier/annex/' + dataRow[cellKey] }}"
+      routerLinkActive="router-link-active"
+      (click)="goToAnnex(dataRow[cellKey])"
+      target="_blank"
+    >
+      {{ dataRow[cellKey] }}
+    </a>
+  </ng-container>
+  <ng-container *ngIf="cellFormater.templateStatus">
+    <app-status-label [data]="dataRow[cellKey]" />
+  </ng-container>
+  <ng-container *ngIf="cellFormater.templateText">
+    <span
+      nv-ellipsis
+      [nvEllipsisContent]="dataRow[cellKey]"
+      [nvEllipsisClaim]="1"
+    >
+      {{ dataRow[cellKey] }}
+    </span>
+  </ng-container>
+  <ng-container *ngIf="cellFormater.templateTextLongDotThree">
+    <span
+      nv-ellipsis
+      [nvEllipsisContent]="dataRow[cellKey]"
+      [nvEllipsisClaim]="1"
+      [nvEllipsisGap]="0"
+    >
+      {{ dataRow[cellKey] }}
+    </span>
+  </ng-container>
+</ng-template>

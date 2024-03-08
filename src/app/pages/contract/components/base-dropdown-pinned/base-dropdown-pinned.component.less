@@ -1,0 +1,60 @@
+.nv-base-dropdown-pinned {
+    display: flex;
+    cursor: pointer;
+  
+    &__dropdown {
+      margin-right: 6px;
+      display: flex;
+      align-items: center;
+      &-text {
+        color: #000;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        margin-right: 6px;
+      }
+    }
+    &__icon-pinned {
+      border-radius: 2px;
+      padding: 4px;
+      width: 24px;
+      height: 24px;
+      background-color: var(--nv-neutral-100);
+      &:hover {
+        background-color: var(--nv-neutral-200);
+      }
+      &--selected {
+        background-color: var(--nv-blue-100);
+        cursor: default;
+        pointer-events: none;
+      }
+    }
+  }
+  ::ng-deep .nv-base-dropdown-pinned {
+    &__menu {
+      padding: 16px 16px 12px;
+      border-radius: 4px;
+      border: 1px solid var(--nv-neutral-200);
+      background-color: var(--nv-white-100);
+      min-width: 408px;
+  
+      &--item {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding: 8px 4px;
+        margin-bottom: 4px;
+        &:hover {
+          background-color: var(--nv-neutral-100);
+        }
+        span {
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 16px;
+          color: var(--nv-neutral-500);
+          margin-right: 12px;
+        }
+      }
+    }
+  }
+  

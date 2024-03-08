@@ -8,7 +8,7 @@ import { ItemOptions } from '@models/base-data-list';
 
 import { ModalCreateEditContractComponent } from '../../components/modal-create-edit-contract/modal-create-edit-contract.component';
 import { DataFilterContract } from '../../models/filter-upload.model';
-import { LIST_CONTRACT_OPTION } from '../../../const';
+import { CONTRACT_OPTIONS_FILTER_PINNED, LIST_CONTRACT_OPTION } from '../../../const';
 
 @Component({
   selector: 'app-customer-contract-list.page',
@@ -17,6 +17,8 @@ import { LIST_CONTRACT_OPTION } from '../../../const';
   providers: [ContractService]
 })
 export class CustomerContractListPage extends AbsBaseDataListComponent<any> {
+  pinnedFilter$: Observable<string> = this.contractService.pinnedFilter$;
+  listOptionsFilterPinned: Array<ItemOptions> = CONTRACT_OPTIONS_FILTER_PINNED;
   nvSelections: { [key: string]: Array<ItemOptions> } = LIST_CONTRACT_OPTION;
   filterSelection: DataFilterContract;
   @ViewChild('modalCreateContract') modalCreateContract: ModalCreateEditContractComponent;

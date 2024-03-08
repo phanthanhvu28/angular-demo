@@ -13,7 +13,8 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 import { ModalUploadFileComponent } from './modal-upload-file.component';
-import { BaseDirectiveModule } from '@components/directives/directives.module';
+import { BaseDirectiveModule } from '@directives/directives.module';
+
 
 export const TYPE_CONTRACT = new InjectionToken<string>('type contract');
 

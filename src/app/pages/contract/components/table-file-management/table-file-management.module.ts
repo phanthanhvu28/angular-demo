@@ -15,7 +15,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { TableFileManagementComponent } from './table-file-management.component';
-import { BaseDirectiveModule } from '@components/directives/directives.module';
+import { BaseDirectiveModule } from '@directives/directives.module';
 const NZ_MODULE = [
   NzButtonModule,
   NzGridModule,

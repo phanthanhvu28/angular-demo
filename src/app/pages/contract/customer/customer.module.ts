@@ -40,7 +40,7 @@ import { BaseButtonModule } from '@common-components/base-button/base-button.mod
 
 import { IconsComponentModule } from '@components/icons-component/icons-component.module';
 import { BaseTableModule } from '@common-components/base-table/base-table.module';
-import { BaseDirectiveModule } from '@components/directives/directives.module';
+
 import { StatusLabelModule } from '../components/status-label/status-lablel.module';
 import { ModalCreateEditContractComponent } from './components';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -55,6 +55,8 @@ import { BaseTooltipLengthModule } from '@common-components/base-tooltip-length/
 import { TableFileManagementModule } from '../components/table-file-management/table-file-management.module';
 import { TableAnnexListComponent } from './components/table-annex-list/table-annex-list.component';
 import { ModalAnnexListFullscreenComponent } from './components/modal-annex-list-fullscreen/modal-annex-list-fullscreen.component';
+import { BaseDirectiveModule } from '@directives/directives.module';
+import { BaseDropdownPinnedModule } from '../components/base-dropdown-pinned/base-dropdown-pinned.module';
 
 
 
@@ -93,6 +95,7 @@ const BASE_MODULE=[
   BaseInputModule,
   BaseModalMessageModule ,
   BaseTooltipLengthModule,
+  BaseDropdownPinnedModule
 
 
 ]
