@@ -12,7 +12,8 @@ import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { BaseTableBodyComponent } from './base-table-body.component';
 import { PipesModule } from 'src/app/pipes/pipes.module';
-import { BaseDirectiveModule } from '@components/directives/directives.module';
+import { BaseDirectiveModule } from '@directives/directives.module';
+
 
 const NZ_MODULE = [
   NzTableModule,

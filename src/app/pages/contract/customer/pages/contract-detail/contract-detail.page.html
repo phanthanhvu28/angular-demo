@@ -1,0 +1,431 @@
+<div *ngIf="dataDetail">
+    <div class="box-header-container">
+      <div class="box-title">
+        <app-icon-arrow-circle-left
+          (click)="goBack()"
+          class="nv-pointer icon-back"
+        />
+        <span class="nv-title-5 nv-text-neutral-600 text-title">
+          Contract ID: {{ id }}
+        </span>
+        <div class="nv-flex nv-items-center">
+          <app-status-label class="tag-status" [data]="dataDetail.status" />
+          <app-icon-exclamation-circle
+            nv-popover
+            [nzPopoverContent]="templateTooltipAmending"
+            nzPopoverOverlayClassName="nv-tooltip__container"
+            nzPopoverPlacement="bottomCenter"
+            *ngIf="dataDetail.status == statusEnum.Amending"
+            class="nv-d-inherit nv-text-primary-400 nv-pointer"
+          />
+          <ng-template #templateTooltipAmending>
+            <div class="content-reason">{{dataDetail.reason}}</div>
+          </ng-template>
+        </div>
+      </div>
+  
+      <div
+        *ngIf="['New', 'Amending'].includes(dataDetail.status)"
+        class="box-btn-func nv-gap-16"
+      >
+        <nz-button-group [nzSize]="'large'" class="nv-btn-group">
+          <ng-container>
+            <button
+              nz-button
+              nzType="primary"
+              *ngIf="dataDetail.status == 'New'"
+              (click)="funcDelete()"
+              class="nv-body-14-semibold nv-btn-item-group"
+              [nzLoading]="loadingDelete$ | async"
+              [disabled]="loadingDelete$ | async"
+            >
+              Delete
+            </button>
+          </ng-container>
+          <button
+            nz-button
+            nzType="primary"            
+            (click)="modalCreateEditContract(id)"
+            class="nv-body-14-semibold nv-btn-item-group"
+          >
+            Edit
+          </button>
+        </nz-button-group>
+        <app-base-button          
+          class="btn-header"
+          className="base-button--primary nv-px-12 nv-py-8"
+          (click)="funcSubmit()"
+          [nzLoading]="loadingSubmit$ | async"
+          [disabled]="loadingSubmit$ | async"
+        >
+          <div class="nv-flex nv-items-center">
+            Submit
+            <app-icon-send class="nv-d-inherit icon-edit" />
+          </div>
+        </app-base-button>
+      </div>
+      <div *ngIf="dataDetail.status == 'Waiting'" class="box-btn-func nv-gap-16">
+        <nz-button-group [nzSize]="'large'" class="nv-btn-group">
+          <button
+            nz-button
+            nzType="primary"           
+            (click)="funcRecall()"
+            class="nv-body-14-semibold nv-btn-item-group"
+            [nzLoading]="loadingRecall$ | async"
+            [disabled]="loadingRecall$ | async"
+          >
+            Recall
+          </button>
+          <button
+            nz-button
+            nzType="primary"           
+            (click)="funcReject()"
+            class="nv-body-14-semibold nv-btn-item-group"
+            [nzLoading]="loadingReject$ | async"
+            [disabled]="loadingReject$ | async"
+          >
+            Reject
+          </button>
+        </nz-button-group>
+        <app-base-button         
+          class="btn-header"
+          className="base-button--primary nv-px-12 nv-py-8"
+          (click)="funcApproval()"
+          [nzLoading]="loadingApproval$ | async"
+          [disabled]="loadingApproval$ | async"
+        >
+          <div class="nv-flex nv-items-center">
+            Approve
+            <app-icon-check class="nv-d-inherit icon-edit" />
+          </div>
+        </app-base-button>
+      </div>
+    </div>
+    <div class="nv-detail-content page-wrapper" nz-row [nzGutter]="[24, 20]">
+      <div class="content-left" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="19">
+        <div class="box-scroll">
+          <div class="box-sub-item nv-box nv-box-item">
+            <h1 class="nv-body-16-semibold nv-text-neutral-500">
+              General Information
+            </h1>
+            <div class="box-dashed">
+              <div nz-row [nzGutter]="[24, 20]">
+                <div
+                  nz-col
+                  [nzXs]="24"
+                  [nzMd]="16"
+                  [nzLg]="16"
+                  class="item-info nv-flex nv-flex-col nv-gap-16"
+                >
+                  <div class="nv-flex nv-gap-16 header-item">
+                    <app-icon-contract-customer />
+                    <div
+                      class="nv-flex nv-flex-col nv-gap-4 name-code-item nv-flex-basic-100"
+                    >
+                      <span class="nv-body-12-regular nv-text-neutral-400">
+                        {{ dataDetail.customerCode }}
+                      </span>
+                      <span
+                        nv-ellipsis
+                        [nvEllipsisContent]="dataDetail.customerFullName"
+                        [nvEllipsisClaim]="1"
+                        class="nv-body-12-semibold nv-text-neutral-600"
+                      >
+                        {{dataDetail.customerFullName}}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="nv-flex nv-flex-col nv-gap-8 footer-item">
+                    <span class="nv-body-12-regular nv-text-neutral-400">
+                      Salesman</span
+                    >
+                    <app-base-tooltip-length
+                      [text]="dataDetail.salesManFullName"
+                      [className]="'nv-body-12-semibold nv-text-neutral-600'"
+                      [maxLength]="25"
+                    />
+                  </div>
+                </div>
+                <div
+                  nz-col
+                  [nzXs]="24"
+                  [nzMd]="8"
+                  [nzLg]="8"
+                  *ngIf="dataDetail.trialContract"
+                  class="item-info nv-flex nv-flex-col nv-justify-end nv-gap-16"
+                >
+                  <div class="nv-flex nv-gap-16 header-item">
+                    <app-icon-contract-module-contract />
+                    <div class="nv-flex nv-flex-col nv-gap-4 name-code-item">
+                      <span class="nv-body-12-regular nv-text-neutral-400">
+                        Contract no.
+                      </span>
+                      <span
+                        nv-ellipsis
+                        [nvEllipsisContent]="dataDetail.contractNumber"
+                        [nvEllipsisClaim]="1"
+                        class="nv-body-12-semibold nv-text-neutral-600"
+                      >
+                        {{dataDetail.contractNumber}}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="nv-flex nv-flex-col nv-gap-8 footer-item">
+                    <span class="nv-body-12-regular nv-text-neutral-400">
+                      Trial contract</span
+                    >
+  
+                    <a
+                      routerLink="{{ '/contract/customer/trial-contract/' + dataDetail.trialContract }}"
+                      routerLinkActive="router-link-active"
+                      target="_blank"
+                      class="nv-d-inline-flex nv-body-12-semibold nv-text-primary-400"
+                      nv-ellipsis
+                      [nvEllipsisContent]="dataDetail.trialContract"
+                      [nvEllipsisClaim]="1"
+                    >
+                      {{dataDetail.trialContract}}
+                    </a>
+                  </div>
+                </div>
+                <div
+                  nz-col
+                  [nzXs]="24"
+                  [nzMd]="12"
+                  [nzLg]="8"
+                  class="item-info nv-flex nv-flex-col nv-justify-end nv-gap-16"
+                >
+                  <div class="nv-flex nv-gap-16 header-item">
+                    <ng-container *ngIf="!dataDetail.trialContract">
+                      <app-icon-contract-module-contract />
+                      <div class="nv-flex nv-flex-col nv-gap-4 name-code-item">
+                        <span class="nv-body-12-regular nv-text-neutral-400">
+                          Contract no.
+                        </span>
+                        <span
+                          nv-ellipsis
+                          [nvEllipsisContent]="dataDetail.contractNumber"
+                          [nvEllipsisClaim]="1"
+                          class="nv-body-12-semibold nv-text-neutral-600"
+                        >
+                          {{dataDetail.contractNumber}}
+                        </span>
+                      </div>
+                    </ng-container>
+                  </div>
+                  <div class="nv-flex nv-flex-col nv-gap-8 footer-item">
+                    <span class="nv-body-12-regular nv-text-neutral-400">
+                      Contract duration</span
+                    >
+                    <span class="nv-body-12-semibold nv-text-neutral-600">
+                      {{ dataDetail.validFrom | date: "dd/MM/yyyy" }} - {{
+                      dataDetail.validTo | date: "dd/MM/yyyy" }}
+                      <span>
+                        <app-icon-warning
+                          *ngIf="dataDetail.isWarning"
+                          class="nv-d-inherit nv-pointer nv-text-red-300"
+                          nv-popover
+                          [nzPopoverContent]="tooltipTemplate"
+                          nzPopoverOverlayClassName="nv-tooltip__container"
+                          nzPopoverPlacement="topLeft"
+                        />
+                      </span>
+                      <ng-template #tooltipTemplate>
+                        <div class="nv-tooltip-content">
+                          <p>
+                            Please complete the contract documents before the
+                            contract expired!
+                          </p>
+                        </div>
+                      </ng-template>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            *ngIf="dataDetail.isCredit"
+            class="box-sub-item nv-box nv-box-item"
+          >
+            <div class="nv-flex nv-justify-space-between nv-gap-16">
+              <h1 class="nv-body-16-semibold nv-text-neutral-500">
+                Credit Information
+              </h1>
+            </div>
+            <div class="box-dashed">
+              <div nz-row [nzGutter]="[24, 20]">
+                <div class="col-item" nz-col [nzXs]="24" [nzMd]="12" [nzLg]="8">
+                  <div class="items nv-flex nv-flex-col nv-gap-8">
+                    <span class="nv-body-12-regular nv-text-neutral-400">
+                      Credit limit
+                    </span>
+                    <span class="nv-text-neutral-500 nv-body-12-semibold">
+                      {{ dataDetail.creditLimited | number }} {{
+                      dataDetail.creditCurrency }}
+                    </span>
+                  </div>
+                </div>
+                <div class="col-item" nz-col [nzXs]="24" [nzMd]="12" [nzLg]="8">
+                  <div class="items nv-flex nv-flex-col nv-gap-8">
+                    <span class="nv-body-12-regular nv-text-neutral-400">
+                      Credit term
+                    </span>
+                    <span class="nv-text-neutral-500 nv-body-12-semibold">
+                      {{ dataDetail.creditTerm | number }} {{ dataDetail.unitTerm
+                      }}
+                    </span>
+                  </div>
+                </div>
+                <div class="col-item" nz-col [nzXs]="24" [nzMd]="12" [nzLg]="8">
+                  <div class="items nv-flex nv-flex-col nv-gap-8">
+                    <span class="nv-body-12-regular nv-text-neutral-400">
+                      Billing cycle
+                    </span>
+                    <div class="billing-cycle-box nv-flex nv-flex-col nv-gap-8">
+                      <span class="nv-text-neutral-500 nv-body-12-semibold">
+                        {{ dataDetail.billingCycle?.join(' ; ') }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="box-sub-item nv-box nv-box-item">
+            <h1 class="nv-body-16-semibold nv-text-neutral-500">
+              Currency Exchange
+            </h1>
+            <div class="box-dashed">
+              <div class="nv-flex nv-gap-16 nv-items-center">
+                <app-icon-radio-button class="nv-d-inherit nv-text-neutral-300" />
+                <span class="nv-body-12-semibold nv-text-neutral-600"
+                  >{{ dataDetail.exchangeRatesType }}</span
+                >
+                <div
+                  *ngIf="
+                    dataDetail.exchangeRates &&
+                    dataDetail.exchangeRatesType != 'Quotation'
+                  "
+                  class="nv-flex nv-gap-8 nv-items-center"
+                >
+                  <app-icon-currency-contract class="nv-d-inherit" />
+                  <span class="nv-body-12-semibold nv-text-neutral-500">
+                    ERT: 1 {{ dataDetail.exchangeRates.toCurrency }} = {{
+                    dataDetail.exchangeRates.currentRate | number }} {{
+                    dataDetail.exchangeRates.fromCurrency }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            id="js-dynamic-table-height"
+            class="box-sub-item nv-box nv-box-item"
+          >
+            <h1 class="nv-body-16-semibold nv-text-neutral-500">
+              File Management
+            </h1>
+            <div class="box-dashed">
+              <app-table-file-management
+                #tableFileManagement
+                [data]="dataDetail.getFiles"
+              />
+            </div>
+          </div>
+          <div
+            id="js-dynamic-table-height"
+            class="box-sub-item nv-box nv-box-item"
+          >
+            <div class="nv-flex nv-justify-space-between">
+              <h1 class="nv-body-16-semibold nv-text-neutral-500">Annex List</h1>
+              <div class="nv-flex nv-items-center">
+                <app-base-button
+                  class="btn-header"
+                  className="base-button--text base-button--space"
+                  [disabled]="dataDetail.status==='Inactive'"
+                  (click)="showCreateAnnex()"
+                >
+                  <span class="nv-body-12-semibold"> New Annex</span>
+                  <app-icon-plus class="nv-d-inherit icon-edit" />
+                </app-base-button>
+                <div class="nv-bg-neutral-100 nv-border-radius-4 box-fullscreen">
+                  <app-icon-fullscreen
+                    (click)="modalAnnexListFullscreen.showModal()"
+                    class="nv-pointer nv-d-inherit nv-text-neutral-300"
+                  />
+                </div>
+              </div>
+            </div>
+            <app-table-annex-list #tableAnnexList />
+          </div>
+        </div>
+      </div>
+      <div class="content-right" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="5">
+        <div class="nv-box nv-box-item nv-h-m-full box-scroll">
+          <h1 class="nv-body-16-semibold">Activity History</h1>
+          <div class="box-dashed-right">
+            <div class="list-history">
+              <div
+                *ngFor="let history of dataDetail.getActivitiesHistory"
+                class="history-item"
+              >
+                <div
+                  class="history-dot history-dot--{{
+                    history.toStatus.toLowerCase()
+                  }}"
+                ></div>
+                <div class="nv-flex nv-flex-col nv-gap-8 history-info">
+                  <span class="nv-body-12-regular nv-text-neutral-400">
+                    {{ history.actionDate | date: "hh:mm a dd/MM/yyyy" }}
+                  </span>
+                  <span class="nv-body-12-regular nv-text-neutral-500">
+                    {{ history.description }}
+                  </span>
+                  <span
+                    *ngIf="history.actionName==='Reject'"
+                    class="nv-body-12-regular nv-text-neutral-500"
+                    nv-ellipsis
+                    [nvEllipsisContent]="history.reason"
+                    [nvEllipsisClaim]="2"
+                  >
+                    Reason: {{history.reason}}
+                  </span>
+                  <span
+                    class="nv-flex nv-gap-4 nv-body-12-semibold nv-text-neutral-500"
+                  >
+                    <span class="nv-text-neutral-600">
+                      {{ history.actionName }}</span
+                    >
+                    <span class="nv-text-neutral-300">by</span>
+                    <span class="nv-text-neutral-500">
+                      {{ history.actionBy }}</span
+                    >
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <app-modal-annex-list-fullscreen #modalAnnexListFullscreen />
+  <!-- <app-modal-reject-contract
+    [(isVisible)]="isVisibleRejectContractModal"
+    (onConfirm)="onClickConfirmReject($event)"
+  /> -->
+  <!-- <app-modal-create-edit-contract
+    (handelSubmit)="refresh()"
+    [filter]="filterSelection"
+    [dataDetail]="dataDetail"
+    #modalCreateContract
+  />
+  <app-modal-create-edit-annex
+    (handelSubmit)="refreshAnnex()"
+    [filter]="fillerAnnex"
+    [dataContract]="dataDetail"
+    #modalCreateEditAnnex
+  /> -->
+  

@@ -5,9 +5,10 @@ import {
   CustomerTrialContractListPage,
   CustomerContractListPage,
   CustomerAnnexListPage,
-  CustomerAgreementListPage
-  
+  CustomerAgreementListPage,
+  ContractDetailPage
 } from './pages';
+
 
 const routes: Routes = [
   {
@@ -46,8 +47,15 @@ const routes: Routes = [
         data: {
           title: 'Agreement'
         }
-      }
+      }    
     ]
+  },
+  {
+    path: 'contract/:id',
+    component: ContractDetailPage,
+    data: {
+      title: 'Contract'
+    }
   },
   { path: '**', redirectTo: 'contract' }
 ];

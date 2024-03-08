@@ -1,0 +1,58 @@
+<!-- <div id="js-dynamic-table-height">
+ 
+</div> -->
+<app-base-table
+  nzShowSizeChanger
+  [isFiltering]="!!filterData.length"
+  [nvShowNav]="false"
+  [nzColumns]="dataItemCells$ | async"
+  [nzLoading]="loading$ | async"
+  [nzData]="dataItems$ | async"
+  [nzTotal]="totalItem$ | async"
+  [nzPageIndex]="pageIndex$ | async"
+  [nzPageSize]="pageSize$ | async"
+  [nzFrontPagination]="false"
+  [nzShowPagination]="false"
+  [nzBodyRender]="customDataTemplate"
+  (nzPageIndexChange)="changePageIndex($event)"
+  (nzPageSizeChange)="changePageSize($event)"
+  (nzSortOrderChange)="onSortOrderChange($event)"
+  class="nv-table-files"
+>
+</app-base-table>
+<ng-template
+  #customDataTemplate
+  let-dataRow
+  let-cellKey="cellKey"
+  let-cellFormater="cellFormater"
+>
+  <ng-container *ngIf="cellFormater.templateHyperlinkFile">
+    <a
+      target="_blank"
+      (click)="openFile(dataRow['objectKey'])"
+      nv-ellipsis
+      [nvEllipsisContent]="dataRow[cellKey]"
+      [nvEllipsisClaim]="1"
+    >
+      {{ dataRow[cellKey] }}
+    </a>
+  </ng-container>
+  <ng-container *ngIf="cellFormater.date as dateFormat">
+    <span>
+      {{ dataRow[cellKey] | date: dateFormat || "-" }}
+    </span>
+  </ng-container>
+
+  <ng-container *ngIf="cellFormater.templateAction">
+    <app-icon-trash
+      (click)="removeFile(dataRow)"
+      class="nv-pointer nv-text-neutral-300"
+    />
+  </ng-container>
+  <ng-container *ngIf="cellFormater.templateActionDownload">
+    <app-icon-download
+      (click)="download(dataRow)"
+      class="nv-pointer nv-text-neutral-300"
+    />
+  </ng-container>
+</ng-template>

@@ -1,0 +1,32 @@
+<ng-container>
+    <span
+      [class]="className"
+      *ngIf="text?.toString().length > maxLength; else elseMaxlength"
+      nz-popover
+      [nzPopoverContent]="tooltipTemplate"
+      nzPopoverOverlayClassName="nv-tooltip__container"
+      [nzPopoverPlacement]="'topRight'"
+    >
+      <span [class]="className" *ngIf="checkTypeNumber(text)">
+        {{ text | number }}
+      </span>
+      <span
+        [class]="className"
+        class="nv-text-ellipsis-2"
+        *ngIf="!checkTypeNumber(text)"
+      >
+        {{ text.toString().slice(0, maxLength - 5) }} ...
+      </span>
+    </span>
+    <ng-template #elseMaxlength>
+      <span [class]="className">{{ text }} </span>
+    </ng-template>
+    <ng-template #tooltipTemplate>
+      <div class="nv-flex nv-flex-wrap box-content-tooltip">
+        <span>
+          {{ textTooltip ? textTooltip : text }}
+        </span>
+      </div>
+    </ng-template>
+  </ng-container>
+  

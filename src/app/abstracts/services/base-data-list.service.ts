@@ -1,6 +1,7 @@
 import { AsyncPipe } from '@angular/common';
 import { Injectable, Injector, Optional } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NvMessageService } from '@common-components/base-modal-message/services/nv-message.service';
 import { BehaviorSubject, Observable, ReplaySubject, takeUntil } from 'rxjs';
 import { DataListRequestPayload, FilterComparison, TableDataCell } from 'src/app/models/base-data-list';
 
@@ -39,13 +40,13 @@ export abstract class TariffDataListService<T> {
     asyncPipe: AsyncPipe;
     router: Router;
     activatedRoute: ActivatedRoute;
-    //messageService: NvMessageService;
+    messageService: NvMessageService;
 
     constructor(@Optional() protected injector: Injector) {
         this.asyncPipe = this.injector.get(AsyncPipe);
         this.router = this.injector.get(Router);
         this.activatedRoute = this.injector.get(ActivatedRoute);
-        //this.messageService = this.injector.get(NvMessageService);
+        this.messageService = this.injector.get(NvMessageService);
 
         this.pageIndex$.pipe(takeUntil(this.destroy$)).subscribe((res) => {
             this.pageIndexNumber = res;

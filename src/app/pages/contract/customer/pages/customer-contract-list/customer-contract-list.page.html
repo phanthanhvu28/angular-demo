@@ -1,6 +1,6 @@
 <div class="page-wrapper">
     <div class="nv-flex nv-justify-space-between nv-gap-8">      
-      <!-- <app-base-dropdown-pinned
+      <app-base-dropdown-pinned
         [isShowPinned]="true"
         [activateDefault]="itemActivateFilter$ | async"
         [pinnedDefault]="pinnedFilter$ | async"
@@ -8,7 +8,7 @@
         (onChangeItemActivate)="setItemActivateFilter($event)"
         (onChangeItemPinned)="setPinnedFilter($event)"
       >
-      </app-base-dropdown-pinned> -->
+      </app-base-dropdown-pinned>
       <app-base-button
         
         className="base-button--primary base-button--space base-button--text"
@@ -80,6 +80,7 @@
     <ng-container *ngIf="cellFormater.templateStatus">
       <app-status-label [data]="dataRow[cellKey]" />
     </ng-container>
+    
     <ng-container *ngIf="cellFormater.templateTextLongDotThree">
       <span
         nv-ellipsis
@@ -91,6 +92,10 @@
       </span>
     </ng-container>
   </ng-template>
+  <app-modal-create-edit-contract
+  (handelSubmit)="refresh()"
+  [filter]="filterSelection"
+  #modalCreateContract/>
   
 
   

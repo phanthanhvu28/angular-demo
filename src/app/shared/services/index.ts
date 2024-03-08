@@ -1,0 +1,1 @@
+export * from './vc-notification/vc-notification.service';

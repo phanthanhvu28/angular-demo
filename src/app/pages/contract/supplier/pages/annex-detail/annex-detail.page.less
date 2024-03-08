@@ -1,0 +1,181 @@
+.box-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .box-title {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 6px 12px 6px 0;
+  
+      ::ng-deep .icon-back,
+      svg {
+        width: 25px;
+        height: 25px;
+      }
+    }
+    .box-btn-func {
+      display: flex;
+      .btn-header {
+        margin: 0 5px;
+        .icon-edit {
+          margin-left: 8px;
+          ::ng-deep svg {
+            width: 16px;
+            height: 16px;
+          }
+        }
+      }
+    }
+  }
+  .icon-reload {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ::ng-deep svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+  
+  ::ng-deep .nv-detail-content {
+    margin-top: 16px !important;
+    padding: 0;
+    .nv-box-item {
+      padding: 16px 24px 16px 24px;
+      display: flex;
+      flex-direction: column;
+      border: none;
+      box-shadow: 0 4px 16px 0 rgba(31, 41, 61, 0.03);
+    }
+    .box-dashed {
+      // border: 1px dashed var(--nv-neutral-100);
+      // padding: 16px 30px;
+      border-radius: 4px;
+      .item-info {
+        width: 250px;
+      }
+    }
+  }
+  .content-right {
+    .box-dashed-right {
+      border-left: 1px dashed var(--nv-neutral-200);
+      .list-history {
+        margin-left: -16px;
+        padding-left: 16px;
+        .history-item {
+          padding-left: 1rem;
+          position: relative;
+          margin: 2rem 0;
+  
+          &:first-child {
+            margin-top: 1.5rem;
+          }
+          &:last-child {
+            margin-bottom: 1.5rem;
+          }
+  
+          .history-dot {
+            width: 15px;
+            height: 15px;
+            border-width: 2px;
+            border-style: solid;
+            background-color: var(--nv-white-100);
+            border-radius: 100%;
+            border-color: var(--nv-primary-300);
+            position: absolute;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            transform: translateX(-50%);
+            &--new {
+              border-color: var(--nv-primary-300);
+            }
+            &--waiting {
+              border-color: var(--nv-yellow-400);
+            }
+            &--amending {
+              border-color: var(--nv-orange-400);
+            }
+            &--inactive {
+              border-color: var(--nv-neutral-400);
+            }
+            &--approved {
+              border-color: var(--nv-violet-400);
+            }
+            &--active {
+              border-color: var(--nv-green-400);
+            }
+          }
+        }
+      }
+    }
+  }
+  .is-warring-contract-duration {
+    color: var(--nv-red-300) !important;
+  }
+  .nv-box-billing {
+    padding: 8px 16px;
+    border: 1px solid var(--nv-neutral-100);
+    border-radius: 4px;
+  }
+  .box-fullscreen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    width: 24px;
+    height: 24px;
+    ::ng-deep svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+  .billing-cycle-box {
+    max-height: 120px;
+    overflow: auto;
+  }
+  .item-dropdown {
+    padding: 8px 6px;
+    border: 1px solid var(--nv-neutral-200);
+    text-align: center;
+  }
+  
+  .content-info-annex {
+    margin-top: 10px;
+  }
+  .box-scroll {
+    height: calc(100vh - 181px);
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-right: 10px;
+  }
+  .content-reason {
+    max-width: 400px;
+  }
+  .nv-btn-group {
+    border-radius: 100px;
+    .nv-btn-item-group {
+      height: 36px;
+      min-width: 88px;
+      background-color: transparent;
+      color: var(--nv-primary-400);
+      &:nth-child(1) {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+      &:nth-child(2) {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+    }
+  }
+  

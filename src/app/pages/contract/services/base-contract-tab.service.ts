@@ -70,7 +70,7 @@ export abstract class BaseContractTabService<
   }
   constructor(
     injector: Injector,
-    protected authService: AuthService
+    //protected authService: AuthService
   ) {
     super(injector);
   }
@@ -112,18 +112,18 @@ export abstract class BaseContractTabService<
   }
   getActivateFilterPayload(): Array<Filter> {
     const currentActivateFilter = this._subjectItemActivateFilter.value;
-    const currentEmailUser = this.authService.getCurrentUserParse()['email'];
+    //const currentEmailUser = this.authService.getCurrentUserParse()['email'];
 
     switch (currentActivateFilter) {
       case 'ALL':
         return [];
       case 'My':
         return [
-          {
-            fieldName: 'myPinned',
-            comparison: FilterComparison.Contains,
-            fieldValue: currentEmailUser
-          }
+          // {
+          //   fieldName: 'myPinned',
+          //   comparison: FilterComparison.Contains,
+          //   fieldValue: currentEmailUser
+          // }
         ];
       case 'Recently':
         return [

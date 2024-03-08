@@ -1,0 +1,56 @@
+<div *ngIf="listOptions.length" class="nv-base-dropdown-pinned">
+    <div
+      class="nv-base-dropdown-pinned__dropdown"
+      nz-dropdown
+      nzTrigger="click"
+      [nzDropdownMenu]="menu"
+      [(nzVisible)]="visible"
+    >
+      <span class="nv-base-dropdown-pinned__dropdown-text">
+        {{ itemActivated?.label }}
+      </span>
+  
+      <app-icon-chevron direction="down" class="nv-flex"></app-icon-chevron>
+    </div>
+    <div
+      *ngIf="isShowPinned"
+      class="nv-base-dropdown-pinned__icon-pinned"
+      [class.nv-base-dropdown-pinned__icon-pinned--selected]="
+        itemPinned?.value === itemActivated?.value
+      "
+      (click)="onClickPinned()"
+      nv-popover
+      nzPopoverContent="Pin"
+    >
+      <app-icon-pushpin
+        class="nv-flex nv-text-primary-300"
+        [class.nv-text-neutral-300]="itemPinned?.value !== itemActivated?.value"
+      ></app-icon-pushpin>
+    </div>
+  
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <div class="nv-base-dropdown-pinned__menu">
+        <div class="nv-base-dropdown-pinned__menu--list">
+          <div
+            class="nv-base-dropdown-pinned__menu--item"
+            *ngFor="let option of listOptionsShow"
+            (click)="onClickItem(option)"
+          >
+            <span
+              >{{ option.label }}
+              <ng-container
+                *ngIf="isShowPinned && option.value === itemPinned?.value"
+                >(Pinned list)</ng-container
+              ></span
+            >
+            <ng-container *ngIf="option.value === itemActivated?.value">
+              <app-icon-check
+                class="nv-flex nv-text-primary-400"
+              ></app-icon-check>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </nz-dropdown-menu>
+  </div>
+  
