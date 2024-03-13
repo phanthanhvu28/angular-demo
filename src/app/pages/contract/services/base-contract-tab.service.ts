@@ -1,5 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
-import { TariffDataListService } from 'src/app/abstracts/services/base-data-list.service';
+import { BaseDataListService } from 'src/app/abstracts/services/base-data-list.service';
 import {
   DataListRequestPayload,
   FilterComparison,
@@ -11,9 +11,7 @@ import { Filter } from '@models/base/data.interface';
 @Injectable({
   providedIn: 'root'
 })
-export abstract class BaseContractTabService<
-  T
-> extends TariffDataListService<T> {
+export abstract class BaseContractTabService<T> extends BaseDataListService<T> {
   supplierId: string;
   fillerParams: any;
   columnChecked: Array<TableDataCell>;

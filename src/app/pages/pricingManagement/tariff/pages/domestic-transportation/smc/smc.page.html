@@ -1,0 +1,85 @@
+<div class="page-wrapper">
+    <div class="nv-flex nv-justify-space-between nv-gap-8">
+      <span class="nv-subtitle-semibold nv-text-neutral-600">List tariff</span>
+     
+      <app-base-button        
+        className="base-button--primary base-button--space base-button--text"
+        class="action-icon-create"
+        (click)="showUploadModal()"
+      >
+        <span class="nv-body-14-semibold nv-text-white-100">New tariff</span>
+  
+        <app-icon-plus class="nv-d-inherit" />
+      </app-base-button>
+    </div>
+    <div class="nv-pt-16" id="js-dynamic-table-height">
+      <app-base-table
+        nzShowSizeChanger
+        [isFiltering]="!!filterData.length"
+        [nvNavConfig]="nvNavConfig"
+        [nvRowHighlightConfig]="highlightConfig"
+        [nzColumns]="dataItemCells$ | async"
+        [nzLoading]="loading$ | async"
+        [nzData]="dataItems$ | async"
+        [nzTotal]="totalItem$ | async"
+        [nzPageIndex]="pageIndex$ | async"
+        [nzPageSize]="pageSize$ | async"
+        [nzFrontPagination]="false"
+        [nzBodyRender]="customDataTemplate"
+        [nzScroll]="{ y: (tableHeight || 0) + 'px' }"
+        (nzPageIndexChange)="changePageIndex($event)"
+        (nzPageSizeChange)="changePageSize($event)"
+        (nzSortOrderChange)="onSortOrderChange($event)"        
+        (onCellFilterReset)="onCellFilterReset($event)"
+       
+      >
+      </app-base-table>
+    </div>
+  </div>
+  
+  <ng-template
+    #customDataTemplate
+    let-dataRow
+    let-cellKey="cellKey"
+    let-cellFormater="cellFormater"
+  >
+  <ng-container *ngIf="cellFormater.templateID">
+    <span (click)="gotoDetail(dataRow[cellKey])"> {{dataRow[cellKey]}}</span>
+  </ng-container>
+  <app-base-status-label
+  *ngIf="!!cellFormater.template"
+  [status]="dataRow[cellKey]"
+  />
+<span *ngIf="cellFormater.date as dateFormat">
+  {{ (dataRow[cellKey] | date: dateFormat) || "-" }}
+</span>
+<span *ngIf="cellFormater.range as dateRange">
+  {{ dataRow[dateRange[0]] | date: "dd/MM/YYYY" }}
+  -
+  {{ dataRow[dateRange[1]] | date: "dd/MM/YYYY" }}
+</span>
+<ng-container *ngIf="cellFormater.tooltip">
+  <span class="nv-text-ellipsis-2">
+    <span
+      nv-popover
+      [nzPopoverContent]="reasonTemplate"
+      nzPopoverOverlayClassName="nv-tooltip__container"
+      [nvValidPopover]="!!dataRow[cellKey]"
+    >
+      {{ dataRow[cellKey] || "-" }}
+    </span>
+    <ng-template #reasonTemplate>
+      <div class="nv-tooltip__content">
+        {{ dataRow[cellKey] }}
+      </div>
+    </ng-template>
+  </span>
+</ng-container>
+  </ng-template>
+  
+  <!-- <app-modal-create-edit-contract
+    (handelSubmit)="refresh()"
+    [filter]="filterSelection"
+    #modalCreateContract
+  /> -->
+  

@@ -3,12 +3,14 @@ import { Injectable, Injector, Optional } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NvMessageService } from '@common-components/base-modal-message/services/nv-message.service';
 import { BehaviorSubject, Observable, ReplaySubject, takeUntil } from 'rxjs';
-import { DataListRequestPayload, FilterComparison, TableDataCell } from 'src/app/models/base-data-list';
+import { DataListRequestPayload, FilterComparison, ProcessFlowModel, TableDataCell } from 'src/app/models/base-data-list';
+import { ResultModel } from 'src/app/pages/pricingManagement/tariff/models';
+import { TariffErrorCode } from 'src/app/pages/pricingManagement/tariff/tariff.const';
 
 @Injectable({
     providedIn: 'root'
   })
-export abstract class TariffDataListService<T> {
+export abstract class BaseDataListService<T> {
     protected readonly DEFAULT_DEBOUNCE_SECONDS = 0 * 1000;
 
     protected pageIndexNumber: number = 1;
@@ -31,6 +33,8 @@ export abstract class TariffDataListService<T> {
     public pageIndex$: Observable<number> = this.subjectPageIndex.asObservable();
     public pageSize$: Observable<number> = this.subjectPageSize.asObservable();
     public searchText$: Observable<string> =this.subjectSearchText.asObservable();
+
+    private subjectProcessFlows = new BehaviorSubject<Array<ProcessFlowModel>>(      []    );
 
   // Filter && Search && Pagination
     filter: Array<any> = [];
@@ -125,5 +129,92 @@ export abstract class TariffDataListService<T> {
         this.subjectTotalItem.next(totalItem);
       }
 
+      protected checkErrorAPI(error: ResultModel<null>): void {
+        const { errorCode, errorMessage } = error;
+        if (errorCode === TariffErrorCode.AlreadyHaveTariffInProcess) {
+          this.messageService.showErrorMessage({
+            content: errorMessage,
+            buttons: [
+              { label: 'Close' },
+              {
+                label: 'Back to list',
+                class: 'base-button--primary',
+                command: (close) => {
+                  close();
+                  this.router.navigate(['../'], {
+                    relativeTo: this.activatedRoute
+                  });
+                }
+              }
+            ]
+          });
+          return;
+        }
+        if (errorCode === TariffErrorCode.NotFound) {
+          this.messageService.showNoDataMessage({
+            content: errorMessage,
+            hasCloseIcon: false,
+            buttons: [
+              {
+                label: 'Back to list',
+                class: 'base-button--primary',
+                command: (close) => {
+                  close();
+                  this.router.navigate(['../'], {
+                    relativeTo: this.activatedRoute
+                  });
+                }
+              }
+            ]
+          });
+          return;
+        }
+        if (errorCode === TariffErrorCode.AccessDeny) {
+          this.messageService.showForbiddenMessage({
+            content: errorMessage,
+            hasCloseIcon: false,
+            buttons: [
+              {
+                label: 'Back to list',
+                class: 'base-button--primary',
+                command: (close) => {
+                  close();
+                  this.router.navigate(['../'], {
+                    relativeTo: this.activatedRoute
+                  });
+                }
+              }
+            ]
+          });
+          return;
+        }
+        if (errorCode === TariffErrorCode.NotFoundCostData) {
+          this.messageService.showNoDataMessage({
+            content: errorMessage,
+            hasCloseIcon: false,
+            buttons: [
+              {
+                label: 'Back to list',
+                class: 'base-button--primary',
+                command: (close) => {
+                  close();
+                  this.router.navigate(['../'], {
+                    relativeTo: this.activatedRoute
+                  });
+                }
+              }
+            ]
+          });
+          return;
+        }
+        this.messageService.showErrorMessage({ content: errorMessage });
+        return;
+      }
+
+      protected setProcessFlows(processFlows: Array<ProcessFlowModel> = []): void {
+        this.subjectProcessFlows.next(processFlows);
+      }
       
 }
+
+     

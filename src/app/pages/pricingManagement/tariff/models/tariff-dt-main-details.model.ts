@@ -1,0 +1,72 @@
+export interface TariffDTMainDetail {
+    tariffId: string;
+    tariffCode: string;
+    items: TariffDTMainDetailItem[] | [];
+    totalItems: number;
+    status: string;
+  }
+  
+  export interface TariffDTMainDetailItem {
+    id: string;
+    status: string;
+    remark: any;
+    markAsRejected: boolean;
+    annexLink: string;
+    modeOfTransportCode: string;
+    modeOfTransportNameEN: string;
+    modeOfTransportNameVN: string;
+    uoMOfTransportCode: string;
+    uoMOfTransportNameEN: string;
+    uoMOfTransportNameVN: string;
+    chargeCode: any;
+    chargeNameEN: any;
+    chargeNameVN: any;
+    additionalRequest: string;
+    railServiceType: string;
+    airlineCarrierIATA: string;
+    airlineCarrierName: any;
+    originProvinceCode: string;
+    originProvinceNameEN: string;
+    originProvinceNameVN: string;
+    originDistrictId: number;
+    originDistrictNameEN: string;
+    originDistrictNameVN: string;
+    destinationProvinceCode: string;
+    destinationProvinceNameEN: string;
+    destinationProvinceNameVN: string;
+    destinationDistrictId: number;
+    destinationDistrictNameEN: string;
+    destinationDistrictNameVN: string;
+    originPortType: any;
+    originPortId: number;
+    originPortCode: any;
+    originPortNameEN: any;
+    originPortNameVN: any;
+    destinationPortType: any;
+    destinationPortId: number;
+    destinationPortCode: any;
+    destinationPortNameEN: any;
+    destinationPortNameVN: any;
+    volumeRangePerMonthUoM: string;
+    volumeRangePerMonthName: string;
+    volumeRangePerUoMUoM: string;
+    volumeRangePerUoMName: string;
+    cost: number;
+    currency: string;
+    leadTime: string;
+    capacity: number;
+    marketRate: number;
+    max: number;
+    min: number;
+    differentMax: number;
+    differentMin: number;
+    costAverage: number;
+    newRate: number;
+    markup: number;
+    flat: number;
+    tariffId: string;
+    tariffCode: string;
+    productKey: string;
+    processAction: number;
+  }
+  

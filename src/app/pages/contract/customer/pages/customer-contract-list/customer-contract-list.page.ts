@@ -40,7 +40,7 @@ export class CustomerContractListPage extends AbsBaseDataListComponent<any> {
     timer(100)
       .pipe(take(1))
       .subscribe(() => {
-        this.tableHeight = Utils.getTableHeight(this.el.nativeElement);
+       this.tableHeight = Utils.getTableHeight(this.el.nativeElement);
 
         Utils.setTableHeight(this.el.nativeElement, this.tableHeight - 62);
       });

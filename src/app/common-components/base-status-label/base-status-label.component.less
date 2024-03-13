@@ -1,0 +1,51 @@
+@status-font-size: 12px;
+@status-line-height: 16px;
+
+.nv-base-status-label {
+  display: inline-block;
+  font-size: @status-font-size;
+  line-height: @status-line-height;
+  border-radius: 8px;
+  padding: 4px 8px;
+
+  &--active {
+    color: var(--nv-green-400);
+    background-color: var(--nv-green-100-50, --nv-green-100);
+  }
+  &--approved {
+    color: var(--nv-blue-400);
+    background-color: var(--nv-blue-100-50, --nv-blue-100);
+  }
+  &--amending {
+    color: var(--nv-orange-400);
+    background-color: var(--nv-orange-100-50, --nv-orange-100);
+  }
+  &--amended {
+    color: var(--nv-orange-400);
+    background-color: var(--nv-orange-100, --nv-orange-100);
+  }
+  &--inprogress {
+    color: var(--nv-orange-400);
+    background-color: var(--nv-yellow-100-50, --nv-yellow-100);
+  }
+  &--inactive {
+    color: var(--nv-neutral-600);
+    background-color: var(--nv-neutral-100, --nv-neutral-100);
+  }
+  &--decline {
+    color: var(--nv-red-400);
+    background-color: var(--nv-red-100-50, --nv-red-100);
+  }
+  &--draft {
+    color: var(--nv-neutral-600);
+    background-color: var(--nv-neutral-300-50, --nv-neutral-300);
+  }
+  &--pending-approval {
+    color: var(--nv-violet-400);
+    background-color: var(--nv-violet-100-50, --nv-violet-100);
+  }
+  &--amending-internal {
+    color: var(--nv-orange-400);
+    background-color: var(--nv-orange-100-50, --nv-orange-100);
+  }
+}
