@@ -44,6 +44,9 @@ import { BaseDirectiveModule } from '@directives/directives.module';
 import { DomesticTransportationComponent } from './domestic-transportation.component';
 import { SmcPage } from './smc/smc.page';
 import { BaseStatusLabelModule } from '@common-components/base-status-label/base-status-label.module';
+import { DeatailSmcComponent } from './detail/smc/detail-smc.component';
+import { BaseHeaderModule } from '@common-components/base-header/base-header.module';
+import { BaseApprovalProcessModule } from '../../components/base-approval-process/base-approval-process.module';
 
 const NZ_MODULE = [
   NzBreadCrumbModule,
@@ -92,12 +95,14 @@ const BASE_MODULE = [
   BaseModalModule,
   BaseTooltipLengthModule,
   BaseDatePickerModule, 
-  BaseStatusLabelModule
+  BaseStatusLabelModule,
+  BaseHeaderModule,
+  BaseApprovalProcessModule
 ];
 
 const COMMON_COMPONENTS = [
-  DomesticTransportationComponent
-  
+  DomesticTransportationComponent   ,
+  DeatailSmcComponent
 ];
 
 @NgModule({

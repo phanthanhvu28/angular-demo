@@ -1,0 +1,41 @@
+.base-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  
+    &__left {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      row-gap: 8px;
+  
+      &-icon {
+        display: flex;
+        cursor: pointer;
+        color: #1a1a1a;
+        margin-right: 8px;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+      &-title {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 28px;
+        color: #1a1a1a;
+        margin-right: 8px;
+        word-break: break-word;
+      }
+    }
+  
+    &__right {
+      display: flex;
+    }
+  
+    @media (min-width: 1024px) {
+      flex-wrap: nowrap;
+    }
+  }
+  

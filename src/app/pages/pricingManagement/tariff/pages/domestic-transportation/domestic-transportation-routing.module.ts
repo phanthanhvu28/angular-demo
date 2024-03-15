@@ -4,7 +4,7 @@ import { DomesticTransportationComponent } from './domestic-transportation.compo
 import { SmcPage } from './smc/smc.page';
 import { VasPage } from './vas/vas.page';
 import { BlcPage } from './blc/blc.page';
-import { SmcComponent } from './detail/smc/smc.component';
+import { DeatailSmcComponent } from './detail/smc/detail-smc.component';
 //import { CreatereGuard } from 'src/app/guard/guards/is-createre.guard';
 
 const routes: Routes = [
@@ -41,8 +41,8 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'smc/:id',
-    component: SmcComponent,
+    path: 'smc/:tariffCode',
+    component: DeatailSmcComponent,
     data: {
       title: 'smc'
     }

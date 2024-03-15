@@ -91,7 +91,7 @@ export abstract class AbsBaseDataListComponent<T> {
       }
 
       protected setTableHeight(currentEl: HTMLElement): void {
-        //this.tableHeight = Utils.getTableHeight(currentEl);
+        this.tableHeight = Utils.getTableHeight(currentEl);
         Utils.setTableHeight(currentEl, this.tableHeight);
       }
 

@@ -1,0 +1,79 @@
+<div class="base-approval-process">
+    <div
+      class="base-approval-process__title nv-body-16-semibold nv-text-neutral-700"
+    >
+      {{ title }}
+    </div>
+  
+    <div class="nv-flex nv-items-center nv-flex-wrap nv-gap-y-16">
+      <ng-container
+        *ngFor="let user of list; let indexUser = index; let isLastUser = last"
+      >
+        <div
+          class="nv-flex nv-items-center nv-flex-wrap nv-md-gap-y-0 nv-gap-y-8"
+        >
+          <div *ngIf="isOpenFull" class="nv-mr-8">
+            <nz-avatar
+              nzIcon="user"
+              [nzSize]="36"
+              [nzSrc]="user.avatarUrl"
+            ></nz-avatar>
+          </div>
+          <div class="nv-mr-8" [class.nv-mr-16]="isOpenFull">
+            <div class="nv-body-12-regular nv-text-neutral-700">
+              {{ user.name }}
+              <span
+                *ngIf="user.status"
+                [class]="
+                  'nv-body-12-semibold nv-text-neutral-400 nv-ml-4 ' +
+                  classStatus[user.status]
+                "
+                >{{ classText[user.status] }}
+              </span>
+            </div>
+            <div
+              *ngIf="isOpenFull"
+              class="nv-body-10-italic nv-text-neutral-400 nv-mt-2 nv-mb-4"
+            >
+              {{ user.role }}
+            </div>
+            <div *ngIf="isOpenFull && user.date" class="nv-flex nv-flex-wrap">
+              <div class="nv-mr-4 nv-h-16">
+                <app-icon-check-circle
+                  *ngIf="user.isComplete; else elseNotComplete"
+                  class="nv-flex nv-text-blue-400"
+                ></app-icon-check-circle>
+                <ng-template #elseNotComplete>
+                  <app-icon-calendar
+                    class="nv-flex nv-text-neutral-400"
+                  ></app-icon-calendar
+                ></ng-template>
+              </div>
+              <div class="nv-body-12-regular nv-text-neutral-400">
+                {{ user.date }}
+              </div>
+            </div>
+          </div>
+          <div
+            *ngIf="!isLastUser"
+            class="nv-text-neutral-300 nv-mr-8"
+            [class.nv-mr-16]="isOpenFull"
+          >
+            <app-icon-double-right class="nv-flex"></app-icon-double-right>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  
+    <div class="nv-pointer nv-text-primary-500" (click)="toggleOpenFull()">
+      <app-icon-shrink
+        *ngIf="isOpenFull; else elseIcon"
+        class="nv-flex"
+      ></app-icon-shrink>
+  
+      <ng-template #elseIcon>
+        <app-icon-arrows-alt class="nv-flex"></app-icon-arrows-alt>
+      </ng-template>
+    </div>
+  </div>
+  

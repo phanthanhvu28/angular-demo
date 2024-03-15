@@ -50,10 +50,10 @@ export class SmcPage extends AbsBaseDataListComponent<DTTariffMains>{
       });
   }
 
-  public gotoDetail(id): void {
+  public gotoDetail(tariffCode): void {
    // const { tariffCode } = dataRow;
 
-    this.router.navigate(['./', id], {
+    this.router.navigate(['./', tariffCode], {
       relativeTo: this.route
     });
   }

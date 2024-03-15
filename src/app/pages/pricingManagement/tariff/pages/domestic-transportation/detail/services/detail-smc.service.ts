@@ -38,7 +38,7 @@ import { TariffSmcApi } from '../../../../api';
 @Injectable({
   providedIn: 'root'
 })
-export class TransportDetailTariffService extends TariffDataItemService<TariffDTMainDetailItem> {
+export class TransportDetailTariffService extends TariffDataItemService<TariffDTMainDetailItem> {  
   private subjectTariffItemStatus = new BehaviorSubject<string>('');
   private subjectTariffItemData = new BehaviorSubject<TariffDetailResponseData>(
     null
@@ -88,7 +88,7 @@ export class TransportDetailTariffService extends TariffDataItemService<TariffDT
         this.setDataItems(this.transformDataItem([...res.items]));
         this.setTotalItem(res.totalItems);
       });
-  }
+  }  
 
   public changeMarkupsMultiple(
     tariffId: string,

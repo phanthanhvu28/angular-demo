@@ -30,7 +30,9 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
 // import { RejectedItemTableComponent } from './components/reject-record-table/reject-record-table.component';
 // import { DetailRoutingModule } from './detail-routing.module';
 // import { DetailComponent } from './detail.component';
-import { SmcComponent } from './smc/smc.component';
+import { DeatailSmcComponent } from './smc/detail-smc.component';
+import { BaseHeaderModule } from '@common-components/base-header/base-header.module';
+import { BaseApprovalProcessModule } from '../../../components/base-approval-process/base-approval-process.module';
 
 const NZ_MODULE = [
   NzFormModule,
@@ -39,7 +41,7 @@ const NZ_MODULE = [
   NzPopoverModule
 ];
 const COMMON_COMPONENT_MODULES = [
- // BaseHeaderModule,
+ BaseHeaderModule,
   BaseButtonModule,
 //   BaseSubheaderModule,
 //   ModalChangePercentMarkupModule,
@@ -48,7 +50,7 @@ const COMMON_COMPONENT_MODULES = [
   BaseTableModule,
   //ModalFilterNewModule,
   BaseStatusLabelModule,
-  //BaseApprovalProcessModule,
+  BaseApprovalProcessModule,
   BaseInputModule,
   BaseInputNumberModule,
   BaseCheckBoxModule,
@@ -62,7 +64,7 @@ const COMMON_COMPONENT_MODULES = [
 
 @NgModule({
   declarations: [
-    SmcComponent,
+    //DeatailSmcComponent,
    // RejectedItemTableComponent,
     //ApprovedItemTableComponent
   ],

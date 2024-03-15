@@ -31,6 +31,14 @@ import { IconTrashComponent } from './icon-trash/icon-trash.component';
 import { IconDownloadComponent } from './icon-download/icon-download.component';
 import { IconExclamationCircleComponent } from './icon-exclamation-circle/icon-exclamation-circle.component';
 import { IconPushpinComponent } from './icon-pushpin/icon-pushpin.component';
+import { IconReuseMarkupComponent } from './icon-reuse-markup/icon-reuse-markup.component';
+import { IconChangeMarkupComponent } from './icon-change-markup/icon-change-markup.component';
+import { IconCheckCircleComponent } from './icon-check-circle/icon-check-circle.component';
+import { IconStopComponent } from './icon-stop/icon-stop.component';
+import { IconCalendarComponent } from './icon-calendar/icon-calendar.component';
+import { IconDoubleRightComponent } from './icon-double-right/icon-double-right.component';
+import { IconShrinkComponent } from './icon-shrink/icon-shrink.component';
+import { IconArrowsAltComponent } from './icon-arrows-alt/icon-arrows-alt.component';
 
 
 const ICONS_PROVIDER = [
@@ -64,7 +72,15 @@ const ICONS_PROVIDER = [
     IconTrashComponent,
     IconDownloadComponent,
     IconExclamationCircleComponent,
-    IconPushpinComponent
+    IconPushpinComponent,
+    IconReuseMarkupComponent,
+    IconChangeMarkupComponent,
+    IconCheckCircleComponent,
+    IconStopComponent,
+    IconCalendarComponent,
+    IconDoubleRightComponent,
+    IconShrinkComponent,
+    IconArrowsAltComponent
 ];
 
 @NgModule({

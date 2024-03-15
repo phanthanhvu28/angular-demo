@@ -1,0 +1,286 @@
+<div class="page-wrapper nv-domestic-transportation-detail">
+    <div
+      [class.nv-domestic-transportation-detail__background-white]="
+        (currentTariffStatus$ | async) !== 'Draft'
+      "
+    >
+      <div class="nv-domestic-transportation-detail__header nv-mb-10">
+        <app-base-header
+          [hasIconBack]="true"
+          [hasTitle]="true"
+          [title]="tariffCode"
+          (onClickIconBack)="onBack()"
+        >
+          <div nv-left class="nv-flex nv-items-center nv-flex-wrap">
+            <app-base-status-label
+              [status]="currentTariffStatus$ | async"
+              class="nv-mr-8"
+            />
+            <div
+              *ngIf="currentTariffItemData$ | async as tariffItemData"
+              class="nv-body-14-regular nv-text-neutral-700"
+            >
+              {{ tariffItemData.validFrom | date: "dd/MM/yyyy" }} -
+              {{ tariffItemData.validTo | date: "dd/MM/yyyy" }}
+            </div>
+          </div>
+          <div nv-right class="nv-flex nv-flex-wrap nv-gap-16">
+            <app-base-button className="base-button--space" (click)="onExport()">
+              Export
+            </app-base-button>
+            <app-base-button
+              *ngIf="!currentAction.isViewer && !currentAction.isViewerInProcess"
+              className="base-button--primary base-button--space"
+              (click)="onSubmit()"
+            >
+              Submit
+            </app-base-button>
+          </div>
+        </app-base-header>
+      </div>
+  
+      <div
+        *ngIf="
+          (currentTariffStatus$ | async) !== 'Draft';
+          else elseSubheader
+        "
+        class="nv-domestic-transportation-detail__approval-process"
+      >
+        <app-base-approval-process
+          title="Approval Process"
+          [list]="listApprovalProcess"
+          (onTogglePanel)="updateTableHeight($event)"
+        />
+      </div>
+  
+      <ng-template #elseSubheader>
+        <div class="nv-domestic-transportation-detail__subheader">
+          <!-- <app-base-subheader>
+            <div nv-left class="nv-flex nv-items-center">
+              <div class="nv-body-12-regular nv-text-neutral-700 nv-mr-8">
+                Valid Date
+              </div>
+              <form nz-form [formGroup]="formDate" class="nv-flex nv-flex-wrap">
+                <app-base-date-picker
+                  size="xs"
+                  id="validFrom"
+                  formControlName="validFrom"
+                  class="nv-mr-4 nv-date-picker-custom"
+                  [nzDisabled]="true"
+                >
+                </app-base-date-picker>
+                <app-base-date-picker
+                  size="xs"
+                  id="validTo"
+                  formControlName="validTo"
+                  class="nv-date-picker-custom"
+                  [disabledDate]="formDate.controls.validFrom.value"
+                >
+                </app-base-date-picker>
+              </form>
+            </div>
+            <div nv-right>
+              <app-base-alert-flag [list]="listAlertFlag" />
+            </div>
+          </app-base-subheader> -->
+        </div>
+      </ng-template>
+    </div>
+  
+    <div
+      class="nv-domestic-transportation-detail__table"
+      id="js-dynamic-table-height"
+      [class.nv-d-none]="levelResetRejected >= 0"
+    >
+      <app-base-table
+        nzShowSizeChanger
+        [isFiltering]="!!filterData.length"
+        [nvNavConfig]="nvNavConfig"
+        [nzColumns]="dataItemCells$ | async"
+        [nzLoading]="loading$ | async"
+        [nzData]="dataItems$ | async"
+        [nzTotal]="totalItem$ | async"
+        [nzPageIndex]="pageIndex$ | async"
+        [nzPageSize]="pageSize$ | async"
+        [nzFrontPagination]="false"
+        [nzBodyRender]="customDataTemplate"
+        [nzScroll]="{ y: (tableHeight || 0) + 'px' }"
+        (nzPageIndexChange)="changePageIndex($event)"
+        (nzPageSizeChange)="changePageSize($event)"
+        (nzSortOrderChange)="onSortOrderChange($event)"
+        (onCheckedChange)="onSelectedItem()"        
+      >
+        <div custom-content-table-nav>
+          <ng-container *ngIf="currentAction.isCreatere">
+            <app-base-button
+              className="base-button--text nv-body-12-regular nv-text-neutral-700 btn-filter-group"
+              (click)="onClickReuseMarkup()"
+            >
+              Reuse % markup
+              <app-icon-reuse-markup class="nv-d-inherit" />
+            </app-base-button>
+            <app-base-button
+              className="base-button--text nv-body-12-regular nv-text-neutral-700 btn-filter-group"
+              (click)="onClickOpenModalChangePercentMarkup()"
+            >
+              Change % markup
+              <app-icon-change-markup class="nv-d-inherit" />
+            </app-base-button>
+          </ng-container>
+          <div
+            *ngIf="currentAction.isApprover && !isApproved"
+            class="wrapper-approver-actions"
+          >
+            <app-base-button
+              className="base-button--text nv-body-12-semibold nv-text-blue-400 btn-filter-group"
+              (click)="onClickApprove()"
+              [disabled]="!isSelectedItem"
+            >
+              <app-icon-check-circle class="nv-d-inherit" />
+            </app-base-button>
+            <app-base-button
+              className="base-button--text nv-body-12-semibold nv-text-red-400 btn-filter-group"
+              (click)="onClickDecline()"
+              [disabled]="!isSelectedItem"
+            >
+              <app-icon-stop class="nv-d-inherit" />
+            </app-base-button>
+            <app-base-button
+              className="base-button--text nv-body-12-semibold nv-text-blue-400 btn-filter-group"
+              (click)="onClickApprove(true)"
+            >
+              Approve All
+            </app-base-button>
+            <app-base-button
+              className="base-button--text nv-body-12-semibold nv-text-red-400 btn-filter-group"
+              (click)="onClickDecline(true)"
+            >
+              Decline All
+            </app-base-button>
+          </div>
+        </div>
+        <ng-template
+          #customDataTemplate
+          let-dataRow
+          let-cellKey="cellKey"
+          let-cellFormater="cellFormater"
+        >
+          <app-base-input-number
+            *ngIf="cellFormater.markup"
+            size="xs"
+            [nzMin]="0"
+            (onBlur)="onChangeMarkup($event, dataRow)"
+            [(ngModel)]="dataRow[cellKey]"
+          />
+          <app-base-input-number
+            *ngIf="cellFormater.flat"
+            size="xs"
+            [nzMin]="0"
+            (onBlur)="onChangeFlat($event, dataRow)"
+            [(ngModel)]="dataRow[cellKey]"
+          />
+          <ng-container *ngIf="cellFormater.decimalNumber as decimalOptions">
+            {{ dataRow[cellKey]  }}
+          </ng-container>
+          <ng-container *ngIf="cellFormater.numberFormat">
+            {{ dataRow[cellKey] }}
+          </ng-container>
+          <!-- <app-tariff-reason-tooltip
+            *ngIf="cellFormater.tooltip"
+            [nvValue]="dataRow[cellKey]"
+          /> -->
+          <div      
+          *ngIf="
+            cellFormater.status &&
+            dataRow.processAction === ProcessActions.approval
+          "    
+            class="wrapper-icon wrapper-icon-approved nv-body-12-semibold"
+          >
+            <app-icon-check-circle class="nv-d-inherit" />
+          </div>
+          <div    
+          *ngIf="
+            cellFormater.status &&
+            dataRow.processAction === ProcessActions.decline
+          "        
+            class="wrapper-icon wrapper-icon-decline nv-body-12-semibold"
+          >
+            <app-icon-stop class="nv-d-inherit" />
+          </div>
+          <div            
+          *ngIf="cellFormater.actionGroup"
+            class="wrapper-approver-actions-td"
+          >
+            <app-base-button
+              className="base-button--text nv-body-12-semibold nv-text-neutral-400 nv-bg-transparent"
+              (click)="onClickApproveItem(dataRow)"
+            >
+              <app-icon-check-circle
+                class="nv-d-inherit"
+                [class.nv-text-primary-400]="     
+                dataRow.processAction === ProcessActions.approval             
+                "
+              />
+            </app-base-button>
+            <nz-divider nzType="vertical" />
+            <app-base-button
+              className="base-button--text nv-body-12-semibold nv-text-neutral-400 nv-bg-transparent"
+              (click)="onClickDeclineItem(dataRow)"
+            >
+              <app-icon-stop
+                class="nv-d-inherit"
+                [class.nv-text-red-400]="    
+                dataRow.processAction === ProcessActions.decline             
+                "
+              />
+            </app-base-button>
+          </div>
+        </ng-template>
+      </app-base-table>
+    </div>
+    <div
+      class="nv-domestic-transportation-detail__table"
+      id="js-wrapper-multi-table"      
+    >
+      <!-- <app-reject-record-table />
+      <app-approve-record-table /> -->
+    </div>
+  </div>
+  
+  <div
+   
+    class="nv-domestic-transportation-detail__filter-modal"
+  >
+    <!-- <app-modal-filter-new
+      [(isVisibleModalFilter)]="isVisibleModalFilter"
+      [isNew]="false"
+      [isApprover]="currentAction?.isApprover"
+      (formFilter)="setFilterData($event)"
+    /> -->
+  </div>
+  
+  <div
+   
+    class="nv-domestic-transportation-detail__change-percent-markup-modal"
+  >
+    <!-- <app-modal-change-percent-markup
+      [(isVisibleModalChangePercentMarkup)]="isVisibleModalChangePercentMarkup"
+      [isNew]="false"
+      (onConfirm)="getTableData()"
+      [tariffId]="(currentTariffItemData$ | async)?.tariffId"
+    /> -->
+  </div>
+  
+  <!-- <div class="nv-domestic-transportation-detail__decline-reason-modal">
+    <app-modal-decline-reason
+      [(isVisible)]="isVisibleDeclineReasonModal"
+      (onConfirm)="onClickConfirmDecline($event)"
+    />
+  </div> -->
+  
+  <!-- <app-modal-view-change-result
+    *ngIf="isVisibleModalViewChangeResult"
+    [(isVisible)]="isVisibleModalViewChangeResult"
+    [nzData]="listViewChangeResult"
+  ></app-modal-view-change-result> -->
+  
