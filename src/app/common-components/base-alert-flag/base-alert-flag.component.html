@@ -1,0 +1,46 @@
+<div
+  *ngIf="list.length > 0"
+  class="nv-base-alert-flag"
+  [style]="{
+    color: textColors[type] ?? type,
+    backgroundColor: backgroundColors[type] ?? type
+  }"
+>
+  <div
+    class="nv-base-alert-flag__list"
+    [ngClass]="{ 'nv-base-alert-flag__list--hidden': activated === false }"
+  >
+    <div
+      *ngFor="let item of list; let isLast = last"
+      class="nv-base-alert-flag__item"
+    >
+      <div class="nv-base-alert-flag__item-label">
+        {{ item }}
+      </div>
+      <div
+        *ngIf="!isLast"
+        class="nv-base-alert-flag__item-border"
+        [style]="'background-color: ' + borderColors[type] ?? type"
+      ></div>
+    </div>
+  </div>
+
+  <div
+    class="nv-base-alert-flag__icon"
+    [ngClass]="{ 'nv-base-alert-flag__icon--activated': activated === false }"
+    (click)="activated = !activated"
+  >
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8.37872 7.64781L3.81979 1.82281C3.76622 1.75317 3.68229 1.71388 3.59479 1.71388H2.21444C2.09479 1.71388 2.02872 1.85138 2.10194 1.94424L6.84122 7.9996L2.10194 14.055C2.08545 14.076 2.07522 14.1013 2.07241 14.1279C2.06961 14.1545 2.07435 14.1813 2.08608 14.2053C2.09782 14.2294 2.11608 14.2496 2.13878 14.2638C2.16147 14.2779 2.18769 14.2854 2.21444 14.2853H3.59479C3.68229 14.2853 3.76622 14.2442 3.81979 14.1764L8.37872 8.35317C8.54122 8.14424 8.54122 7.85495 8.37872 7.64781ZM13.8073 7.64781L9.24836 1.82281C9.19479 1.75317 9.11086 1.71388 9.02336 1.71388H7.64301C7.52336 1.71388 7.45729 1.85138 7.53051 1.94424L12.2698 7.9996L7.53051 14.055C7.51402 14.076 7.50379 14.1013 7.50098 14.1279C7.49818 14.1545 7.50292 14.1813 7.51465 14.2053C7.52639 14.2294 7.54465 14.2496 7.56735 14.2638C7.59004 14.2779 7.61626 14.2854 7.64301 14.2853H9.02336C9.11086 14.2853 9.19479 14.2442 9.24836 14.1764L13.8073 8.35317C13.9698 8.14424 13.9698 7.85495 13.8073 7.64781Z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+</div>

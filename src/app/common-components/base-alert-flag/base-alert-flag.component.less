@@ -1,0 +1,50 @@
+.nv-base-alert-flag {
+    padding: 4px 16px;
+    min-height: 24px;
+  
+    display: flex;
+    align-items: center;
+  
+    background: #dbedff;
+    color: #0073e5;
+    border-left: 2px solid;
+    border-radius: 4px;
+  
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      margin-right: 8px;
+      &--hidden {
+        display: none;
+      }
+    }
+  
+    &__item {
+      display: flex;
+    }
+    &__item-label {
+      font-weight: 400;
+      font-size: 10px;
+    }
+    &__item-border {
+      height: 16px;
+      width: 1px;
+      background-color: #94c9ff;
+      margin: 0 8px;
+    }
+  
+    &__icon {
+      cursor: pointer;
+      display: flex;
+      transition: 500ms;
+  
+      &:hover {
+        opacity: 0.8;
+      }
+  
+      &--activated {
+        rotate: 180deg;
+      }
+    }
+  }
+  

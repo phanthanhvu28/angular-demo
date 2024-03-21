@@ -33,8 +33,11 @@ export abstract class BaseDataListService<T> {
     public pageIndex$: Observable<number> = this.subjectPageIndex.asObservable();
     public pageSize$: Observable<number> = this.subjectPageSize.asObservable();
     public searchText$: Observable<string> =this.subjectSearchText.asObservable();
+   
 
     private subjectProcessFlows = new BehaviorSubject<Array<ProcessFlowModel>>(      []    );
+
+    public processFlows$: Observable<Array<ProcessFlowModel>> = this.subjectProcessFlows.asObservable();
 
   // Filter && Search && Pagination
     filter: Array<any> = [];

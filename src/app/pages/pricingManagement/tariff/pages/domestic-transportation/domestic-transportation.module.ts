@@ -47,6 +47,9 @@ import { BaseStatusLabelModule } from '@common-components/base-status-label/base
 import { DeatailSmcComponent } from './detail/smc/detail-smc.component';
 import { BaseHeaderModule } from '@common-components/base-header/base-header.module';
 import { BaseApprovalProcessModule } from '../../components/base-approval-process/base-approval-process.module';
+import { BaseSubheaderModule } from '@common-components/base-subheader/base-subheader.module';
+import { BaseAlertFlagModule } from '@common-components/base-alert-flag/base-alert-flag.module';
+import { ModalDeclineReasonModule } from '../../components/modal-decline-reason/modal-decline-reason.module';
 
 const NZ_MODULE = [
   NzBreadCrumbModule,
@@ -97,7 +100,12 @@ const BASE_MODULE = [
   BaseDatePickerModule, 
   BaseStatusLabelModule,
   BaseHeaderModule,
-  BaseApprovalProcessModule
+  BaseApprovalProcessModule,
+  BaseSubheaderModule,
+  BaseAlertFlagModule,
+  ModalDeclineReasonModule
+
+  
 ];
 
 const COMMON_COMPONENTS = [

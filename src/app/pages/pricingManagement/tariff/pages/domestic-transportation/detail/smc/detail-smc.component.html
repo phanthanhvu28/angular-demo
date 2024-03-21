@@ -40,10 +40,7 @@
       </div>
   
       <div
-        *ngIf="
-          (currentTariffStatus$ | async) !== 'Draft';
-          else elseSubheader
-        "
+       
         class="nv-domestic-transportation-detail__approval-process"
       >
         <app-base-approval-process
@@ -53,9 +50,9 @@
         />
       </div>
   
-      <ng-template #elseSubheader>
+      <ng-template>
         <div class="nv-domestic-transportation-detail__subheader">
-          <!-- <app-base-subheader>
+          <app-base-subheader>
             <div nv-left class="nv-flex nv-items-center">
               <div class="nv-body-12-regular nv-text-neutral-700 nv-mr-8">
                 Valid Date
@@ -82,7 +79,7 @@
             <div nv-right>
               <app-base-alert-flag [list]="listAlertFlag" />
             </div>
-          </app-base-subheader> -->
+          </app-base-subheader>
         </div>
       </ng-template>
     </div>
@@ -128,7 +125,7 @@
             </app-base-button>
           </ng-container>
           <div
-            *ngIf="currentAction.isApprover && !isApproved"
+            *ngIf="isApproved"
             class="wrapper-approver-actions"
           >
             <app-base-button
@@ -271,12 +268,12 @@
     /> -->
   </div>
   
-  <!-- <div class="nv-domestic-transportation-detail__decline-reason-modal">
+  <div class="nv-domestic-transportation-detail__decline-reason-modal">
     <app-modal-decline-reason
       [(isVisible)]="isVisibleDeclineReasonModal"
       (onConfirm)="onClickConfirmDecline($event)"
     />
-  </div> -->
+  </div>
   
   <!-- <app-modal-view-change-result
     *ngIf="isVisibleModalViewChangeResult"

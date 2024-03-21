@@ -39,6 +39,7 @@ import { IconCalendarComponent } from './icon-calendar/icon-calendar.component';
 import { IconDoubleRightComponent } from './icon-double-right/icon-double-right.component';
 import { IconShrinkComponent } from './icon-shrink/icon-shrink.component';
 import { IconArrowsAltComponent } from './icon-arrows-alt/icon-arrows-alt.component';
+import { IconCheckTickComponent } from './icon-check-tick/icon-check-tick.component';
 
 
 const ICONS_PROVIDER = [
@@ -80,7 +81,8 @@ const ICONS_PROVIDER = [
     IconCalendarComponent,
     IconDoubleRightComponent,
     IconShrinkComponent,
-    IconArrowsAltComponent
+    IconArrowsAltComponent,
+    IconCheckTickComponent
 ];
 
 @NgModule({
