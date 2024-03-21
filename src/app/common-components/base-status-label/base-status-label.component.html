@@ -1,0 +1,15 @@
+<span
+  *ngIf="!custom; else customStatus"
+  class="nv-base-status-label {{ classStatus[status] }} {{ nvMaxWidthClass }}"
+>
+  {{ classText[status] ? classText[status] : status }}
+  <ng-content select="[suffix]"></ng-content>
+</span>
+
+<ng-template #customStatus>
+  <span
+    class="nv-base-status-label {{ custom.className }} {{ nvMaxWidthClass }}"
+  >
+    {{ custom?.text ? custom.text : status }}
+  </span>
+</ng-template>

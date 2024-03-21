@@ -11,7 +11,7 @@
         "VERSION": null
       },
       "TARIFF": {
-        "BASE_URL": "https://opex-dev1.vela.com.vn/tariff-api",
+        "BASE_URL": "http://localhost:5100",
         "PREFIX": "api",
         "VERSION": null
       },

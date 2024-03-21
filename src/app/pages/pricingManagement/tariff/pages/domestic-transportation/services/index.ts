@@ -1,0 +1,1 @@
+export * from './domestic-transportation/tariff.smc.service'

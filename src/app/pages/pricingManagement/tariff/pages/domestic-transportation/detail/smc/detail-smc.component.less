@@ -1,0 +1,68 @@
+.nv-domestic-transportation-detail {
+    &__background-white {
+      margin: -24px -32px 0px -32px;
+      padding: 16px 32px;
+      background-color: var(--nv-white-100);
+    }
+    &__table {
+      padding-top: 16px;
+      .wrapper-approver-actions {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      ::ng-deep .nv-table-wrapper .ant-table-container td {
+        ::ng-deep .nv-input-wrapper .nv-input {
+          height: 28px !important;
+        }
+        .wrapper-approver-actions-td {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          ::ng-deep .base-button {
+            min-width: 36px;
+            padding: 0;
+            border-radius: 1000px;
+            &:hover {
+              background-color: var(--nv-white-100) !important;
+            }
+            svg {
+              height: 20px;
+              width: 20px;
+            }
+          }
+          ::ng-deep .ant-divider-vertical {
+            height: 20px;
+            top: 0;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+  .wrapper-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    height: 24px;
+    width: 24px;
+    border-radius: 1000px;
+    color: var(--nv-white-100);
+    &-approved {
+      background-color: var(--nv-blue-500);
+    }
+    &-decline {
+      background-color: var(--nv-red-500);
+    }
+  }
+  
+  #js-wrapper-multi-table {
+    overflow-y: auto;
+    margin-left: -32px;
+    margin-right: -32px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  

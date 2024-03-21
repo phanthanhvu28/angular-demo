@@ -1,0 +1,37 @@
+.vc-contract {
+    &-tabset {
+      height: auto;
+      background: transparent;
+  
+      ::ng-deep {
+        .ant-tabs-tabpane {
+          display: none;
+          height: 0;
+          padding: 0;
+        }
+      }
+    }
+  
+    &-wrapper {
+      padding: 0 32px;
+      padding-top: 16px;
+      background: transparent;
+    }
+  }
+  ::ng-deep .action-icon-create button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 163px;
+    height: 36px;
+    padding: 8px 12px !important;
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+    &:hover {
+      opacity: 1;
+      background-color: var(--nv-neutral-100);
+    }
+  }
+  

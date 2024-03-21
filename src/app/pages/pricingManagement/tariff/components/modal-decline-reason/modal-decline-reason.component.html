@@ -1,0 +1,61 @@
+<div class="wrapper-decline-reason-modal">
+    <app-base-modal
+      className="nv-modal-decline-reason"
+      [(isVisible)]="isVisible"
+      (isVisibleChange)="onVisibleChange($event)"
+      [size]="480"
+      title="You’re about to decline"
+      [footerDefault]="false"
+    >
+      <div>
+        <form [formGroup]="formGroup">
+          <nz-form-item>
+            <nz-form-control>
+              <nz-textarea-count [nzMaxCharacterCount]="REASON_MAX_LENGTH">
+                <textarea
+                  nz-input
+                  class="nv-text-area"
+                  rows="4"
+                  placeholder="Enter a reason..."
+                  formControlName="declineReason"
+                ></textarea>
+              </nz-textarea-count>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+        <ng-container
+          *ngIf="
+            formGroup.controls?.declineReason.dirty &&
+            formGroup.controls?.declineReason.errors as declineReasonErrors
+          "
+        >
+          <span *ngIf="declineReasonErrors.required" class="nv-input-errors">
+            <span class="error-icon"> </span>
+            The reason can't be empty
+          </span>
+          <span *ngIf="declineReasonErrors.maxLength" class="nv-input-errors">
+            <span class="error-icon"> </span>
+            The max length for reason is
+            {{ declineReasonErrors.maxLength.requiredLength }} characters.
+          </span>
+        </ng-container>
+      </div>
+      <div nv-footer-left></div>
+      <div nv-footer-right>
+        <app-base-button
+          className="base-button base-button--space"
+          (click)="onClickCancelDecline()"
+        >
+          Cancel
+        </app-base-button>
+        <app-base-button
+          className="base-button--primary base-button--space"
+          (click)="onClickConfirmDecline()"
+        >
+          Ok
+          <app-icon-check-tick class="nv-flex"></app-icon-check-tick>
+        </app-base-button>
+      </div>
+    </app-base-modal>
+  </div>
+  

@@ -287,40 +287,40 @@ const routes: Routes = [
     //       }
     //     ]
     //   },
-    //   {
-    //     path: 'pricing-management',
-    //     children: [
-    //       {
-    //         path: '',
-    //         redirectTo: 'tariff',
-    //         pathMatch: 'full'
-    //       },
-    //       {
-    //         path: 'tariff',
-    //         children: [
-    //           {
-    //             path: '',
-    //             loadChildren: () =>
-    //               import(
-    //                 'src/app/pages/pricingManagenment/tariff/tariff.module'
-    //               ).then((m) => m.TariffModule)
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         path: 'pricing',
-    //         component: DashboardComponent
-    //       },
-    //       {
-    //         path: 'market-tariff',
-    //         component: DashboardComponent
-    //       },
-    //       {
-    //         path: 'promotion',
-    //         component: DashboardComponent
-    //       }
-    //     ]
-    //   },
+      {
+        path: 'pricing-management',
+        children: [
+          {
+            path: '',
+            redirectTo: 'tariff',
+            pathMatch: 'full'
+          },
+          {
+            path: 'tariff',
+            children: [
+              {
+                path: '',
+                loadChildren: () =>
+                  import(
+                    'src/app/pages/pricingManagement/tariff/tariff.module'
+                  ).then((m) => m.TariffModule)
+              }
+            ]
+          },
+          // {
+          //   path: 'pricing',
+          //   component: DashboardComponent
+          // },
+          // {
+          //   path: 'market-tariff',
+          //   component: DashboardComponent
+          // },
+          // {
+          //   path: 'promotion',
+          //   component: DashboardComponent
+          // }
+        ]
+      },
     //   {
     //     path: 'quotation',
     //     children: [
