@@ -1,4 +1,4 @@
-import { Component, ElementRef, Optional } from '@angular/core';
+import { Component, ElementRef, Injector, Optional } from '@angular/core';
 
 import {
     Observable,
@@ -41,7 +41,8 @@ export abstract class AbsBaseDataListComponent<T> {
       };
       protected abstract getDataListService(): void;
 
-  constructor(@Optional() protected el: ElementRef) {}
+  constructor(@Optional() protected el: ElementRef,
+  @Optional() injector?: Injector) {}
 
   protected ngOnInit(): void {
     Utils.subscribeEvent('RELOAD_PAGE')
@@ -94,7 +95,9 @@ export abstract class AbsBaseDataListComponent<T> {
         this.tableHeight = Utils.getTableHeight(currentEl);
         Utils.setTableHeight(currentEl, this.tableHeight);
       }
-
+      public handleShowHideCols(cols: Array<TableDataCell>): void {
+        this.currentTabService.setDataItemCells(cols);
+      }
       public setFilterData(value: Array<FilterItem>): void {
         const trimFilterValue = value.map((filterItem) => {
           if (typeof filterItem.fieldValue !== 'string') {

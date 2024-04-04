@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, Injector } from '@angular/core';
 import { AbsBaseDataListComponent } from 'src/app/abstracts/components/base-data-list/base-data-list.component';
 import { UserActionRoleModel } from '../../models/item-action.model';
 import { TariffDetailResponseData } from '../../models/result-list.model';
@@ -15,9 +15,10 @@ export abstract class AbsTariffDataItemsComponent<
   currentAction: UserActionRoleModel = {};
 
   constructor(
-    protected override el: ElementRef    
+    protected override el: ElementRef,
+    protected injector: Injector,
   ) {
-    super(el);
+    super(el,injector);
     this.setTableNavConfig();
     // if (this.authService) {
     //   this.currentUser = this.authService.getCurrentUserParse();

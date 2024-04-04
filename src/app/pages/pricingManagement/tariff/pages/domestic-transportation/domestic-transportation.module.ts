@@ -50,6 +50,12 @@ import { BaseApprovalProcessModule } from '../../components/base-approval-proces
 import { BaseSubheaderModule } from '@common-components/base-subheader/base-subheader.module';
 import { BaseAlertFlagModule } from '@common-components/base-alert-flag/base-alert-flag.module';
 import { ModalDeclineReasonModule } from '../../components/modal-decline-reason/modal-decline-reason.module';
+import { NewTariffSmcComponent } from './new/new.component';
+import { PipesModule } from 'src/app/pipes/pipes.module';
+import { TariffSmcService } from './services';
+import { TransportNewTariffService } from './new/services/transport-new-tariff.service';
+import { TransportDetailTariffService } from './detail/services/detail-smc.service';
+
 
 const NZ_MODULE = [
   NzBreadCrumbModule,
@@ -79,7 +85,7 @@ const NZ_MODULE = [
   NzRadioModule,
   NzUploadModule,
   NzSpinModule,
-  NzEmptyModule
+  NzEmptyModule,
 ];
 
 const BASE_MODULE = [
@@ -103,20 +109,20 @@ const BASE_MODULE = [
   BaseApprovalProcessModule,
   BaseSubheaderModule,
   BaseAlertFlagModule,
-  ModalDeclineReasonModule
-
-  
+  ModalDeclineReasonModule,
+  //PipesModule  
 ];
 
-const COMMON_COMPONENTS = [
-  DomesticTransportationComponent   ,
-  DeatailSmcComponent
+const COMPONENTS = [
+  SmcPage,
+  DomesticTransportationComponent,
+  DeatailSmcComponent  ,
+  NewTariffSmcComponent
 ];
 
 @NgModule({
-  declarations: [
-    SmcPage,
-    ...COMMON_COMPONENTS
+  declarations: [    
+    ...COMPONENTS
   ],
   imports: [
     CommonModule,
@@ -124,11 +130,17 @@ const COMMON_COMPONENTS = [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,    
-     DomesticTransportationRoutingModule,
+    DomesticTransportationRoutingModule,
+   // NewRoutingModule,
      ...BASE_MODULE,
      ...NZ_MODULE
     ],
-  exports: [...COMMON_COMPONENTS],
-  providers: [DatePipe]
+  exports: [...COMPONENTS],
+  providers: [
+    // DatePipe,
+    // TariffSmcService,
+    // TransportNewTariffService,
+    // TransportDetailTariffService
+  ]
 })
 export class DomesticTransportationModule {}

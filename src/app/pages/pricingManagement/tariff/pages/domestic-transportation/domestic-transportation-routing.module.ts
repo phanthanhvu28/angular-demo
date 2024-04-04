@@ -5,6 +5,7 @@ import { SmcPage } from './smc/smc.page';
 import { VasPage } from './vas/vas.page';
 import { BlcPage } from './blc/blc.page';
 import { DeatailSmcComponent } from './detail/smc/detail-smc.component';
+import { NewTariffSmcComponent } from './new/new.component';
 //import { CreatereGuard } from 'src/app/guard/guards/is-createre.guard';
 
 const routes: Routes = [
@@ -39,22 +40,23 @@ const routes: Routes = [
         }
       }
     ]
+  },  
+  {
+    path: 'smc/new',
+    //canActivate: [CreatereGuard],
+    component: NewTariffSmcComponent,
+    //loadChildren: () => import('./new/new.module').then((m) => m.NewModule),
+    data: {
+      title: 'New tariff'
+    }
   },
   {
-    path: 'smc/:tariffCode',
+    path: ':smc/:tariffCode',
     component: DeatailSmcComponent,
     data: {
       title: 'smc'
     }
   },
-  // {
-  //   path: 'annex/:id',
-  //   component: AnnexDetailPage,
-  //   data: {
-  //     title: 'Annex'
-  //   }
-  // },
-
   { path: '**', redirectTo: 'tariff' }
 ];
 

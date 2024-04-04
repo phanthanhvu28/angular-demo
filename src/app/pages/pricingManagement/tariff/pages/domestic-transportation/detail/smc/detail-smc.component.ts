@@ -46,7 +46,7 @@ export class DeatailSmcComponent extends AbsTariffDataItemsComponent<TariffDTMai
   public readonly ProcessActions = ProcessActions;
   constructor(
     el: ElementRef,
-    private injector: Injector,
+    injector: Injector,
     private tariffDetailService: TransportDetailTariffService,
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
@@ -55,7 +55,7 @@ export class DeatailSmcComponent extends AbsTariffDataItemsComponent<TariffDTMai
     private datePipe: DatePipe,
     private asyncPipe: AsyncPipe,
     ){
-    super(el);
+    super(el,injector);
 
     this.activatedRoute.paramMap
       .pipe(takeUntil(this.destroy$))

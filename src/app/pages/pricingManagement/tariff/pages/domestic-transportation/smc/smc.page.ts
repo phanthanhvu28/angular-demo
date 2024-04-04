@@ -1,11 +1,12 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, Injector } from '@angular/core';
 import { AbsBaseDataListComponent } from 'src/app/abstracts/components/base-data-list/base-data-list.component';
 import { DTTariffMains, ItemOptions } from '../../../models';
 import { Observable, take, takeUntil, timer } from 'rxjs';
 import { Utils } from 'src/app/utils/utils';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { TariffSmcService } from '../services';
 import { TableRowHighlightConfig } from '@models/base-data-list';
+import { TransportNewTariffService } from '../new/services/transport-new-tariff.service';
 
 @Component({
   selector: 'app-smc',
@@ -23,11 +24,14 @@ export class SmcPage extends AbsBaseDataListComponent<DTTariffMains>{
   };
   constructor(
     el: ElementRef,
+    private injector: Injector,
     private tariffService: TariffSmcService,
     private router: Router,
     private route: ActivatedRoute    
   ) {
-    super(el);
+    //super(el);
+    super(el,injector);   
+
    // this.setNvConfig();
     // this.contractService.filterSelection$
     //   .pipe(takeUntil(this.destroy$))
@@ -51,9 +55,9 @@ export class SmcPage extends AbsBaseDataListComponent<DTTariffMains>{
   }
 
   public gotoDetail(tariffCode): void {
-   // const { tariffCode } = dataRow;
+    const url = `${tariffCode}`;
 
-    this.router.navigate(['./', tariffCode], {
+    this.router.navigate([url], {
       relativeTo: this.route
     });
   }
@@ -77,6 +81,19 @@ export class SmcPage extends AbsBaseDataListComponent<DTTariffMains>{
 
     //this.contractService.setItemActivateFilter(data.value);
     this.currentTabService.getTableData();
+  }
+  goToNew(): void {
+    console.log("goToNew")
+    const url = `new`;
+    const extras: NavigationExtras = {
+      relativeTo: this.route
+    };
+
+    // if (this.hasTariffActive) {
+    //   extras.queryParams = { hasTariffActive: this.hasTariffActive };
+    // }
+
+    this.router.navigate([url], extras);
   }
 
 }
