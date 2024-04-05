@@ -115,9 +115,10 @@ export class TariffSmcApi {
   }
 
   // NEW TARIFF
-  getTariffTemps(
+  getTariffTemps(    
     payload: DataListRequestPayload = {}
   ): Observable<ResultListModel<TariffDTMainDetailItem>> {
+    console.log("NEW TARIFF URL:",`${baseUrl}/DTTariffMains/temps`)
     return this.httpClient.post<ResultListModel<TariffDTMainDetailItem>>(
       `${baseUrl}/DTTariffMains/temps`,
       payload

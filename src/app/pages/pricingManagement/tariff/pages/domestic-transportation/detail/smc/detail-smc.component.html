@@ -40,7 +40,10 @@
       </div>
   
       <div
-       
+      *ngIf="
+      (currentTariffStatus$ | async | uppercaseFirst) !== 'Approved';
+      else elseSubheader
+    "
         class="nv-domestic-transportation-detail__approval-process"
       >
         <app-base-approval-process
@@ -50,20 +53,20 @@
         />
       </div>
   
-      <ng-template>
-        <div class="nv-domestic-transportation-detail__subheader">
+      <ng-template #elseSubheader>
+        <div class="nv-domestic-transportation-detail__subheader">          
           <app-base-subheader>
             <div nv-left class="nv-flex nv-items-center">
               <div class="nv-body-12-regular nv-text-neutral-700 nv-mr-8">
                 Valid Date
               </div>
-              <form nz-form [formGroup]="formDate" class="nv-flex nv-flex-wrap">
+              <!-- <form nz-form [formGroup]="formDate" class="nv-flex nv-flex-wrap">
                 <app-base-date-picker
                   size="xs"
                   id="validFrom"
                   formControlName="validFrom"
                   class="nv-mr-4 nv-date-picker-custom"
-                  [nzDisabled]="true"
+                  [nzDisabled]="false"
                 >
                 </app-base-date-picker>
                 <app-base-date-picker
@@ -71,10 +74,10 @@
                   id="validTo"
                   formControlName="validTo"
                   class="nv-date-picker-custom"
-                  [disabledDate]="formDate.controls.validFrom.value"
+                  
                 >
                 </app-base-date-picker>
-              </form>
+              </form> -->
             </div>
             <div nv-right>
               <app-base-alert-flag [list]="listAlertFlag" />

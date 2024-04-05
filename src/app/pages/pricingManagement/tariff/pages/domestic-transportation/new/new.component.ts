@@ -19,11 +19,7 @@ import { TransportNewTariffService } from './services/transport-new-tariff.servi
   selector: 'app-new',
   templateUrl: './new.component.html',
   styleUrls: ['./new.component.less'],
-  providers: [
-     TransportNewTariffService,
-    // VasNewTariffService,
-    // BlcNewTariffService
-  ]
+ 
 })
 export class NewTariffSmcComponent extends AbsTariffDataItemsComponent<DTTariffMains> {
   formDate: FormGroup;
@@ -43,7 +39,7 @@ export class NewTariffSmcComponent extends AbsTariffDataItemsComponent<DTTariffM
     injector: Injector,
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private messageService: NvMessageService,
+    //private messageService: NvMessageService,
     private tariffNewService:TransportNewTariffService
   ) {
     super(el,injector);
@@ -54,7 +50,9 @@ export class NewTariffSmcComponent extends AbsTariffDataItemsComponent<DTTariffM
     console.log("new component");
 
   }
-
+  override initial(): void {
+    super.initial();
+  }
   ngAfterViewInit(): void {
     this.currentTabService = this.tariffNewService;
     console.log("ngAfterViewInit");
@@ -113,7 +111,7 @@ export class NewTariffSmcComponent extends AbsTariffDataItemsComponent<DTTariffM
         }
       ]
     };
-    this.messageService.showMessage(messageContent);
+    //this.messageService.showMessage(messageContent);
     function onConfirmSubmit(): void {
       const { validFrom, validTo } = this.formDate.value;
       this.currentTabService
@@ -188,7 +186,6 @@ export class NewTariffSmcComponent extends AbsTariffDataItemsComponent<DTTariffM
    
     this.currentTabService = this.tariffNewService;
     this.newTariffData$ = this.currentTabService.newTariffData$;
-
     console.log("newTariffData==>",this.newTariffData$);
 
     // timer(100)

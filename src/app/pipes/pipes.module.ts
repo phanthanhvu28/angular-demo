@@ -4,6 +4,7 @@ import { ValidDisplayValuePipe } from './validDisplayValue.pipe';
 import { NumberMaxLengthMaskPipe } from './maxlengthInputMask.pipe';
 import { DecimalNumberPipe } from './decimalNumber.pipe';
 import { NumberByCurrencyPipe } from './numberByCurrency.pipe';
+import { UppercaseFirstPipe } from './uppercaseFirst.pipe';
 
 
 const PIPES_MODULE = [
@@ -11,7 +12,8 @@ const PIPES_MODULE = [
   ValidDisplayValuePipe,
   NumberMaxLengthMaskPipe,
   DecimalNumberPipe,
-  NumberByCurrencyPipe  
+  NumberByCurrencyPipe  ,
+  UppercaseFirstPipe
 
 ];
 

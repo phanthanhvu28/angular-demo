@@ -46,10 +46,11 @@ export class TransportNewTariffService extends TariffDataItemService<TariffDTMai
   }
 
   public getTableData(): void {
+    
     this.updateItemMarkupHandler(this.mapItemMarkups).subscribe();
 
     const payload: DataListRequestPayload = this.getPayload();
-
+    console.log("getTableData_payload",payload); 
     this.setLoading(true);
     this.tariffApi
       .getTariffTemps(payload)
@@ -57,6 +58,7 @@ export class TransportNewTariffService extends TariffDataItemService<TariffDTMai
         takeUntil(this.destroy$),
         finalize(() => this.setLoading(false)),
         catchError((error) => {
+          console.log("error",error); 
           this.checkErrorAPI(error);
           return of(error);
         })
@@ -68,6 +70,7 @@ export class TransportNewTariffService extends TariffDataItemService<TariffDTMai
         }
         this.setDataItems(res.items);
         this.setTotalItem(res.totalItems);
+        console.log("res.items",res.items); 
       });
   }
 

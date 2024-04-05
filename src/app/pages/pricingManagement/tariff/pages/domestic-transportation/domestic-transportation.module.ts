@@ -52,9 +52,13 @@ import { BaseAlertFlagModule } from '@common-components/base-alert-flag/base-ale
 import { ModalDeclineReasonModule } from '../../components/modal-decline-reason/modal-decline-reason.module';
 import { NewTariffSmcComponent } from './new/new.component';
 import { PipesModule } from 'src/app/pipes/pipes.module';
-import { TariffSmcService } from './services';
-import { TransportNewTariffService } from './new/services/transport-new-tariff.service';
-import { TransportDetailTariffService } from './detail/services/detail-smc.service';
+import { 
+  TariffSmcService, 
+  TransportDetailTariffService, 
+  TransportNewTariffService 
+} from './services';
+import { DatePickerService } from 'ng-zorro-antd/date-picker/date-picker.service';
+
 
 
 const NZ_MODULE = [
@@ -106,18 +110,19 @@ const BASE_MODULE = [
   BaseDatePickerModule, 
   BaseStatusLabelModule,
   BaseHeaderModule,
-  BaseApprovalProcessModule,
   BaseSubheaderModule,
+  BaseApprovalProcessModule,
+  
   BaseAlertFlagModule,
   ModalDeclineReasonModule,
-  //PipesModule  
+  PipesModule  
 ];
 
 const COMPONENTS = [
   SmcPage,
   DomesticTransportationComponent,
   DeatailSmcComponent  ,
-  NewTariffSmcComponent
+  NewTariffSmcComponent,  
 ];
 
 @NgModule({
@@ -131,16 +136,15 @@ const COMPONENTS = [
     ReactiveFormsModule,
     FormsModule,    
     DomesticTransportationRoutingModule,
-   // NewRoutingModule,
      ...BASE_MODULE,
      ...NZ_MODULE
     ],
   exports: [...COMPONENTS],
   providers: [
-    // DatePipe,
-    // TariffSmcService,
-    // TransportNewTariffService,
-    // TransportDetailTariffService
+    DatePipe,
+    TariffSmcService,
+    TransportNewTariffService,
+    TransportDetailTariffService    
   ]
 })
 export class DomesticTransportationModule {}

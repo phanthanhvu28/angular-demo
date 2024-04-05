@@ -43,7 +43,7 @@ export class SmcPage extends AbsBaseDataListComponent<DTTariffMains>{
     super.initial();
   }
   
-  protected override getDataListService(): void {
+  getDataListService(): void {
     this.currentTabService = this.tariffService;
     timer(100)
       .pipe(take(1))

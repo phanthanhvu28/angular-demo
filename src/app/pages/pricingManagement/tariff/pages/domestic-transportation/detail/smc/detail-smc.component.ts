@@ -66,7 +66,7 @@ export class DeatailSmcComponent extends AbsTariffDataItemsComponent<TariffDTMai
   ngAfterViewInit(): void {
     this.currentTariffStatus$ = this.currentTabService.tariffItemStatus$;
     this.currentTariffItemData$ = this.currentTabService.tariffItemData$;
-
+    console.log(" this.currentTariffStatus$", this.currentTariffStatus$);
     this.transformMapApprovalProcess();
 
     this.currentTabService.tariffItemData$
@@ -89,10 +89,10 @@ export class DeatailSmcComponent extends AbsTariffDataItemsComponent<TariffDTMai
         this.levelResetRejected =
           res.levelResetRejected !== null ? res.levelResetRejected : -1;
 
-        this.formDate.controls['validFrom'].setValue(res.validFrom);
-        this.formDate.controls['validTo'].setValue(res.validTo);
+        // this.formDate.controls['validFrom'].setValue(res.validFrom);
+        // this.formDate.controls['validTo'].setValue(res.validTo);
 
-        this.updateColsAndUserAction(res);
+        //this.updateColsAndUserAction(res);
         this.setAggregateCount(res?.aggregateCount);
         this.updateTableHeight();
       });

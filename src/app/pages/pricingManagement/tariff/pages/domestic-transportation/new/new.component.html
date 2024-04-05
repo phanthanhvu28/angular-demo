@@ -30,23 +30,22 @@
             Valid Date
           </div>
           <form nz-form [formGroup]="formDate" class="nv-flex nv-flex-wrap">
-            <app-base-date-picker
+            <!-- <app-base-date-picker
               size="xs"
               id="validFrom"
               formControlName="validFrom"
               class="nv-mr-4 nv-date-picker-custom"
               [nzAllowClear]="false"
-              [nzDisabled]="hasTariffActive"
-              [disabledAfterDate]="formDate.controls.validTo.value"
-            />
-            <app-base-date-picker
+              [nzDisabled]="false"
+             
+            /> -->
+            <!-- <app-base-date-picker
               size="xs"
               id="validTo"
               formControlName="validTo"
               class="nv-date-picker-custom"
               [nzAllowClear]="false"
-              [disabledDate]="formDate.controls.validFrom.value"
-            />
+            /> -->
           </form>
         </div>
         <div nv-right>
