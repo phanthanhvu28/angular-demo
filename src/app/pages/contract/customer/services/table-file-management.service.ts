@@ -1,8 +1,8 @@
 import { Injectable, Injector } from '@angular/core';
 import { BaseContractTabService } from '../../services/base-contract-tab.service';
 
-import { AuthService } from 'src/app/guard/services/auth.service';
 import { getTableContractCols } from '../../components/table-file-management/table-file-management.const';
+import { AuthService } from 'src/app/pages/auth/service';
 
 @Injectable({
   providedIn: 'root'

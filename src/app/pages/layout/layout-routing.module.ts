@@ -30,6 +30,7 @@ ZorroTableModule
 // import { VolumeComponent } from '../master-data/services/volume/volume.component';
 // import { SupplierComponent } from '../partner/supplier/supplier.component';
 import { LayoutComponent } from './layout.component';
+import { UnauthorizedComponent } from 'src/app/unauthorized/unauthorized.component';
 
 // import { RouteDataModel } from 'src/app/models/layout-header';
 // import { FreightManagementTabComponent } from '../costing/freight-management/freight-management-tab.component';
@@ -59,7 +60,7 @@ const routes: Routes = [
     //     path: 'dashboard',
     //     component: DashboardComponent
     //   },
-    //   { path: 'unauthorized', component: UnauthorizedComponent },
+      { path: 'unauthorized', component: UnauthorizedComponent },
     //   {
     //     path: 'master-data',
     //     children: [

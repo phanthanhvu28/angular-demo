@@ -62,7 +62,7 @@
       }
     },
     "CLIENT_ROOT": "http://localhost:4201",
-    "IDP_AUTHORITY": "https://sso-dev-integrate.vela.com.vn",
+    "IDP_AUTHORITY": "http://host.docker.internal:44310",
     "CLIENT_ID": "opex-angular-app"
   }
   

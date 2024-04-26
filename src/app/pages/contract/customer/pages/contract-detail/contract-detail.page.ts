@@ -3,7 +3,6 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { NvMessageService } from '@common-components/base-modal-message/services/nv-message.service';
 import { isNil } from 'ng-zorro-antd/core/util';
 import { takeUntil } from 'rxjs';
-import { AuthService } from 'src/app/guard/services/auth.service';
 
 import { StatusEnumContract } from '../../../enums';
 import { ApiContract } from '../../apis';

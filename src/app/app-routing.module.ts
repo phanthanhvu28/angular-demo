@@ -7,9 +7,14 @@ import { HomesComponent } from './homes/homes.component';
 import { FormComponent } from './form/form.component';
 import { ServerapiComponent } from './serverapi/serverapi.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { LoginComponent } from './pages/layout/login/login.component';
+import { PublicSigninCallbackComponent } from './pages/public/pages/public-signin-callback/public-signin-callback.component';
+import { PublicSignoutCallbackComponent } from './pages/public/pages/public-signout-callback/public-signout-callback.component';
+import { AuthGuard } from '@guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', loadChildren: () => import('./pages/layout/layout.module').then(m => m.LayoutModule) },
+
+  { path: '',    canActivate: [AuthGuard],loadChildren: () => import('./pages/layout/layout.module').then(m => m.LayoutModule) },
   // {path:'',component:HomesComponent},
   // {path:'news',component:NewsComponent},
   // {path:'products',component:ProductsComponent},
@@ -27,7 +32,14 @@ const routes: Routes = [
   // { path: 'zorro-drawer', loadChildren: () => import('./zorro-drawer/zorro-drawer.module').then(m => m.ZorroDrawerModule) },
 
   // { path: 'costing-main', loadChildren: () => import('./costing-main/costing-main.module').then(m => m.CostingMainModule) },
-  
+  {
+    path: 'signin-callback',
+    component: PublicSigninCallbackComponent
+  },
+  {
+    path: 'signout-callback',
+    component: PublicSignoutCallbackComponent
+  },
   {path:'**',component:NotFoundComponentComponent},
   
 ];

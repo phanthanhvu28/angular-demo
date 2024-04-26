@@ -11,7 +11,6 @@ import {
   tap,
   throwError
 } from 'rxjs';
-import { AuthService } from 'src/app/guard/services/auth.service';
 import { ERROR_MESSAGE } from '../../const';
 import {
   ContractResponse,
@@ -27,6 +26,7 @@ import AnnexData, {
 import { ANNEX_LIST_COLS } from '../pages';
 import { ApiAnnex } from '../api';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from 'src/app/pages/auth/service';
 
 @Injectable({
   providedIn: 'root'

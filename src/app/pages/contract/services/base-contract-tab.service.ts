@@ -5,7 +5,6 @@ import {
   FilterComparison,
   TableDataCell
 } from '@models/base-data-list';
-import { AuthService } from 'src/app/guard/services/auth.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Filter } from '@models/base/data.interface';
 @Injectable({

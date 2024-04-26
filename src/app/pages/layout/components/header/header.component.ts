@@ -3,8 +3,8 @@ import { DropdownListModel } from 'src/app/models/layout-header';
 import { LANGS_MENU_PROVIDER, NOTIFY_ITEMS } from './header.const';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { ReplaySubject, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs';
-import { AuthService } from 'src/app/guard/services/auth.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/pages/auth/service';
 
 @Component({
   selector: 'app-header',

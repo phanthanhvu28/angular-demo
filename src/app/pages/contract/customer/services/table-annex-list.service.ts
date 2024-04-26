@@ -12,7 +12,7 @@ import {
   DataListRequestPayload,
   FilterComparison
 } from '@models/base-data-list';
-import { AuthService } from 'src/app/guard/services/auth.service';
+import { AuthService } from 'src/app/pages/auth/service';
 
 @Injectable({
   providedIn: 'root'

@@ -2,7 +2,6 @@ import { Component, Injector, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { isNil } from 'ng-zorro-antd/core/util';
 import { takeUntil } from 'rxjs';
-import { AuthService } from 'src/app/guard/services/auth.service';
 import { AbsBaseContractComponent } from '../../../components';
 import { ICON_SCOPE_OF_WORK } from '../../../const';
 import { StatusEnumContract } from '../../../enums';
@@ -12,6 +11,7 @@ import AnnexData, { DataFilterAnnex } from '../../models/annex.model';
 import { AnnexService } from '../../services';
 import { ApiAnnex } from '../../api';
 import { CostingService } from '../../services/costing.service';
+import { AuthService } from 'src/app/pages/auth/service';
 
 @Component({
   selector: 'app-annex-detail',

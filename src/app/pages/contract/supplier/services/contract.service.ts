@@ -9,7 +9,6 @@ import {
   takeUntil,
   throwError
 } from 'rxjs';
-import { AuthService } from 'src/app/guard/services/auth.service';
 import { ERROR_MESSAGE } from '../../const';
 import { ContractResponse, ResultDataAction } from '../../models';
 import { BaseContractTabService } from '../../services';
@@ -19,6 +18,7 @@ import ContractData from '../models/contract.model';
 import { CONTRACT_LIST_COLS } from '../pages';
 import { ApiContract } from '../api';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from 'src/app/pages/auth/service';
 
 @Injectable({
   providedIn: 'root'

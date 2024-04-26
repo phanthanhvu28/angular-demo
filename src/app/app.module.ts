@@ -98,6 +98,7 @@ import {
 } from '@ant-design/icons-angular/icons';
 import { ConfigService, initConfig } from './services/config.service';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 //const icons = [MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline];
 
@@ -116,6 +117,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     AppComponent,
+    UnauthorizedComponent,
     NewsComponent,
     ProductsComponent,
     NotFoundComponentComponent,

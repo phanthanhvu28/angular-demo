@@ -9,7 +9,6 @@ import {
   takeUntil,
   throwError
 } from 'rxjs';
-import { AuthService } from 'src/app/guard/services/auth.service';
 import { ContractResponse, ResultDataAction } from '../../models';
 import { BaseContractTabService } from '../../services';
 import { ApiAnnex } from '../apis';
@@ -21,6 +20,7 @@ import {
 } from '../models/filter-upload.model';
 //import { ANNEX_LIST_COLS } from '../pages/customer-annex-list/table-annex-list.const';
 import { ERROR_MESSAGE } from '../../const';
+import { AuthService } from 'src/app/pages/auth/service';
 
 @Injectable({
   providedIn: 'root'

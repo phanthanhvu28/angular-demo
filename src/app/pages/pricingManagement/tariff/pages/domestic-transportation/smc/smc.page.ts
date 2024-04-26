@@ -7,6 +7,7 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { TariffSmcService } from '../services';
 import { TableRowHighlightConfig } from '@models/base-data-list';
 import { TransportNewTariffService } from '../new/services/transport-new-tariff.service';
+import { AuthService } from 'src/app/pages/auth/service';
 
 @Component({
   selector: 'app-smc',
@@ -27,7 +28,8 @@ export class SmcPage extends AbsBaseDataListComponent<DTTariffMains>{
     private injector: Injector,
     private tariffService: TariffSmcService,
     private router: Router,
-    private route: ActivatedRoute    
+    private route: ActivatedRoute  ,
+    private authService: AuthService,  
   ) {
     //super(el);
     super(el,injector);   

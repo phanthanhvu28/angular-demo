@@ -12,13 +12,14 @@ import { ApiContract } from '../apis';
 import { CONTRACT_LIST_COLS } from '../pages/customer-contract-list/table-contract.const';
 import { DataListRequestPayload, FilterComparison } from 'src/app/models/base-data-list';
 import { BaseContractTabService } from '../../services/base-contract-tab.service';
-import { AuthService } from 'src/app/guard/services/auth.service';
+
 import { ContractResponse, ResultDataAction } from '../../models';
 import ContractData from '../models/contract-data.model';
 import { DataFilterContract, FilterUpload } from '../models/filter-upload.model';
 import { ERROR_MESSAGE } from '../../const';
 import { isNil } from 'ng-zorro-antd/core/util';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from 'src/app/pages/auth/service';
 @Injectable({
     providedIn: 'root'
   })

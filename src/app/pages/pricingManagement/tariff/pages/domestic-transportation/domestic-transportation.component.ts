@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/pages/auth/service';
 
 @Component({
   selector: 'app-domestic-transportation',
@@ -10,9 +11,14 @@ export class DomesticTransportationComponent {
   indexTab: number | string = 0;
 
   constructor(
+    el: ElementRef,
     private router: Router,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    private authService: AuthService,
+  ) {
+    const currentUser = this.authService.getCurrentUserParse();
+    console.log("currentUser===",currentUser);
+  }
   ngOnInit(): void {
     const indexTabLocal = localStorage.getItem('TAB_INDEX');
     this.indexTab = indexTabLocal ? indexTabLocal : 0;
