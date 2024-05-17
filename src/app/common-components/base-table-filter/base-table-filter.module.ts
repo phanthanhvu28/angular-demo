@@ -25,6 +25,7 @@ import { BaseCellFilterTemplateComponent } from './components/cell-filter-templa
 import { BaseTableFilterTemplateComponent } from './components/table-filter-template/table-filter-template.component';
 import { BaseDirectiveModule } from '@directives/directives.module';
 import { NzDestroyService } from 'ng-zorro-antd/core/services';
+import { BaseDatePickerRangeNewModule } from '@common-components/base-date-picker-range-new/base-date-picker-range-new.module';
 //import { BaseTableFilterTemplateComponent } from './components/table-filter-template/table-filter-template.component';
 
 const NZ_MODULE = [
@@ -43,10 +44,11 @@ const COMMON_MODULE = [
   BaseDirectiveModule,
   BaseButtonModule,
   BaseInputModule,
-  BaseDatePickerModule,
+  BaseDatePickerModule,  
   BaseInputNumberModule,
   PipesModule,
-  IconsComponentModule
+  IconsComponentModule,
+  BaseDatePickerRangeNewModule
 ];
 
 const COMPONENTS = [

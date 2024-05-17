@@ -91,6 +91,49 @@
         {{dataRow[cellKey]}}
       </span>
     </ng-container>
+    <ng-container *ngIf="cellFormater.templateCustomerName">
+      <div
+        nz-tooltip
+        [nzTooltipTitle]="titleTemplate"
+        nzTooltipOverlayClassName="nv-base-tooltip nv-contract-tooltip"
+        class="nv-flex nv-flex-col nv-gap-4"
+      >
+        <span class="nv-body-12-semibold nv-text-neutral-500">
+          {{dataRow['customerShortName'] ||'-'}}
+        </span>
+        <span class="nv-body-12-regular nv-text-neutral-400 nv-text-ellipsis-1">
+          {{dataRow['customerCode']||'-'}}
+        </span>
+      </div>
+      <ng-template #titleTemplate>
+        <div class="nv-flex nv-flex-col nv-gap-8">
+          <div class="nv-flex nv-items-center nv-gap-16">
+            <span class="nv-body-12-regular nv-text-neutral-400 nv-width-80">
+              Full Name:
+            </span>
+            <span class="nv-body-12-semibold nv-text-neutral-500">
+              {{dataRow['customerFullName'] || '-'}}
+            </span>
+          </div>
+          <div class="nv-flex nv-items-center nv-gap-16">
+            <span class="nv-body-12-regular nv-text-neutral-400 nv-width-80">
+              Short Name:
+            </span>
+            <span class="nv-body-12-semibold nv-text-neutral-500">
+              {{dataRow['customerShortName']||'-'}}
+            </span>
+          </div>
+          <div class="nv-flex nv-items-center nv-gap-16">
+            <span class="nv-body-12-regular nv-text-neutral-400 nv-width-80">
+              Code:
+            </span>
+            <span class="nv-body-12-semibold nv-text-neutral-500">
+              {{dataRow['customerCode']||'-'}}
+            </span>
+          </div>
+        </div>
+      </ng-template>
+    </ng-container>
   </ng-template>
   <app-modal-create-edit-contract
   (handelSubmit)="refresh()"

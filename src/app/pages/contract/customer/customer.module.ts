@@ -57,6 +57,8 @@ import { TableAnnexListComponent } from './components/table-annex-list/table-ann
 import { ModalAnnexListFullscreenComponent } from './components/modal-annex-list-fullscreen/modal-annex-list-fullscreen.component';
 import { BaseDirectiveModule } from '@directives/directives.module';
 import { BaseDropdownPinnedModule } from '../components/base-dropdown-pinned/base-dropdown-pinned.module';
+import { BaseTableFilterModule } from '@common-components/base-table-filter/base-table-filter.module';
+import { DatePickerService } from 'ng-zorro-antd/date-picker/date-picker.service';
 
 
 
@@ -95,8 +97,8 @@ const BASE_MODULE=[
   BaseInputModule,
   BaseModalMessageModule ,
   BaseTooltipLengthModule,
-  BaseDropdownPinnedModule
-
+  BaseDropdownPinnedModule,
+  BaseTableFilterModule
 
 ]
 
@@ -134,7 +136,7 @@ const COMMON_COMPONENTS=[
       useValue: 'customer'
     },
     CommonService,
-    AnnexService
+    AnnexService    
   ]
 })
 export class CustomerModule { }

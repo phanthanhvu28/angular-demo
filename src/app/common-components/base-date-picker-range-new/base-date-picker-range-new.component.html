@@ -1,0 +1,16 @@
+<div
+  class="range-picker-new"
+  [class.range-picker-new__inline]="!!nvInline || nvInline === ''"
+>
+  <nz-range-picker
+    [disabled]="nvDisabled === true"
+    #rangePicker
+    [nzFormat]="nvFormat"
+    [nzAllowClear]="nvAllowClear"
+    [nzPlaceHolder]="nvPlaceHolder"
+    [nzDisabledDate]="isDisabledDate.bind(this, rangePicker)"
+    (nzOnCalendarChange)="onChangeRange($event, rangePicker)"
+    (nzOnOpenChange)="nzOnOpenChange($event)"
+    [(ngModel)]="ngModel"
+  />
+</div>

@@ -1,11 +1,13 @@
 import { Directionality } from '@angular/cdk/bidi';
 import { Platform } from '@angular/cdk/platform';
-import { DatePipe } from '@angular/common';
+import { DOCUMENT, DatePipe } from '@angular/common';
 import {
   ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
+  Host,
+  Inject,
   Input,
   NgZone,
   Optional,
@@ -23,9 +25,10 @@ import {
 } from 'ng-zorro-antd/date-picker';
 import { DateHelperService, NzI18nService } from 'ng-zorro-antd/i18n';
 import { DatePickerService } from './services/nv-date-picker.service';
-import { NzDestroyService } from 'ng-zorro-antd/core/services';
-import { NzNoAnimationDirective } from 'ng-zorro-antd/core/no-animation';
-import { NzFormNoStatusService, NzFormStatusService } from 'ng-zorro-antd/core/form';
+import {
+  NzFormNoStatusService,
+  NzFormStatusService
+} from 'ng-zorro-antd/core/form';
 
 @Component({
   selector: 'app-base-date-picker',
@@ -80,28 +83,20 @@ export class BaseDatePickerComponent extends NzDatePickerComponent {
     dateHelper: DateHelperService,
     nzResizeObserver: NzResizeObserver,
     platform: Platform,
-    destroy$:NzDestroyService,
-    @Optional() noAnimation: NzNoAnimationDirective,
-    @Optional() nzFormStatusService: NzFormStatusService,
-    @Optional() nzFormNoStatusService: NzFormNoStatusService,
     @Optional() directionality: Directionality
   ) {
     super(
       nzConfigService,
       datePickerService,
       i18n,
-      cdr,           
+      cdr,
       renderer,
-      ngZone, 
       elementRef,
       dateHelper,
       nzResizeObserver,
-      platform,      
-      destroy$,
-      directionality,
-      noAnimation as any,
-      nzFormStatusService as any,
-      nzFormNoStatusService as any
+      platform,
+      ngZone,
+      directionality
     );
   }
 

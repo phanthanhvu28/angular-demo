@@ -1,0 +1,82 @@
+@range-date-class: range-picker-new;
+.@{range-date-class} {
+  --_nv-picker-range-border-radius: 4px;
+  ::ng-deep .ant-picker-range {
+    width: 100%;
+    height: 36px;
+    border-radius: var(--_nv-picker-range-border-radius) !important;
+    input {
+      font-size: 12px;
+      &::placeholder {
+        font-size: 12px !important;
+      }
+    }
+  }
+  &__inline {
+    ::ng-deep .ant-picker-range {
+      --_nv-inline-border-color: var(--nv-blue-200);
+      --_nv-inline-width: 76px;
+      --_nv-picker-range-border-radius: 0;
+      width: auto;
+      border-color: var(--_nv-inline-border-color);
+      border-width: 0 0 1px 0;
+      padding: 0;
+      height: auto;
+      cursor: pointer;
+      &.ant-picker-focused {
+        box-shadow: unset;
+      }
+      &.ant-picker-disabled {
+        cursor: default;
+        background-color: inherit;
+        --_nv-inline-border-color: transparent;
+        .ant-picker-range-separator,
+        .ant-picker-separator,
+        .ant-picker-suffix,
+        .ant-picker-input input:disabled {
+          cursor: default;
+        }
+        .ant-picker-suffix {
+          display: none;
+        }
+        .ant-picker-input {
+          --_nv-inline-width: 64px;
+          input:disabled {
+            text-align: end;
+            color: inherit;
+          }
+        }
+      }
+      .ant-picker-input {
+        width: var(--_nv-inline-width);
+      }
+      .ant-picker-suffix {
+        color: inherit;
+      }
+      .ant-picker-clear {
+        right: 0;
+      }
+      .ant-picker-active-bar {
+        margin-left: 0;
+      }
+    }
+  }
+  &--invalid {
+    .@{range-date-class}__inline ::ng-deep .ant-picker-range,
+    &.@{range-date-class}__inline ::ng-deep .ant-picker-range {
+      border-color: var(--nv-red-400);
+    }
+  }
+}
+:host {
+  &.ng-invalid:not(.ng-pristine) .range-picker-new {
+    .ant-picker,
+    .ant-picker:hover,
+    .ant-picker-focused {
+      border: none;
+    }
+    .ant-picker-focused {
+      box-shadow: unset;
+    }
+  }
+}

@@ -27,7 +27,11 @@ export const CONTRACT_LIST_COLS: Array<TableDataCell> = [
     width: '250px',
     nzShowSort: true,
     formatRenderer: {
-      templateTextLongDotThree: 18
+      templateCustomerName: true
+    },
+    filterConfigs: {
+      type: 'text',
+      filterKey: 'customerCode||customerShortName||customerFullName'
     }
   },
   {
@@ -64,6 +68,11 @@ export const CONTRACT_LIST_COLS: Array<TableDataCell> = [
     nzShowSort: true,
     formatRenderer: {
       templateContractDuration: true
+    },
+    filterConfigs: {
+      type: 'range-date',
+      startRangeKey: 'validFrom',
+      endRangeKey: 'validTo'
     }
   },
   {
@@ -79,6 +88,9 @@ export const CONTRACT_LIST_COLS: Array<TableDataCell> = [
     nzShowSort: true,
     formatRenderer: {
       templateCreatedDate: true
+    },
+    filterConfigs: {
+      type: 'date'
     }
   },
   {
@@ -90,8 +102,8 @@ export const CONTRACT_LIST_COLS: Array<TableDataCell> = [
     sortKey: 'sortStatus',
     nzShowSort: true,
     filterConfigs: {
-      required: false,
-      type: 'text'
+      type: 'selection',
+      isMulti: true
     },
     formatRenderer: {
       templateStatus: true

@@ -151,10 +151,15 @@ export class BaseCellFilterTemplateComponent {
 
   comparatorChangeHandler(event: string, cellItem: TableDataCell): void {
     if (event === 'between') {
-      cellItem.filterConfigs.fieldValue = {
-        start: '',
-        end: ''
-      };
+      if (cellItem.filterConfigs.type === 'number') {
+        cellItem.filterConfigs.fieldValue = {
+          start: '',
+          end: ''
+        };
+      }
+      if (cellItem.filterConfigs.type === 'date') {
+        cellItem.filterConfigs.fieldValue = [];
+      }
     } else {
       cellItem.filterConfigs.fieldValue = null;
     }
